@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Add or edit loan</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..125,100..800&amp;family=Anek+Latin:wdth,wght@75..125,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; min-height: {{minH}}; height: {{H}}; box-sizing: border-box; position: relative; overflow: hidden; background: {{t.base}}; color: {{t.tp}}; font-family: {{f}}; display: flex; flex-direction: column">
+  <main style="flex: 1 0 auto; padding: 44px 20px 150px; display: flex; flex-direction: column; gap: 16px">
+    <header style="display: flex; align-items: center; gap: 4px; margin: 0 -8px">
+      <a href="S4Loans.dc.html" aria-label="{{s.close}}" style="width: 48px; height: 48px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: {{t.tp}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12 M18 6 6 18"></path></svg></a>
+      <h1 style="margin: 0; font-size: {{ty.tiS}}px; line-height: {{ty.ti}}; font-weight: 600">{{title}}</h1>
+    </header>
+
+    <sc-for list="{{textFields}}" as="fd" hint-placeholder-count="4">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <label for="{{fd.id}}" style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{fd.label}}</label>
+        <div style="height: 52px; border-radius: 14px; background: {{t.sunken}}; border: 1px solid {{t.line}}; box-shadow: {{fd.ring}}; display: flex; align-items: center; gap: 8px; padding: 0 14px; box-sizing: border-box">
+          <sc-if value="{{fd.icon}}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{fd.ic}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto"><path d="{{fd.icon}}"></path></svg></sc-if>
+          <span style="font-size: 17px; color: {{t.ts}}; font-weight: 600">{{fd.pre}}</span>
+          <input id="{{fd.id}}" inputmode="{{fd.mode}}" value="{{fd.val}}" placeholder="{{fd.ph}}" onChange="{{fd.on}}" style="flex: 1 1 auto; min-width: 0; height: 48px; border: 0; outline: none; background: transparent; color: {{t.tp}}; font-family: inherit; font-size: 17px; font-weight: {{fd.fw}}; font-variant-numeric: tabular-nums; padding: 0">
+          <span style="font-size: 17px; color: {{t.ts}}; font-weight: 600">{{fd.suf}}</span>
+        </div>
+        <sc-if value="{{fd.err}}" hint-placeholder-val="{{ false }}">
+          <span role="alert" style="display: flex; gap: 6px; align-items: center; font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.err}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{t.err}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.warning}}"></path></svg>{{fd.err}}</span>
+        </sc-if>
+        <sc-if value="{{fd.chips}}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 6px; padding-top: 2px">
+            <span style="font-size: 13px; line-height: 1.45; font-weight: 500; color: {{t.tm}}">{{s.recentBanks}}</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px">
+              <sc-for list="{{fd.chips}}" as="ch" hint-placeholder-count="3">
+                <button type="button" onClick="{{ch.pick}}" style="min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid {{t.line}}; background: {{t.raised}}; color: {{t.tp}}; font-family: inherit; font-size: {{ty.caS}}px; font-weight: 500; cursor: pointer">{{ch.label}}</button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <span id="fDur" style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{s.loanDuration}}</span>
+      <div role="group" aria-labelledby="fDur" style="display: flex; gap: 10px; align-items: center; justify-content: space-between">
+        <div style="display: flex; align-items: center; height: 52px; border-radius: 14px; background: {{t.sunken}}; border: 1px solid {{t.line}}; box-sizing: border-box; padding: 0 2px">
+          <button type="button" aria-label="−" onClick="{{durDown}}" style="width: 48px; height: 48px; border: 0; background: transparent; color: {{t.tp}}; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg></button>
+          <span style="min-width: 60px; text-align: center; font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums">{{durVal}}</span>
+          <button type="button" aria-label="+" onClick="{{durUp}}" style="width: 48px; height: 48px; border: 0; background: transparent; color: {{t.tp}}; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg></button>
+        </div>
+        <div style="display: flex; padding: 3px; border-radius: 999px; background: {{t.sunken}}; border: 1px solid {{t.line}}">
+          <sc-for list="{{units}}" as="u" hint-placeholder-count="2">
+            <button type="button" onClick="{{u.pick}}" aria-pressed="{{u.on}}" style="min-width: 60px; min-height: 44px; padding: 0 12px; border-radius: 999px; border: 0; background: {{u.bg}}; color: {{u.c}}; font-family: inherit; font-size: {{ty.boS}}px; font-weight: 600; cursor: pointer">{{u.label}}</button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <span id="fMonth" style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{s.formFirstMonth}}</span>
+      <button type="button" aria-labelledby="fMonth" onClick="{{openPicker}}" style="height: 52px; border-radius: 14px; background: {{t.sunken}}; border: 1px solid {{t.line}}; box-shadow: {{monthRing}}; display: flex; align-items: center; gap: 10px; padding: 0 14px; color: {{monthC}}; font-family: inherit; font-size: 17px; font-weight: 600; cursor: pointer; text-align: left">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{t.pri}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.calendar}}"></path></svg>
+        <span style="flex: 1 1 auto">{{monthTxt}}</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{t.ts}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+      </button>
+      <sc-if value="{{monthErr}}" hint-placeholder-val="{{ false }}"><span role="alert" style="display: flex; gap: 6px; align-items: center; font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.err}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{t.err}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.warning}}"></path></svg>{{monthErr}}</span></sc-if>
+    </div>
+
+    <section style="border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; display: flex; flex-direction: column">
+      <button type="button" onClick="{{toggleDed}}" aria-expanded="{{dedA}}" style="min-height: 60px; padding: 0 14px; border: 0; background: transparent; color: {{t.tp}}; font-family: inherit; display: flex; align-items: center; gap: 10px; cursor: pointer; text-align: left">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{t.ded}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto"><path d="{{ic.receipt}}"></path></svg>
+        <span style="flex: 1 1 auto; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; font-weight: 600">{{s.formAddDeductions}}</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{t.ts}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate({{dedRot}}deg); flex: 0 0 auto"><path d="M5 9l7 7 7-7"></path></svg>
+      </button>
+      <sc-if value="{{dedOpen}}" hint-placeholder-val="{{ false }}">
+        <div style="padding: 0 14px 16px; display: flex; flex-direction: column; gap: 12px">
+          <sc-for list="{{dedFields}}" as="fd" hint-placeholder-count="4">
+            <div style="display: flex; flex-direction: column; gap: 6px">
+              <label for="{{fd.id}}" style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{fd.label}}</label>
+              <div style="height: 52px; border-radius: 14px; background: {{t.sunken}}; border: 1px solid {{t.line}}; display: flex; align-items: center; gap: 8px; padding: 0 14px; box-sizing: border-box">
+                <span style="font-size: 17px; color: {{t.ts}}; font-weight: 600">৳</span>
+                <input id="{{fd.id}}" inputmode="decimal" value="{{fd.val}}" placeholder="{{fd.ph}}" onChange="{{fd.on}}" style="flex: 1 1 auto; min-width: 0; height: 48px; border: 0; outline: none; background: transparent; color: {{t.tp}}; font-family: inherit; font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; padding: 0">
+              </div>
+            </div>
+          </sc-for>
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 8px; border-top: 1px solid {{t.line}}">
+            <span style="font-size: {{ty.boS}}px; line-height: {{ty.bo}}; color: {{t.ts}}">{{s.dedNetCash}}</span>
+            <span style="font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; color: {{netC}}; white-space: nowrap">{{netTxt}}</span>
+          </div>
+        </div>
+      </sc-if>
+    </section>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <span id="fCol" style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{s.formColour}}</span>
+      <div role="radiogroup" aria-labelledby="fCol" style="display: flex; gap: 12px">
+        <sc-for list="{{swatches}}" as="sw" hint-placeholder-count="5">
+          <button type="button" role="radio" aria-checked="{{sw.on}}" aria-label="{{sw.name}}" onClick="{{sw.pick}}" style="width: 48px; height: 48px; border-radius: 999px; border: 3px solid {{sw.ring}}; background: {{sw.c}}; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; box-sizing: border-box">
+            <sc-if value="{{sw.sel}}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{sw.chk}}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </main>
+
+  <footer style="position: absolute; left: 0; right: 0; bottom: 0; background: {{t.glass}}; border-top: 1px solid {{t.line}}; padding: 12px 20px 26px; display: flex; align-items: center; gap: 12px">
+    <div aria-live="polite" style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column">
+      <span style="font-size: 12px; line-height: 1.45; font-weight: 500; color: {{t.ts}}">{{s.bankEmi}}</span>
+      <span style="font-size: 22px; line-height: 1.25; font-weight: 800; font-stretch: 112.5%; font-variant-numeric: tabular-nums; color: {{prevC}}; white-space: nowrap">{{prevEmi}}</span>
+      <span style="font-size: 12px; line-height: 1.45; font-weight: 500; color: {{t.ts}}; white-space: nowrap">{{prevLast}}</span>
+    </div>
+    <a href="{{saveHref}}" aria-disabled="{{saveDis}}" style="flex: 0 0 auto; min-height: 52px; padding: 0 20px; border-radius: 999px; background: {{saveBg}}; color: {{saveC}}; text-decoration: none; display: flex; align-items: center; gap: 8px; font-size: {{ty.boS}}px; font-weight: 700; pointer-events: {{savePe}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{s.formSave}}</a>
+  </footer>
+
+  <sc-if value="{{picker}}" hint-placeholder-val="{{ false }}">
+    <button type="button" onClick="{{closePicker}}" aria-label="{{s.close}}" style="position: absolute; inset: 0; width: 100%; border: 0; padding: 0; background: {{t.scrim}}; cursor: pointer"></button>
+    <div role="dialog" aria-labelledby="pkTitle" style="position: absolute; left: 0; right: 0; bottom: 0; border-radius: 28px 28px 0 0; background: {{t.raised}}; border-top: 1px solid {{t.line}}; padding: 10px 20px 30px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 -12px 32px rgba(8,6,24,0.3)">
+      <span aria-hidden="true" style="align-self: center; width: 40px; height: 5px; border-radius: 999px; background: {{t.line}}"></span>
+      <h2 id="pkTitle" style="margin: 0; font-size: {{ty.seS}}px; line-height: {{ty.se}}; font-weight: 600">{{s.formFirstMonth}}</h2>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 8px">
+        <button type="button" aria-label="{{s.prevYear}}" onClick="{{pkPrev}}" style="width: 48px; height: 48px; border-radius: 999px; border: 0; background: {{t.base}}; color: {{t.tp}}; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></button>
+        <span style="min-width: 96px; text-align: center; font-size: 22px; line-height: 1.3; font-weight: 700; font-stretch: 112.5%; font-variant-numeric: tabular-nums">{{pkYear}}</span>
+        <button type="button" aria-label="{{s.nextYear}}" onClick="{{pkNext}}" style="width: 48px; height: 48px; border-radius: 999px; border: 0; background: {{t.base}}; color: {{t.tp}}; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg></button>
+      </div>
+      <div role="grid" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+        <sc-for list="{{pkCells}}" as="pc" hint-placeholder-count="12">
+          <button type="button" onClick="{{pc.pick}}" disabled="{{pc.dis}}" aria-pressed="{{pc.on}}" aria-label="{{pc.aria}}" style="height: 56px; border-radius: 16px; border: 1px solid {{pc.bd}}; background: {{pc.bg}}; color: {{pc.c}}; opacity: {{pc.op}}; font-family: inherit; font-size: {{ty.boS}}px; font-weight: {{pc.fw}}; cursor: pointer">{{pc.label}}</button>
+        </sc-for>
+      </div>
+      <button type="button" onClick="{{closePicker}}" style="min-height: 52px; border-radius: 999px; border: 0; background: {{t.emi}}; color: {{t.onEmi}}; font-family: inherit; font-size: {{ty.boS}}px; font-weight: 700; cursor: pointer">{{s.done}}</button>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"dark"},"lang":{"editor":"enum","options":["bn","en"],"default":"bn"},"variant":{"editor":"enum","options":["empty","filled","error","ded","picker","edit"],"default":"empty"},"$preview":{"width":390,"height":1080}}'>
+var ICO={warning:'M12 3.5 2.5 20h19z M12 10v4 M12 17h.01',calendar:'M5 5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z M16 3v4 M8 3v4 M4 10h16',receipt:'M4.5 20V4.5a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1V20l-2.5-1.5L14.5 20 12 18.5 9.5 20 7 18.5z M8 9h8 M8 13h8',bank:'M3 9h18L12 3.5z M5 9v8 M9.7 9v8 M14.3 9v8 M19 9v8 M3.5 17h17 M2 20.5h20',pencil:'M4 20h4L19 9a2.1 2.1 0 0 0-4-4L4 16z M13.5 6.5l4 4',coins:'M9 4.5c3.6 0 6.5 1.3 6.5 3s-2.9 3-6.5 3-6.5-1.3-6.5-3 2.9-3 6.5-3z M2.5 7.5v4c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-4 M15.5 10.6c3.3.3 6 1.5 6 2.9 0 1.7-2.9 3-6.5 3-1.6 0-3.1-.3-4.2-.7 M8.5 14.5v2c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-3',percent:'M18.5 5.5l-13 13 M7.5 5a2.5 2.5 0 1 0 0 5a2.5 2.5 0 1 0 0-5z M16.5 14a2.5 2.5 0 1 0 0 5a2.5 2.5 0 1 0 0-5z'};
+var TOK={dark:{base:'#120F2E',raised:'#1B1744',sunken:'#0C0A21',line:'#2C2760',tp:'#F4F2FF',ts:'#B7B2E0',tm:'#8C86BC',emi:'#2EE6D0',pri:'#A78BFA',int:'#FFC234',ded:'#FF5C9A',cash:'#4BE38A',err:'#FF6B6B',glass:'rgba(27,23,68,0.86)',onEmi:'#120F2E',sh:'none',scrim:'rgba(8,6,24,0.72)'},light:{base:'#F5F4FF',raised:'#FFFFFF',sunken:'#ECEAFB',line:'#DDD9F5',tp:'#1A1640',ts:'#4B4680',tm:'#625E8F',emi:'#087A6F',pri:'#6D3FE0',int:'#8F5F00',ded:'#C8235F',cash:'#0F7A45',err:'#C62828',glass:'rgba(255,255,255,0.88)',onEmi:'#FFFFFF',sh:'0 4px 16px rgba(46,32,140,0.10)',scrim:'rgba(26,22,64,0.45)'}};
+var ACC={dark:['#6C8CFF','#FF8A5B','#E07BF0','#D9E55A','#5CC8FF'],light:['#3D5BDB','#B4501F','#9A37B0','#5E6C0A','#1673A6']};
+var ACCN=[['Nil','নীল'],['Shimul','শিমুল'],['Orchid','অর্কিড'],['Kadam','কদম'],['Akash','আকাশ']];
+var FBN="'Anek Bangla','Anek Latin',system-ui,sans-serif",FEN="'Anek Latin','Anek Bangla',system-ui,sans-serif";
+function TY(bn){return bn?{ti:1.45,tiS:23,se:1.5,seS:18,bo:1.6,boS:16,ca:1.55,caS:14}:{ti:1.3,tiS:22,se:1.35,seS:17,bo:1.45,boS:15,ca:1.4,caS:13};}
+var BND='০১২৩৪৫৬৭৮৯';
+function DG(s,bn){s=String(s);return bn?s.replace(/[0-9]/g,function(c){return BND[+c];}):s;}
+function GR(s){if(s.length<=3)return s;var a=s.slice(-3),b=s.slice(0,-3);return b.replace(/\B(?=(\d{2})+(?!\d))/g,',')+','+a;}
+function MV(p,bn,whole){if(p==null||isNaN(p))return {f:'—'};var neg=p<0;p=Math.abs(Math.round(p));var n=whole?GR(String(Math.round(p/100))):GR(String(Math.floor(p/100)))+'.'+String(p%100).padStart(2,'0');n=DG(n,bn);return {f:(neg?'−':'')+'৳'+n};}
+function PARSE(s){s=String(s==null?'':s).replace(/[০-৯]/g,function(c){return BND.indexOf(c);}).replace(/,/g,'').trim();if(s==='')return {empty:true,v:0};if(!/^\d*\.?\d*$/.test(s)||s==='.')return {nan:true,v:0};return {v:parseFloat(s)};}
+function SHOWNUM(raw,bn){var p=PARSE(raw);if(p.empty||p.nan)return raw;var parts=String(raw).replace(/[০-৯]/g,function(c){return BND.indexOf(c);}).replace(/,/g,'').split('.');var s=GR(parts[0].replace(/^0+(?=\d)/,''));if(parts[1]&&/[1-9]/.test(parts[1]))s+='.'+parts[1];return DG(s,bn);}
+var MON={en:['January','February','March','April','May','June','July','August','September','October','November','December'],bn:['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর']};
+var MOS={en:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],bn:['জানু','ফেব্রু','মার্চ','এপ্রি','মে','জুন','জুলাই','আগ','সেপ্টে','অক্টো','নভে','ডিসে']};
+function YM(y,m){return y*12+(m-1);}
+function MLAB(i,lg,bn){return MON[lg][i%12]+' '+DG(Math.floor(i/12),bn);}
+var TODAY=YM(2026,10),MINM=TODAY-360,MAXM=TODAY+60;
+function CALC(P,rate,n){var r=rate/100/12;var ex=r>0?P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):P/n;var be=Math.ceil(ex-1e-6);var bal=Math.round(P*100),emi=be*100,cnt=0;for(var k=1;k<=n&&bal>0;k++){var it=Math.round(bal*r);var pay=emi;if(k===n||bal+it<=emi)pay=bal+it;bal=bal-(pay-it);cnt++;}return {be:be,cnt:cnt};}
+var STR={loansAdd:['Add loan','লোন যোগ করুন'],formEditTitle:['Edit loan','লোন এডিট করুন'],close:['Close','বন্ধ করুন'],formBankName:['Bank name','ব্যাংকের নাম'],formNickname:['Loan name (optional)','লোনের নাম (না দিলেও চলবে)'],nickPh:['For example, Home loan','যেমন: বাড়ির লোন'],recentBanks:['Banks you used before','আগে লেখা ব্যাংক'],loanAmount:['Loan amount','লোনের পরিমাণ'],loanRate:['Interest rate (yearly)','সুদের হার (বছরে)'],loanDuration:['Duration','মেয়াদ'],unitYears:['Years','বছর'],unitMonths:['Months','মাস'],formFirstMonth:['First installment month','প্রথম কিস্তির মাস'],chooseMonth:['Choose a month','মাস বেছে নিন'],formAddDeductions:['Add deductions (optional)','কেটে রাখা টাকা যোগ করুন (না দিলেও চলবে)'],dedSettlement:['Existing loan settlement','আগের লোন শোধ'],dedInsurance:['One-time insurance premium','বীমার প্রিমিয়াম (এককালীন)'],dedFees:['Bank fees','ব্যাংক ফি'],dedOther:['Other deductions','অন্যান্য খরচ'],dedNetCash:['Estimated net cash received','হাতে পাবেন (আনুমানিক)'],formColour:['Card colour','কার্ডের রং'],formSave:['Save loan','লোন সেভ করুন'],bankEmi:['Bank EMI','ব্যাংকের মাসিক কিস্তি'],detailLastMonth:['Last installment month','শেষ কিস্তির মাস'],errBankEmpty:['Enter the bank name','ব্যাংকের নাম লিখুন'],errAmountEmpty:['Enter the loan amount','লোনের পরিমাণ লিখুন'],errAmountZero:['Loan amount must be more than 0','লোনের পরিমাণ ০-এর বেশি হতে হবে'],errAmountMax:['Amount is too large','পরিমাণ অনেক বেশি'],errRateEmpty:['Enter the interest rate','সুদের হার লিখুন'],errRateRange:['Rate must be between 0% and 50%','সুদের হার ০% থেকে ৫০%-এর মধ্যে হতে হবে'],errNaN:['Enter a valid number','সঠিক সংখ্যা লিখুন'],errMonth:['Choose the first installment month','প্রথম কিস্তির মাস বেছে নিন'],prevYear:['Previous year','আগের বছর'],nextYear:['Next year','পরের বছর'],done:['Done','ঠিক আছে']};
+function S(lg){var i=lg==='en'?0:1,o={};for(var k in STR)o[k]=STR[k][i];return o;}
+var A={bank:['Kantha Bank','কাঁথা ব্যাংক'],nick:['Home loan','বাড়ির লোন'],amt:'1521595.95',rate:'10.47',dur:60,unit:'y',F:YM(2025,10),set:'',ins:'',fee:'',oth:'',acc:0};
+var B={bank:['Dhanshiri Bank','ধানসিঁড়ি ব্যাংক'],nick:['Top-up','টপ-আপ'],amt:'1300000',rate:'10.57',dur:60,unit:'y',F:YM(2027,1),set:'851000',ins:'30000',fee:'5000',oth:'',acc:1};
+function INIT(v,li){var src=(v==='ded')?B:A;var x={bank:src.bank[li],nick:src.nick[li],amt:src.amt,rate:src.rate,dur:src.dur,unit:'y',F:src.F,set:src.set,ins:src.ins,fee:src.fee,oth:src.oth,acc:src.acc};if(v==='empty')return {bank:'',nick:'',amt:'',rate:'',dur:60,unit:'y',F:null,set:'',ins:'',fee:'',oth:'',acc:3};if(v==='error'){x.bank='';x.rate='55';x.F=null;}return x;}
+class Component extends DCLogic {
+  constructor(p){super(p);this.state={};}
+  renderVals() {
+    var self=this,pr=this.props,st=this.state||{};
+    var variant=pr.variant||'empty',lg=pr.lang==='en'?'en':'bn',bn=lg==='bn',li=bn?1:0;
+    var tm=pr.theme==='light'?'light':'dark',t=Object.assign({mode:tm},TOK[tm]),ty=TY(bn),s=S(lg);
+    var v=st.v||INIT(variant,li),ed=st.ed||{};
+    var touched=variant==='error'||st.touched;
+    function upd(o){var nv=Object.assign({},v,o);self.setState({v:nv,ed:ed});}
+    function setField(k){return function(e){var o={};o[k]=e&&e.target?e.target.value:'';var ne=Object.assign({},ed);ne[k]=true;self.setState({v:Object.assign({},v,o),ed:ne});};}
+    var pa=PARSE(v.amt),prr=PARSE(v.rate),errs={};
+    if(!String(v.bank).trim())errs.bank=s.errBankEmpty;
+    if(pa.empty)errs.amt=s.errAmountEmpty;else if(pa.nan)errs.amt=s.errNaN;else if(pa.v<=0)errs.amt=s.errAmountZero;else if(pa.v>1e10)errs.amt=s.errAmountMax;
+    if(prr.empty)errs.rate=s.errRateEmpty;else if(prr.nan)errs.rate=s.errNaN;else if(prr.v<0||prr.v>50)errs.rate=s.errRateRange;
+    if(v.F==null)errs.F=s.errMonth;
+    var calcOk=!errs.amt&&!errs.rate;var c=calcOk?CALC(pa.v,prr.v,v.dur):null;
+    var ok=Object.keys(errs).length===0;
+    function shown(k){return touched?(errs[k]||''):'';}
+    function ring(k){return shown(k)?'inset 0 0 0 1px '+t.err+', 0 0 0 1px '+t.err:'none';}
+    var chips=(variant==='empty'&&!v.bank)?[[ 'Kantha Bank','কাঁথা ব্যাংক'],['Dhanshiri Bank','ধানসিঁড়ি ব্যাংক'],['Moyna Bank','ময়না ব্যাংক']].map(function(b){return {label:b[li],pick:function(){self.setState({v:Object.assign({},v,{bank:b[li]}),ed:ed});}};}):null;
+    var textFields=[
+      {id:'bank',label:s.formBankName,val:v.bank,ph:'',mode:'text',pre:'',suf:'',fw:600,icon:ICO.bank,ic:t.ts,err:shown('bank'),ring:ring('bank'),on:setField('bank'),chips:chips},
+      {id:'nick',label:s.formNickname,val:v.nick,ph:s.nickPh,mode:'text',pre:'',suf:'',fw:500,icon:ICO.pencil,ic:t.ts,err:'',ring:'none',on:setField('nick'),chips:null},
+      {id:'amt',label:s.loanAmount,val:ed.amt?v.amt:SHOWNUM(v.amt,bn),ph:DG('0',bn),mode:'decimal',pre:'৳',suf:'',fw:600,icon:'',ic:t.emi,err:shown('amt'),ring:ring('amt'),on:setField('amt'),chips:null},
+      {id:'rate',label:s.loanRate,val:ed.rate?v.rate:SHOWNUM(v.rate,bn),ph:DG('0',bn),mode:'decimal',pre:'',suf:'%',fw:600,icon:'',ic:t.emi,err:shown('rate'),ring:ring('rate'),on:setField('rate'),chips:null}
+    ];
+    var yrs=v.unit==='y'&&v.dur%12===0;
+    var durVal=yrs?DG(v.dur/12,bn)+' '+s.unitYears:DG(v.dur,bn)+' '+s.unitMonths;
+    var step=v.unit==='y'?12:1;
+    var units=[['y',s.unitYears],['m',s.unitMonths]].map(function(u){var on=v.unit===u[0];return {label:u[1],on:on,bg:on?t.raised:'transparent',c:on?t.tp:t.ts,pick:function(){var o={unit:u[0]};if(u[0]==='y')o.dur=Math.max(12,Math.round(v.dur/12)*12);upd(o);}};});
+    var dedOpen=st.dedOpen!==undefined?st.dedOpen:variant==='ded';
+    var dLab={set:s.dedSettlement,ins:s.dedInsurance,fee:s.dedFees,oth:s.dedOther};
+    var dedFields=['set','ins','fee','oth'].map(function(k){return {id:'f'+k,label:dLab[k],val:ed[k]?v[k]:SHOWNUM(v[k],bn),ph:DG('0',bn),on:setField(k)};});
+    var tdP=0;['set','ins','fee','oth'].forEach(function(k){tdP+=Math.round((PARSE(v[k]).v||0)*100);});
+    var netP=calcOk&&!pa.empty?Math.round(pa.v*100)-tdP:null;
+    var picker=st.picker!==undefined?st.picker:variant==='picker';
+    var pkSel=v.F!=null?v.F:TODAY;
+    var pkY=st.pkY!==undefined?st.pkY:Math.floor(pkSel/12);
+    var pkCells=[];for(var m=0;m<12;m++){(function(m){var i=pkY*12+m,dis=i<MINM||i>MAXM,on=v.F===i;pkCells.push({label:MOS[lg][m],dis:dis,on:on?'true':'false',aria:MLAB(i,lg,bn),bg:on?t.emi:t.base,c:on?t.onEmi:t.tp,bd:on?t.emi:t.line,op:dis?0.3:1,fw:on?700:500,pick:function(){if(!dis)self.setState({v:Object.assign({},v,{F:i}),ed:ed,picker:true,pkY:pkY});}});})(m);}
+    var acc=ACC[tm];
+    var swatches=acc.map(function(cx,i){var on=v.acc===i;return {c:cx,on:on?'true':'false',sel:on,name:ACCN[i][li],ring:on?t.tp:'transparent',chk:tm==='dark'?'#120F2E':'#FFFFFF',pick:function(){upd({acc:i});}};});
+    return {
+      t:t,ty:ty,s:s,ic:ICO,f:bn?FBN:FEN,
+      minH:picker?'0':'100vh',H:picker?'844px':'auto',
+      title:variant==='edit'?s.formEditTitle:s.loansAdd,
+      textFields:textFields,durVal:durVal,units:units,
+      durDown:function(){upd({dur:Math.max(1,v.dur-step)});},durUp:function(){upd({dur:Math.min(360,v.dur+step)});},
+      monthTxt:v.F!=null?MLAB(v.F,lg,bn):s.chooseMonth,monthC:v.F!=null?t.tp:t.tm,monthErr:shown('F'),monthRing:ring('F'),
+      openPicker:function(){self.setState({picker:true,pkY:Math.floor(pkSel/12)});},closePicker:function(){self.setState({picker:false});},
+      dedOpen:dedOpen,dedA:dedOpen?'true':'false',dedRot:dedOpen?180:0,toggleDed:function(){self.setState({dedOpen:!dedOpen});},dedFields:dedFields,
+      netTxt:netP==null?'—':MV(netP,bn).f,netC:netP==null?t.tm:(netP<0?t.err:t.cash),
+      swatches:swatches,
+      prevEmi:c?MV(c.be*100,bn,true).f:'—',prevC:c?t.emi:t.tm,prevLast:s.detailLastMonth+': '+(c&&v.F!=null?MLAB(v.F+c.cnt-1,lg,bn):'—'),
+      saveHref:ok?'S7Success.dc.html':'#',saveDis:ok?'false':'true',saveBg:ok?t.emi:t.line,saveC:ok?t.onEmi:t.tm,savePe:ok?'auto':'none',
+      picker:picker,pkYear:DG(pkY,bn),pkCells:pkCells,pkPrev:function(){self.setState({pkY:pkY-1});},pkNext:function(){self.setState({pkY:pkY+1});}
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+{
+  "_note": "Design stand-ins on a 24 grid, stroke 1.6, round caps. Ship phosphor-react-native (regular for controls, duotone with money colour @30% for feature icons).",
+  "icons": {
+    "calculator": {
+      "phosphor": "Calculator",
+      "path": "M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z M8 6.5h8v3.5H8z M8.5 14h.01 M12 14h.01 M15.5 14h.01 M8.5 17.5h.01 M12 17.5h.01 M15.5 17.5h.01"
+    },
+    "bank": {
+      "phosphor": "Bank",
+      "path": "M3 9h18L12 3.5z M5 9v8 M9.7 9v8 M14.3 9v8 M19 9v8 M3.5 17h17 M2 20.5h20"
+    },
+    "gear": {
+      "phosphor": "Gear",
+      "path": "M12 8.8a3.2 3.2 0 1 0 0 6.4a3.2 3.2 0 1 0 0-6.4z M12 5.2a6.8 6.8 0 1 0 0 13.6a6.8 6.8 0 1 0 0-13.6z M12 2.5v2.7 M12 18.8v2.7 M2.5 12h2.7 M18.8 12h2.7 M5.3 5.3l1.9 1.9 M16.8 16.8l1.9 1.9 M5.3 18.7l1.9-1.9 M16.8 7.2l1.9-1.9"
+    },
+    "coins": {
+      "phosphor": "Coins",
+      "path": "M9 4.5c3.6 0 6.5 1.3 6.5 3s-2.9 3-6.5 3-6.5-1.3-6.5-3 2.9-3 6.5-3z M2.5 7.5v4c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-4 M15.5 10.6c3.3.3 6 1.5 6 2.9 0 1.7-2.9 3-6.5 3-1.6 0-3.1-.3-4.2-.7 M8.5 14.5v2c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-3"
+    },
+    "percent": {
+      "phosphor": "Percent",
+      "path": "M18.5 5.5l-13 13 M7.5 5a2.5 2.5 0 1 0 0 5a2.5 2.5 0 1 0 0-5z M16.5 14a2.5 2.5 0 1 0 0 5a2.5 2.5 0 1 0 0-5z"
+    },
+    "hourglass": {
+      "phosphor": "HourglassMedium",
+      "path": "M6.5 3h11 M6.5 21h11 M7.5 3v2.5c0 2 4.5 4.5 4.5 6.5s-4.5 4.5-4.5 6.5V21 M16.5 3v2.5c0 2-4.5 4.5-4.5 6.5s4.5 4.5 4.5 6.5V21 M9.5 7.5h5"
+    },
+    "calendar": {
+      "phosphor": "CalendarBlank",
+      "path": "M5 5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z M16 3v4 M8 3v4 M4 10h16"
+    },
+    "receipt": {
+      "phosphor": "Receipt",
+      "path": "M4.5 20V4.5a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1V20l-2.5-1.5L14.5 20 12 18.5 9.5 20 7 18.5z M8 9h8 M8 13h8"
+    },
+    "arrowsClockwise": {
+      "phosphor": "ArrowsClockwise",
+      "path": "M16.5 9.5h4v-4 M20.5 9.5 17.6 6.6a8 8 0 0 0-11.3 0 M7.5 14.5h-4v4 M3.5 14.5l2.9 2.9a8 8 0 0 0 11.3 0"
+    },
+    "shieldCheck": {
+      "phosphor": "ShieldCheck",
+      "path": "M4 6.5v4.8c0 5.4 4.6 7.6 8 9.2 3.4-1.6 8-3.8 8-9.2V6.5L12 3.5z M8.5 12l2.5 2.5 4.5-4.5"
+    },
+    "handCoins": {
+      "phosphor": "HandCoins",
+      "path": "M16 4.5a3 3 0 1 0 0 6a3 3 0 1 0 0-6z M2.5 14.5h3v6h-3z M5.5 20h7.5l7-5.5a1.5 1.5 0 0 0-2-2.2L14.5 15H10 M5.5 15l2-1.6a2.5 2.5 0 0 1 1.6-.6h3.4a1.5 1.5 0 0 1 0 3H10"
+    },
+    "chartPie": {
+      "phosphor": "ChartPieSlice",
+      "path": "M12 3a9 9 0 1 0 9 9h-9z M14.5 2.8a9 9 0 0 1 6.7 6.7h-6.7z"
+    },
+    "mathOps": {
+      "phosphor": "MathOperations",
+      "path": "M4 7h6 M7 4v6 M14 7h6 M14 15.5h6 M14 19h6 M4.5 15l4.5 4.5 M9 15l-4.5 4.5"
+    },
+    "listNumbers": {
+      "phosphor": "ListNumbers",
+      "path": "M10 6h10 M10 12h10 M10 18h10 M4 5l1.5-1v5 M3.8 14.6a1.4 1.4 0 0 1 2.6.7c0 .7-.6 1.1-2.6 3.2h2.8"
+    },
+    "translate": {
+      "phosphor": "Translate",
+      "path": "M3 5.5h9 M7.5 3.5v2 M10.5 5.5c-1 4-3.6 6.9-7 8.5 M5.5 8.5c1 2.2 2.8 4 5 5 M12.5 20.5l4-9 4 9 M13.8 17.5h5.4"
+    },
+    "sun": {
+      "phosphor": "Sun",
+      "path": "M12 7.5a4.5 4.5 0 1 0 0 9a4.5 4.5 0 1 0 0-9z M12 2.5v2 M12 19.5v2 M2.5 12h2 M19.5 12h2 M5.3 5.3l1.4 1.4 M17.3 17.3l1.4 1.4 M5.3 18.7l1.4-1.4 M17.3 6.7l1.4-1.4"
+    },
+    "moon": {
+      "phosphor": "Moon",
+      "path": "M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"
+    },
+    "speakerHigh": {
+      "phosphor": "SpeakerHigh",
+      "path": "M4 9h3.5L12 5v14l-4.5-4H4z M15.5 9.5a3.5 3.5 0 0 1 0 5 M18.5 7a7 7 0 0 1 0 10"
+    },
+    "speakerSlash": {
+      "phosphor": "SpeakerSlash",
+      "path": "M4 9h3.5L12 5v14l-4.5-4H4z M16 9.5l5 5 M21 9.5l-5 5"
+    },
+    "vibrate": {
+      "phosphor": "Vibrate",
+      "path": "M8.5 3.5h7a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z M4.5 8v8 M19.5 8v8 M1.8 10v4 M22.2 10v4"
+    },
+    "trash": {
+      "phosphor": "Trash",
+      "path": "M4 6.5h16 M9.5 3.5h5 M6 6.5l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13 M10 10.5v6 M14 10.5v6"
+    },
+    "pencil": {
+      "phosphor": "PencilSimple",
+      "path": "M4 20h4L19 9a2.1 2.1 0 0 0-4-4L4 16z M13.5 6.5l4 4"
+    },
+    "plus": {
+      "phosphor": "Plus",
+      "path": "M12 5v14 M5 12h14"
+    },
+    "caretLeft": {
+      "phosphor": "CaretLeft",
+      "path": "M15 5l-7 7 7 7"
+    },
+    "caretRight": {
+      "phosphor": "CaretRight",
+      "path": "M9 5l7 7-7 7"
+    },
+    "caretDown": {
+      "phosphor": "CaretDown",
+      "path": "M5 9l7 7 7-7"
+    },
+    "warning": {
+      "phosphor": "Warning",
+      "path": "M12 3.5 2.5 20h19z M12 10v4 M12 17h.01"
+    },
+    "checkCircle": {
+      "phosphor": "CheckCircle",
+      "path": "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M8 12.5l2.7 2.7L16 10"
+    },
+    "info": {
+      "phosphor": "Info",
+      "path": "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M12 11v5 M12 7.8h.01"
+    },
+    "undo": {
+      "phosphor": "ArrowCounterClockwise",
+      "path": "M8.5 9.5h-5v-5 M3.5 9.5l2.9-2.9a8 8 0 1 1 0 11.3"
+    },
+    "dots": {
+      "phosphor": "DotsThree",
+      "path": "M5 12h.01 M12 12h.01 M19 12h.01"
+    },
+    "x": {
+      "phosphor": "X",
+      "path": "M6 6l12 12 M18 6 6 18"
+    },
+    "clock": {
+      "phosphor": "Clock",
+      "path": "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M12 7.5V12l3 2"
+    },
+    "target": {
+      "phosphor": "Target",
+      "path": "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M12 8.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 1 0 0-7z"
+    },
+    "phone": {
+      "phosphor": "DeviceMobile",
+      "path": "M8.5 3.5h7a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z M11 17.5h2"
+    }
+  }
+}

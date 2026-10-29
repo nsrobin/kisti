@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Splash</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..125,100..800&amp;family=Anek+Latin:wdth,wght@75..125,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; position: relative; overflow: hidden; background: {{t.base}}; color: {{t.tp}}; font-family: 'Anek Bangla','Anek Latin',sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center">
+  <div style="position: relative; width: 260px; height: 260px; display: flex; align-items: center; justify-content: center">
+    <svg width="260" height="260" viewBox="0 0 260 260" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+      <defs>
+        <linearGradient id="spA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{{t.a1}}"></stop><stop offset="0.52" stop-color="{{t.a2}}"></stop><stop offset="1" stop-color="{{t.a3}}"></stop></linearGradient>
+      </defs>
+      <circle cx="130" cy="130" r="112" fill="none" stroke="{{t.line}}" stroke-width="1"></circle>
+      <circle cx="130" cy="130" r="112" fill="none" stroke="url(#spA)" stroke-width="7" stroke-linecap="round" stroke-dasharray="8.5 11.04" opacity="0.95"></circle>
+      <circle cx="130" cy="130" r="112" fill="none" stroke="url(#spA)" stroke-width="18" stroke-linecap="round" stroke-dasharray="8.5 11.04" opacity="{{glowOp}}"></circle>
+    </svg>
+    <div style="display: flex; flex-direction: column; align-items: center; position: relative">
+      <span role="img" aria-label="কিস্তি, Kisti" style="font-size: 64px; line-height: 1.25; font-weight: 800; font-stretch: 125%">কিস্তি</span>
+      <span aria-hidden="true" style="font-family: 'Anek Latin',sans-serif; font-size: 26px; line-height: 1.1; font-weight: 800; font-stretch: 125%; color: {{t.ts}}">Kisti</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"dark"},"$preview":{"width":390,"height":844}}'>
+var TOK={dark:{base:'#120F2E',line:'#2C2760',tp:'#F4F2FF',ts:'#B7B2E0',a1:'#2EE6D0',a2:'#A78BFA',a3:'#FF5C9A'},light:{base:'#F5F4FF',line:'#DDD9F5',tp:'#1A1640',ts:'#4B4680',a1:'#0FB5A3',a2:'#7C4DFF',a3:'#E83E8C'}};
+class Component extends DCLogic {
+  renderVals() {
+    var d=this.props.theme==='light'?'light':'dark';
+    return { t: TOK[d], glowOp: d==='dark'?0.14:0.08 };
+  }
+}
+</script>
+</body>
+</html>

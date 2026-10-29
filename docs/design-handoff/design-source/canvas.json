@@ -1,0 +1,581 @@
+{
+ "v": 3,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-10-29T09:30:00Z"
+ },
+ "title": "Kisti (কিস্তি) app design",
+ "launch": {
+  "view": "canvas"
+ },
+ "pages": [],
+ "designSystems": [],
+ "boards": {
+  "Main.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 2300,
+   "title": "D1 Foundations: colour, contrast, type, wordmark"
+  },
+  "DSStitch.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 2600,
+   "title": "D1 Stitch language, MoneyValue, shape, depth, icons"
+  },
+  "DSComponents.dc.html": {
+   "x": 0,
+   "y": 2980,
+   "w": 1440,
+   "h": 3400,
+   "title": "D2 Components, dark",
+   "is_interactive": true
+  },
+  "DSComponentsLight.dc.html": {
+   "x": 1520,
+   "y": 2980,
+   "w": 1440,
+   "h": 3400,
+   "title": "D2 Components, light",
+   "is_interactive": true
+  },
+  "S1Splash.dc.html": {
+   "x": 0,
+   "y": 6760,
+   "w": 390,
+   "h": 844,
+   "title": "S1 Splash, dark"
+  },
+  "S1SplashLight.dc.html": {
+   "x": 470,
+   "y": 6760,
+   "w": 390,
+   "h": 844,
+   "title": "S1 Splash, light"
+  },
+  "S2Language.dc.html": {
+   "x": 940,
+   "y": 6760,
+   "w": 390,
+   "h": 844,
+   "title": "S2 Language, default, dark",
+   "is_interactive": true
+  },
+  "S2LanguageBn.dc.html": {
+   "x": 1410,
+   "y": 6760,
+   "w": 390,
+   "h": 844,
+   "title": "S2 Language, বাংলা selected, dark",
+   "is_interactive": true
+  },
+  "S2LanguageLight.dc.html": {
+   "x": 1880,
+   "y": 6760,
+   "w": 390,
+   "h": 844,
+   "title": "S2 Language, বাংলা selected, light",
+   "is_interactive": true
+  },
+  "AppIcon.dc.html": {
+   "x": 2350,
+   "y": 6760,
+   "w": 1280,
+   "h": 900,
+   "title": "App icon: iOS sizes and Android adaptive layers"
+  },
+  "S3Calculator.dc.html": {
+   "x": 0,
+   "y": 8040,
+   "w": 390,
+   "h": 2900,
+   "title": "S3 Calculator, default, dark, বাংলা",
+   "is_interactive": true
+  },
+  "S3CalculatorLight.dc.html": {
+   "x": 470,
+   "y": 8040,
+   "w": 390,
+   "h": 2900,
+   "title": "S3 Calculator, default, light, বাংলা",
+   "is_interactive": true
+  },
+  "S3CalculatorEn.dc.html": {
+   "x": 940,
+   "y": 8040,
+   "w": 390,
+   "h": 2900,
+   "title": "S3 Calculator, default, dark, English",
+   "is_interactive": true
+  },
+  "S3Topup.dc.html": {
+   "x": 1410,
+   "y": 8040,
+   "w": 390,
+   "h": 2900,
+   "title": "S3 Top-up preset with deductions, dark",
+   "is_interactive": true
+  },
+  "S3TopupLight.dc.html": {
+   "x": 1880,
+   "y": 8040,
+   "w": 390,
+   "h": 2900,
+   "title": "S3 Top-up preset with deductions, light",
+   "is_interactive": true
+  },
+  "S3Error.dc.html": {
+   "x": 2350,
+   "y": 8040,
+   "w": 390,
+   "h": 2920,
+   "title": "S3 Validation error",
+   "is_interactive": true
+  },
+  "S3Exceed.dc.html": {
+   "x": 2820,
+   "y": 8040,
+   "w": 390,
+   "h": 3000,
+   "title": "S3 Deductions exceed the loan",
+   "is_interactive": true
+  },
+  "S3Formula.dc.html": {
+   "x": 3290,
+   "y": 8040,
+   "w": 390,
+   "h": 3500,
+   "title": "S3 Formula expanded",
+   "is_interactive": true
+  },
+  "S3Schedule.dc.html": {
+   "x": 3760,
+   "y": 8040,
+   "w": 390,
+   "h": 4350,
+   "title": "S3 Schedule expanded",
+   "is_interactive": true
+  },
+  "S3Sticky.dc.html": {
+   "x": 4230,
+   "y": 8040,
+   "w": 390,
+   "h": 844,
+   "title": "S3 Scrolled, sticky mini EMI bar",
+   "is_interactive": true
+  },
+  "S3Keyboard.dc.html": {
+   "x": 4700,
+   "y": 8040,
+   "w": 390,
+   "h": 844,
+   "title": "S3 Keyboard open, amount focused",
+   "is_interactive": true
+  },
+  "S3Android.dc.html": {
+   "x": 5170,
+   "y": 8040,
+   "w": 360,
+   "h": 2950,
+   "title": "S3 360 pt Android width check",
+   "is_interactive": true
+  },
+  "S4Loans.dc.html": {
+   "x": 0,
+   "y": 12770,
+   "w": 390,
+   "h": 1240,
+   "title": "S4 My Loans, three loans, dark",
+   "is_interactive": true
+  },
+  "S4LoansLight.dc.html": {
+   "x": 470,
+   "y": 12770,
+   "w": 390,
+   "h": 1240,
+   "title": "S4 My Loans, three loans, light",
+   "is_interactive": true
+  },
+  "S4Empty.dc.html": {
+   "x": 940,
+   "y": 12770,
+   "w": 390,
+   "h": 844,
+   "title": "S4 Empty, dark",
+   "is_interactive": true
+  },
+  "S4EmptyLight.dc.html": {
+   "x": 1410,
+   "y": 12770,
+   "w": 390,
+   "h": 844,
+   "title": "S4 Empty, light",
+   "is_interactive": true
+  },
+  "S4Undo.dc.html": {
+   "x": 1880,
+   "y": 12770,
+   "w": 390,
+   "h": 844,
+   "title": "S4 After delete, Undo snackbar",
+   "is_interactive": true
+  },
+  "S5LoanForm.dc.html": {
+   "x": 2350,
+   "y": 12770,
+   "w": 390,
+   "h": 1080,
+   "title": "S5 Add loan, empty",
+   "is_interactive": true
+  },
+  "S5Filled.dc.html": {
+   "x": 2820,
+   "y": 12770,
+   "w": 390,
+   "h": 1080,
+   "title": "S5 Filled with Loan A, live preview, dark",
+   "is_interactive": true
+  },
+  "S5FilledLight.dc.html": {
+   "x": 3290,
+   "y": 12770,
+   "w": 390,
+   "h": 1080,
+   "title": "S5 Filled with Loan A, light",
+   "is_interactive": true
+  },
+  "S5Error.dc.html": {
+   "x": 3760,
+   "y": 12770,
+   "w": 390,
+   "h": 1120,
+   "title": "S5 With errors",
+   "is_interactive": true
+  },
+  "S5Deductions.dc.html": {
+   "x": 4230,
+   "y": 12770,
+   "w": 390,
+   "h": 1480,
+   "title": "S5 Deductions expanded",
+   "is_interactive": true
+  },
+  "S6MonthPicker.dc.html": {
+   "x": 4700,
+   "y": 12770,
+   "w": 390,
+   "h": 844,
+   "title": "S6 Month picker, October 2025, dark",
+   "is_interactive": true
+  },
+  "S6MonthPickerLight.dc.html": {
+   "x": 5170,
+   "y": 12770,
+   "w": 390,
+   "h": 844,
+   "title": "S6 Month picker, light",
+   "is_interactive": true
+  },
+  "S7LoanDetail.dc.html": {
+   "x": 0,
+   "y": 14630,
+   "w": 390,
+   "h": 2300,
+   "title": "S7 (a) October 2026 due, dark",
+   "is_interactive": true
+  },
+  "S7LoanDetailLight.dc.html": {
+   "x": 470,
+   "y": 14630,
+   "w": 390,
+   "h": 2300,
+   "title": "S7 (a) October 2026 due, light",
+   "is_interactive": true
+  },
+  "S7LoanDetailEn.dc.html": {
+   "x": 940,
+   "y": 14630,
+   "w": 390,
+   "h": 3700,
+   "title": "S7 (a) English, schedule open",
+   "is_interactive": true
+  },
+  "S7Paid.dc.html": {
+   "x": 1410,
+   "y": 14630,
+   "w": 390,
+   "h": 2300,
+   "title": "S7 (b) September 2026, paid",
+   "is_interactive": true
+  },
+  "S7Final.dc.html": {
+   "x": 1880,
+   "y": 14630,
+   "w": 390,
+   "h": 2300,
+   "title": "S7 (c) September 2030, final installment",
+   "is_interactive": true
+  },
+  "S7NotStarted.dc.html": {
+   "x": 2350,
+   "y": 14630,
+   "w": 390,
+   "h": 2420,
+   "title": "S7 (d) Loan B, not started",
+   "is_interactive": true
+  },
+  "S7Completed.dc.html": {
+   "x": 2820,
+   "y": 14630,
+   "w": 390,
+   "h": 2300,
+   "title": "S7 (e) Loan C, completed",
+   "is_interactive": true
+  },
+  "S7EarlyPayoff.dc.html": {
+   "x": 3290,
+   "y": 14630,
+   "w": 390,
+   "h": 2400,
+   "title": "S7 (f) Early payoff, year stitches",
+   "is_interactive": true
+  },
+  "S7Menu.dc.html": {
+   "x": 3760,
+   "y": 14630,
+   "w": 390,
+   "h": 844,
+   "title": "S7 ⋯ menu open",
+   "is_interactive": true
+  },
+  "S7Delete.dc.html": {
+   "x": 4230,
+   "y": 14630,
+   "w": 390,
+   "h": 844,
+   "title": "Overlay: delete confirmation",
+   "is_interactive": true
+  },
+  "S7Success.dc.html": {
+   "x": 4700,
+   "y": 14630,
+   "w": 390,
+   "h": 844,
+   "title": "Overlay: success moment after Save",
+   "is_interactive": true
+  },
+  "S8Settings.dc.html": {
+   "x": 0,
+   "y": 18710,
+   "w": 390,
+   "h": 900,
+   "title": "S8 Settings, dark",
+   "is_interactive": true
+  },
+  "S8SettingsLight.dc.html": {
+   "x": 470,
+   "y": 18710,
+   "w": 390,
+   "h": 900,
+   "title": "S8 Settings, light",
+   "is_interactive": true
+  },
+  "S8Confirm.dc.html": {
+   "x": 940,
+   "y": 18710,
+   "w": 390,
+   "h": 900,
+   "title": "S8 Delete all, first confirmation",
+   "is_interactive": true
+  },
+  "S8Confirm2.dc.html": {
+   "x": 1410,
+   "y": 18710,
+   "w": 390,
+   "h": 900,
+   "title": "S8 Delete all, second confirmation",
+   "is_interactive": true
+  },
+  "S9Schedule.dc.html": {
+   "x": 1880,
+   "y": 18710,
+   "w": 390,
+   "h": 844,
+   "title": "S9 Full schedule, calculator mode",
+   "is_interactive": true
+  },
+  "S9ScheduleLoan.dc.html": {
+   "x": 2350,
+   "y": 18710,
+   "w": 390,
+   "h": 844,
+   "title": "S9 Full schedule, loan mode, dark",
+   "is_interactive": true
+  },
+  "S9ScheduleLoanLight.dc.html": {
+   "x": 2820,
+   "y": 18710,
+   "w": 390,
+   "h": 844,
+   "title": "S9 Full schedule, loan mode, light",
+   "is_interactive": true
+  },
+  "Motion.dc.html": {
+   "x": 3290,
+   "y": 18710,
+   "w": 1440,
+   "h": 1500,
+   "title": "D7 Motion, sound and haptics",
+   "is_interactive": true
+  },
+  "S5Edit.dc.html": {
+   "x": 5640,
+   "y": 12770,
+   "w": 390,
+   "h": 1080,
+   "title": "S5 Edit loan (from S7 ⋯ menu)",
+   "is_interactive": true
+  }
+ },
+ "order": [
+  "Main.dc.html",
+  "DSStitch.dc.html",
+  "DSComponents.dc.html",
+  "DSComponentsLight.dc.html",
+  "S1Splash.dc.html",
+  "S1SplashLight.dc.html",
+  "S2Language.dc.html",
+  "S2LanguageBn.dc.html",
+  "S2LanguageLight.dc.html",
+  "AppIcon.dc.html",
+  "S3Calculator.dc.html",
+  "S3CalculatorLight.dc.html",
+  "S3CalculatorEn.dc.html",
+  "S3Topup.dc.html",
+  "S3TopupLight.dc.html",
+  "S3Error.dc.html",
+  "S3Exceed.dc.html",
+  "S3Formula.dc.html",
+  "S3Schedule.dc.html",
+  "S3Sticky.dc.html",
+  "S3Keyboard.dc.html",
+  "S3Android.dc.html",
+  "S4Loans.dc.html",
+  "S4LoansLight.dc.html",
+  "S4Empty.dc.html",
+  "S4EmptyLight.dc.html",
+  "S4Undo.dc.html",
+  "S5LoanForm.dc.html",
+  "S5Filled.dc.html",
+  "S5FilledLight.dc.html",
+  "S5Error.dc.html",
+  "S5Deductions.dc.html",
+  "S5Edit.dc.html",
+  "S6MonthPicker.dc.html",
+  "S6MonthPickerLight.dc.html",
+  "S7LoanDetail.dc.html",
+  "S7LoanDetailLight.dc.html",
+  "S7LoanDetailEn.dc.html",
+  "S7Paid.dc.html",
+  "S7Final.dc.html",
+  "S7NotStarted.dc.html",
+  "S7Completed.dc.html",
+  "S7EarlyPayoff.dc.html",
+  "S7Menu.dc.html",
+  "S7Delete.dc.html",
+  "S7Success.dc.html",
+  "S8Settings.dc.html",
+  "S8SettingsLight.dc.html",
+  "S8Confirm.dc.html",
+  "S8Confirm2.dc.html",
+  "S9Schedule.dc.html",
+  "S9ScheduleLoan.dc.html",
+  "S9ScheduleLoanLight.dc.html",
+  "Motion.dc.html"
+ ],
+ "notes": {
+  "t1": {
+   "x": 0,
+   "y": -300,
+   "text": "Kisti design system (D1): Neon Kantha",
+   "kind": "title1",
+   "maxW": 2960
+  },
+  "t2": {
+   "x": 0,
+   "y": 2720,
+   "text": "Components (D2), dark and light",
+   "kind": "title1",
+   "maxW": 2960
+  },
+  "t3": {
+   "x": 0,
+   "y": 6500,
+   "text": "Splash, language choice and app icon (D6)",
+   "kind": "title1",
+   "maxW": 3630
+  },
+  "t4": {
+   "x": 0,
+   "y": 7780,
+   "text": "S3 Calculator: every state (D3)",
+   "kind": "title1",
+   "maxW": 5530
+  },
+  "t5": {
+   "x": 0,
+   "y": 12510,
+   "text": "S4 My Loans, S5 Add or edit, S6 Month picker (D4)",
+   "kind": "title1",
+   "maxW": 6030
+  },
+  "t6": {
+   "x": 0,
+   "y": 14370,
+   "text": "S7 Loan detail and overlays (D5)",
+   "kind": "title1",
+   "maxW": 5090
+  },
+  "t7": {
+   "x": 0,
+   "y": 18450,
+   "text": "S8 Settings, S9 Full schedule, motion (D6, D5, D7)",
+   "kind": "title1",
+   "maxW": 4730
+  },
+  "n1": {
+   "x": 5620,
+   "y": 8040,
+   "w": 360,
+   "size": "m",
+   "fill": "teal",
+   "text": "Prototype: tap a preset chip, type in any field, open the accordions. Results recalculate live with the spec's exact paisa engine. 'Save as my loan' opens S5 prefilled; the tab bar links S3, S4 and S8."
+  },
+  "n2": {
+   "x": 6110,
+   "y": 12770,
+   "w": 360,
+   "size": "m",
+   "fill": "purple",
+   "text": "Flows: S4 card → S7. '+' → S5 → Save → success moment → S7. S7 ⋯ → Edit (S5) or Delete → confirm → S4 with Undo for 5 s."
+  },
+  "n3": {
+   "x": 5180,
+   "y": 14630,
+   "w": 360,
+   "size": "m",
+   "fill": "orange",
+   "text": "Stitch ring draw is the app's one orchestrated moment: stitches fill in order over 600 ms, then the current stitch pulses (2 s loop, opacity 0.6 ↔ 1). Month tap: cell springs 1.0 → 1.06 → 1.0, breakdown cross-fades 180 ms, 'stitch' sound, selection haptic. Reduce motion: instant / 150 ms fades. Full table on the Motion board."
+  },
+  "n4": {
+   "x": 4810,
+   "y": 18710,
+   "w": 440,
+   "size": "m",
+   "fill": "blue",
+   "text": "Handoff notes (D8). Token changes: light text.muted #625E8F, light Kadam accent #5E6C0A. New strings added to §9.3: Remaining principal / বাকি মূল টাকা; Next installment / পরের কিস্তি; With your numbers / আপনার সংখ্যা দিয়ে; Rounded up to the next taka / পরের পূর্ণ টাকায় উপরে রাউন্ড; Cash in hand / হাতে পাবেন; Choose a month / মাস বেছে নিন; Banks you used before / আগে লেখা ব্যাংক; Version / সংস্করণ; delete-all confirmations (2 steps); 'You can change this later in Settings'. Icons here are Phosphor stand-ins; ship phosphor-react-native duotone. ৳ in the app icon must be outlined for export."
+  }
+ }
+}

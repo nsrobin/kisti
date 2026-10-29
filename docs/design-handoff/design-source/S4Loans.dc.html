@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>My Loans</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..125,100..800&amp;family=Anek+Latin:wdth,wght@75..125,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; min-height: {{minH}}; height: {{H}}; box-sizing: border-box; position: relative; overflow: hidden; background: {{t.base}}; color: {{t.tp}}; font-family: {{f}}; display: flex; flex-direction: column">
+  <main style="flex: 1 0 auto; padding: 52px 20px 180px; display: flex; flex-direction: column; gap: 14px">
+    <h1 style="margin: 0 0 4px; font-size: 28px; line-height: {{ty.ti}}; font-weight: 700; font-stretch: 112.5%">{{s.tabLoans}}</h1>
+
+    <sc-if value="{{strip}}" hint-placeholder-val="{{ true }}">
+      <section aria-label="{{s.tabLoans}}" style="border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+        <p style="margin: 0; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; color: {{t.ts}}">{{strip.pre}}<strong style="font-size: 22px; line-height: 1.3; font-weight: 700; font-stretch: 112.5%; color: {{t.emi}}; font-variant-numeric: tabular-nums; white-space: nowrap">{{strip.amt}}</strong>{{strip.post}}</p>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-top: 10px; border-top: 1px solid {{t.line}}">
+          <span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{s.totalRemaining}}</span>
+          <span style="font-size: 20px; line-height: 1.35; font-weight: 700; font-variant-numeric: tabular-nums; color: {{t.pri}}; white-space: nowrap">{{strip.rem}}</span>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-for list="{{cards}}" as="cd" hint-placeholder-count="3">
+      <a href="{{cd.href}}" aria-label="{{cd.aria}}" style="display: flex; flex-direction: column; gap: 12px; padding: 16px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; color: {{t.tp}}; text-decoration: none">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 999px; background: {{cd.accBg}}; color: {{cd.acc}}; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: 0 0 auto">{{cd.ini}}</span>
+          <span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column">
+            <span style="font-size: {{ty.seS}}px; line-height: 1.35; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{cd.bank}}</span>
+            <span style="font-size: {{ty.caS}}px; line-height: 1.4; font-weight: 500; color: {{t.ts}}">{{cd.nick}}</span>
+          </span>
+          <span style="display: inline-flex; align-items: center; gap: 5px; min-height: 30px; padding: 0 10px; border-radius: 999px; background: {{cd.chipBg}}; color: {{cd.chipC}}; font-size: 12px; font-weight: 600; white-space: nowrap; flex: 0 0 auto"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{cd.chipD}}"></path></svg>{{cd.chip}}</span>
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{s.bankEmi}}</span>
+          <span style="font-size: 28px; line-height: {{ty.xl}}; font-weight: 800; font-stretch: 112.5%; font-variant-numeric: tabular-nums; color: {{t.emi}}"><span style="font-size: 0.7em">৳</span>{{cd.emi}}</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <svg width="100%" height="10" viewBox="0 0 {{cd.ln.w}} 10" preserveAspectRatio="none" aria-hidden="true">
+            <path d="{{cd.ln.up}}" fill="none" stroke="{{t.pri}}" stroke-opacity="0.45" stroke-width="{{cd.ln.sw}}" stroke-linecap="round"></path>
+            <path d="{{cd.ln.paid}}" fill="none" stroke="{{t.cash}}" stroke-width="{{cd.ln.sw}}" stroke-linecap="round"></path>
+            <path d="{{cd.ln.due}}" fill="none" stroke="{{t.emi}}" stroke-width="{{cd.ln.sw}}" stroke-linecap="round"></path>
+          </svg>
+          <span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 600; color: {{t.ts}}; align-self: flex-end">{{cd.prog}}</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding-top: 10px; border-top: 1px solid {{t.line}}">
+          <span style="display: flex; flex-direction: column"><span style="font-size: 13px; line-height: 1.45; font-weight: 500; color: {{t.ts}}">{{s.cardRemaining}}</span><span style="font-size: 17px; line-height: {{ty.md}}; font-weight: 600; font-variant-numeric: tabular-nums; color: {{t.pri}}; white-space: nowrap">{{cd.rem}}</span></span>
+          <span style="display: flex; flex-direction: column; text-align: right"><span style="font-size: 13px; line-height: 1.45; font-weight: 500; color: {{t.ts}}">{{s.cardNext}}</span><span style="font-size: 17px; line-height: {{ty.md}}; font-weight: 600">{{cd.next}}</span></span>
+        </div>
+      </a>
+    </sc-for>
+
+    <sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+      <section style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 40px 12px 0">
+        <svg width="220" height="190" viewBox="0 0 220 190" aria-hidden="true">
+          <defs><linearGradient id="s4aur" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{{t.a1}}"></stop><stop offset="0.52" stop-color="{{t.a2}}"></stop><stop offset="1" stop-color="{{t.a3}}"></stop></linearGradient></defs>
+          <circle cx="110" cy="95" r="70" fill="none" stroke="{{t.line}}" stroke-width="1"></circle>
+          <circle cx="110" cy="95" r="70" fill="none" stroke="{{t.pri}}" stroke-opacity="0.45" stroke-width="5" stroke-linecap="round" stroke-dasharray="9 9.3"></circle>
+          <path d="M110 25 A70 70 0 0 1 170 59" fill="none" stroke="url(#s4aur)" stroke-width="5" stroke-linecap="round" stroke-dasharray="9 9.3"></path>
+          <path d="M150 150 L196 22" fill="none" stroke="{{t.ts}}" stroke-width="3" stroke-linecap="round"></path>
+          <ellipse cx="193" cy="30" rx="2.4" ry="5" transform="rotate(20 193 30)" fill="none" stroke="{{t.ts}}" stroke-width="1.6"></ellipse>
+          <path d="M193 30 C 210 60, 160 90, 178 120" fill="none" stroke="{{t.emi}}" stroke-width="2" stroke-dasharray="5 5" stroke-linecap="round"></path>
+          <text x="110" y="112" text-anchor="middle" font-family="Anek Bangla, sans-serif" font-size="48" font-weight="800" fill="{{t.tm}}">৳</text>
+        </svg>
+        <h2 style="margin: 0; font-size: {{ty.tiS}}px; line-height: {{ty.ti}}; font-weight: 600">{{s.emptyTitle}}</h2>
+        <p style="margin: 0; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; color: {{t.ts}}; max-width: 300px">{{s.emptyBody}}</p>
+        <a href="S5LoanForm.dc.html" style="margin-top: 8px; min-height: 52px; padding: 0 24px; border-radius: 999px; background: {{t.emi}}; color: {{t.onEmi}}; text-decoration: none; display: flex; align-items: center; gap: 8px; font-size: {{ty.boS}}px; font-weight: 700"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg>{{s.loansAdd}}</a>
+      </section>
+    </sc-if>
+  </main>
+
+  <sc-if value="{{fab}}" hint-placeholder-val="{{ true }}">
+    <a href="S5LoanForm.dc.html" aria-label="{{s.loansAdd}}" style="position: absolute; right: 20px; bottom: 104px; min-height: 56px; padding: 0 20px 0 16px; border-radius: 999px; background: {{t.emi}}; color: {{t.onEmi}}; text-decoration: none; display: flex; align-items: center; gap: 8px; font-size: {{ty.boS}}px; font-weight: 700; box-shadow: 0 8px 24px {{t.emi45}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg>{{s.loansAdd}}</a>
+  </sc-if>
+
+  <sc-if value="{{undo}}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="position: absolute; left: 16px; right: 16px; bottom: 100px; border-radius: 16px; background: {{t.tp}}; color: {{t.base}}; box-shadow: 0 10px 28px rgba(8,6,24,0.35); overflow: hidden">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 4px 6px 4px 16px; min-height: 56px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.trash}}"></path></svg>
+        <span style="flex: 1 1 auto; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; font-weight: 500">{{s.deleteDone}}</span>
+        <a href="S4Loans.dc.html" style="min-height: 48px; padding: 0 14px; border-radius: 999px; display: flex; align-items: center; gap: 6px; color: {{undoC}}; text-decoration: none; font-size: {{ty.boS}}px; font-weight: 700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 9.5h-5v-5 M3.5 9.5l2.9-2.9a8 8 0 1 1 0 11.3"></path></svg>{{s.undo}}</a>
+      </div>
+      <svg width="100%" height="4" viewBox="0 0 358 4" preserveAspectRatio="none" aria-hidden="true" style="display: block"><path d="M0 2H250" stroke="{{undoC}}" stroke-width="4" stroke-dasharray="8 6"></path></svg>
+    </div>
+  </sc-if>
+
+  <nav aria-label="Tabs" style="position: absolute; left: 0; right: 0; bottom: 0; background: {{t.glass}}; border-top: 1px solid {{t.line}}; display: flex; padding: 6px 8px 20px">
+    <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="3">
+      <a href="{{tb.href}}" aria-current="{{tb.cur}}" style="flex: 1 1 0; min-height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none; color: {{tb.c}}; position: relative">
+        <span style="position: absolute; top: -6px; width: 36px; height: 3px; border-radius: 999px; background: {{tb.ind}}"></span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{tb.ic}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{tb.d}}" fill="{{tb.fill}}" fill-opacity="0.3"></path><path d="{{tb.d}}"></path></svg>
+        <span style="font-size: 13px; line-height: 1.4; font-weight: {{tb.w}}">{{tb.label}}</span>
+      </a>
+    </sc-for>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"dark"},"lang":{"editor":"enum","options":["bn","en"],"default":"bn"},"variant":{"editor":"enum","options":["list","empty","undo"],"default":"list"},"$preview":{"width":390,"height":1240}}'>
+var ICO={calculator:'M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z M8 6.5h8v3.5H8z M8.5 14h.01 M12 14h.01 M15.5 14h.01 M8.5 17.5h.01 M12 17.5h.01 M15.5 17.5h.01',bank:'M3 9h18L12 3.5z M5 9v8 M9.7 9v8 M14.3 9v8 M19 9v8 M3.5 17h17 M2 20.5h20',gear:'M12 8.8a3.2 3.2 0 1 0 0 6.4a3.2 3.2 0 1 0 0-6.4z M12 5.2a6.8 6.8 0 1 0 0 13.6a6.8 6.8 0 1 0 0-13.6z M12 2.5v2.7 M12 18.8v2.7 M2.5 12h2.7 M18.8 12h2.7 M5.3 5.3l1.9 1.9 M16.8 16.8l1.9 1.9 M5.3 18.7l1.9-1.9 M16.8 7.2l1.9-1.9',trash:'M4 6.5h16 M9.5 3.5h5 M6 6.5l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13 M10 10.5v6 M14 10.5v6',checkCircle:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M8 12.5l2.7 2.7L16 10',target:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M12 8.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 1 0 0-7z',hourglass:'M6.5 3h11 M6.5 21h11 M7.5 3v2.5c0 2 4.5 4.5 4.5 6.5s-4.5 4.5-4.5 6.5V21 M16.5 3v2.5c0 2-4.5 4.5-4.5 6.5s4.5 4.5 4.5 6.5V21 M9.5 7.5h5'};
+var TOK={dark:{base:'#120F2E',raised:'#1B1744',sunken:'#0C0A21',line:'#2C2760',tp:'#F4F2FF',ts:'#B7B2E0',tm:'#8C86BC',emi:'#2EE6D0',pri:'#A78BFA',int:'#FFC234',ded:'#FF5C9A',cash:'#4BE38A',err:'#FF6B6B',a1:'#2EE6D0',a2:'#A78BFA',a3:'#FF5C9A',glass:'rgba(27,23,68,0.86)',onEmi:'#120F2E',sh:'none'},light:{base:'#F5F4FF',raised:'#FFFFFF',sunken:'#ECEAFB',line:'#DDD9F5',tp:'#1A1640',ts:'#4B4680',tm:'#625E8F',emi:'#087A6F',pri:'#6D3FE0',int:'#8F5F00',ded:'#C8235F',cash:'#0F7A45',err:'#C62828',a1:'#0FB5A3',a2:'#7C4DFF',a3:'#E83E8C',glass:'rgba(255,255,255,0.88)',onEmi:'#FFFFFF',sh:'0 4px 16px rgba(46,32,140,0.10)'}};
+var ACC={dark:['#6C8CFF','#FF8A5B','#E07BF0','#D9E55A','#5CC8FF'],light:['#3D5BDB','#B4501F','#9A37B0','#5E6C0A','#1673A6']};
+function rgba(h,a){var n=parseInt(h.slice(1),16);return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')';}
+function TH(d){d=d==='light'?'light':'dark';var t=Object.assign({mode:d},TOK[d]);t.aur='linear-gradient(120deg,'+t.a1+' 0%,'+t.a2+' 52%,'+t.a3+' 100%)';['emi','pri','int','cash'].forEach(function(k){t[k+'10']=rgba(t[k],0.10);t[k+'45']=rgba(t[k],0.45);});return t;}
+var FBN="'Anek Bangla','Anek Latin',system-ui,sans-serif",FEN="'Anek Latin','Anek Bangla',system-ui,sans-serif";
+function TY(bn){return bn?{h:1.25,xl:1.3,lg:1.35,md:1.45,ti:1.45,tiS:23,se:1.5,seS:18,bo:1.6,boS:16,ca:1.55,caS:14}:{h:1.1,xl:1.15,lg:1.2,md:1.3,ti:1.3,tiS:22,se:1.35,seS:17,bo:1.45,boS:15,ca:1.4,caS:13};}
+var BND='০১২৩৪৫৬৭৮৯';
+function DG(s,bn){s=String(s);return bn?s.replace(/[0-9]/g,function(c){return BND[+c];}):s;}
+function GR(s){if(s.length<=3)return s;var a=s.slice(-3),b=s.slice(0,-3);return b.replace(/\B(?=(\d{2})+(?!\d))/g,',')+','+a;}
+function MV(p,bn,whole){if(p==null||isNaN(p))return {f:'—'};var neg=p<0;p=Math.abs(Math.round(p));var n=whole?GR(String(Math.round(p/100))):GR(String(Math.floor(p/100)))+'.'+String(p%100).padStart(2,'0');n=DG(n,bn);return {n:n,f:(neg?'−':'')+'৳'+n};}
+function FM(s,o){return s.replace(/\{(\w+)\}/g,function(_,k){return o[k];});}
+var MON={en:['January','February','March','April','May','June','July','August','September','October','November','December'],bn:['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর']};
+function YM(y,m){return y*12+(m-1);}
+function MLAB(i,lg,bn){return MON[lg][i%12]+' '+DG(Math.floor(i/12),bn);}
+var TODAY=YM(2026,10);
+function CALC(P,rate,n){var r=rate/100/12;var ex=r>0?P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):P/n;var be=Math.ceil(ex-1e-6);var bal=Math.round(P*100),emi=be*100,rows=[];for(var k=1;k<=n&&bal>0;k++){var it=Math.round(bal*r);var pay=emi;if(k===n||bal+it<=emi)pay=bal+it;var pp=pay-it,cl=bal-pp;rows.push({k:k,o:bal,i:it,pp:pp,pay:pay,c:cl});bal=cl;}return {be:be,rows:rows,cnt:rows.length};}
+function line(W,n,done,dueK,H){var yr=n>60,units=yr?Math.ceil(n/12):n;var per=W/units;var sw=Math.min(6,Math.max(2.6,per*0.5));var arc=Math.max(per*0.62-sw,0.3);var y=(H/2).toFixed(1);var P={paid:'',due:'',up:''};for(var u=0;u<units;u++){var st;if(!yr){var k=u+1;st=k<=done?'paid':(k===dueK?'due':'up');}else{var a=u*12+1,b=Math.min((u+1)*12,n);st=done>=b?'paid':(((dueK>=a&&dueK<=b)||(done>=a&&done<b))?'due':'up');}var c=(u+0.5)*per;P[st]+='M'+(c-arc/2).toFixed(2)+' '+y+'H'+(c+arc/2).toFixed(2)+' ';}return {w:W,paid:P.paid,due:P.due,up:P.up,sw:sw.toFixed(2)};}
+var LOANS=[{id:'A',href:'S7LoanDetail.dc.html',bank:['Kantha Bank','কাঁথা ব্যাংক'],nick:['Home loan','বাড়ির লোন'],ini:['KB','কব'],P:1521595.95,rate:10.47,n:60,F:YM(2025,10),acc:0},{id:'B',href:'S7NotStarted.dc.html',bank:['Dhanshiri Bank','ধানসিঁড়ি ব্যাংক'],nick:['Top-up','টপ-আপ'],ini:['DB','ধব'],P:1300000,rate:10.57,n:60,F:YM(2027,1),acc:1},{id:'C',href:'S7Completed.dc.html',bank:['Moyna Bank','ময়না ব্যাংক'],nick:['Bike loan','বাইকের লোন'],ini:['MB','মব'],P:200000,rate:9,n:24,F:YM(2023,6),acc:2}];
+var STR={tabCalc:['Calculator','ক্যালকুলেটর'],tabLoans:['My Loans','আমার লোন'],tabSettings:['Settings','সেটিংস'],bankEmi:['Bank EMI','ব্যাংকের মাসিক কিস্তি'],cardRemaining:['Remaining principal','বাকি মূল টাকা'],cardNext:['Next installment','পরের কিস্তি'],progressOf:['{k} of {n}','{n}টির মধ্যে {k}'],thisMonthOne:["This month's installments {amount} across 1 loan",'এই মাসে মোট কিস্তি {amount} (১টি লোন)'],thisMonthOther:["This month's installments {amount} across {count} loans",'এই মাসে মোট কিস্তি {amount} ({count}টি লোন)'],totalRemaining:['Total remaining principal','মোট বাকি মূল টাকা'],statusDue:['This month','এই মাসে দিতে হবে'],statusNotStarted:['Starts in {n} months','{n} মাস পরে শুরু'],statusCompleted:['All installments done','সব কিস্তি শেষ'],loansAdd:['Add loan','লোন যোগ করুন'],emptyTitle:['No loans yet','এখনো কোনো লোন যোগ করা হয়নি'],emptyBody:["Add a loan to see every month's installment, interest and remaining balance.",'লোন যোগ করুন, প্রতি মাসের কিস্তি, সুদ আর বাকি টাকা দেখুন।'],deleteDone:['Loan deleted','লোন মুছে ফেলা হয়েছে'],undo:['Undo','ফিরিয়ে আনুন']};
+function S(lg){var i=lg==='en'?0:1,o={};for(var k in STR)o[k]=STR[k][i];return o;}
+class Component extends DCLogic {
+  renderVals() {
+    var pr=this.props,variant=pr.variant||'list',lg=pr.lang==='en'?'en':'bn',bn=lg==='bn',li=bn?1:0;
+    var t=TH(pr.theme),ty=TY(bn),s=S(lg);
+    var list=variant==='empty'?[]:(variant==='undo'?LOANS.slice(1):LOANS);
+    var due=0,dueN=0,rem=0;
+    var cards=list.map(function(L){
+      var c=CALC(L.P,L.rate,L.n),last=L.F+c.cnt-1;
+      var st=TODAY<L.F?'notStarted':(TODAY>last?'completed':'running');
+      var k=st==='running'?TODAY-L.F+1:(st==='completed'?c.cnt:0);
+      var acc=ACC[t.mode][L.acc];
+      var remP=st==='running'?c.rows[k-1].c:(st==='notStarted'?Math.round(L.P*100):0);
+      if(st==='running'){due+=c.rows[k-1].pay;dueN++;rem+=remP;}else if(st==='notStarted'){rem+=remP;}
+      var chip=st==='running'?{l:s.statusDue,bg:t.emi10,c:t.emi,d:ICO.target}:(st==='notStarted'?{l:FM(s.statusNotStarted,{n:DG(L.F-TODAY,bn)}),bg:t.pri10,c:t.pri,d:ICO.hourglass}:{l:s.statusCompleted,bg:t.cash10,c:t.cash,d:ICO.checkCircle});
+      var ln=line(318,c.cnt,st==='running'?k-1:(st==='completed'?c.cnt:0),st==='running'?k:0,10);
+      return {href:L.href,bank:L.bank[li],nick:L.nick[li],ini:L.ini[li],acc:acc,accBg:rgba(acc,0.16),emi:DG(GR(String(c.be)),bn),chip:chip.l,chipBg:chip.bg,chipC:chip.c,chipD:chip.d,ln:ln,prog:FM(s.progressOf,{k:DG(k,bn),n:DG(c.cnt,bn)}),rem:MV(remP,bn).f,next:st==='running'?MLAB(TODAY,lg,bn):(st==='notStarted'?MLAB(L.F,lg,bn):'—'),aria:L.bank[li]+', '+L.nick[li]+', '+chip.l,ord:st==='running'?0:(st==='notStarted'?1:2)};
+    });
+    cards.sort(function(a,b){return a.ord-b.ord;});
+    var strip=null;
+    if(dueN>0){var tpl=dueN===1?s.thisMonthOne:s.thisMonthOther;tpl=tpl.replace('{count}',DG(dueN,bn));var parts=tpl.split('{amount}');strip={pre:parts[0],amt:MV(due,bn,due%100===0).f,post:parts[1]||'',rem:MV(rem,bn).f};}
+    var viewport=variant!=='list';
+    var tabs=[['S3Calculator.dc.html',s.tabCalc,ICO.calculator,false],['S4Loans.dc.html',s.tabLoans,ICO.bank,true],['S8Settings.dc.html',s.tabSettings,ICO.gear,false]].map(function(x){return {href:x[0],label:x[1],d:x[2],cur:x[3]?'page':'false',c:x[3]?t.tp:t.ts,ic:x[3]?t.emi:t.ts,fill:x[3]?t.emi:'none',w:x[3]?600:500,ind:x[3]?t.aur:'transparent'};});
+    return {t:t,ty:ty,s:s,ic:ICO,f:bn?FBN:FEN,minH:viewport?'0':'100vh',H:viewport?'844px':'auto',strip:strip,cards:cards,empty:list.length===0,fab:list.length>0,undo:variant==='undo',undoC:t.mode==='dark'?'#087A6F':'#2EE6D0',tabs:tabs};
+  }
+}
+</script>
+</body>
+</html>

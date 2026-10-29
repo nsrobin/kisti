@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kisti motion, sound and haptics</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..125,100..800&amp;family=Anek+Latin:wdth,wght@75..125,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6D3FE0}a:hover{color:#1A1640}
+@keyframes kr0{from{transform:translateY(0)}to{transform:translateY(0)}}
+@keyframes kr1{from{transform:translateY(0)}to{transform:translateY(-1.25em)}}
+@keyframes kr2{from{transform:translateY(0)}to{transform:translateY(-2.5em)}}
+@keyframes kr3{from{transform:translateY(0)}to{transform:translateY(-3.75em)}}
+@keyframes kr4{from{transform:translateY(0)}to{transform:translateY(-5em)}}
+@keyframes kr5{from{transform:translateY(0)}to{transform:translateY(-6.25em)}}
+@keyframes kr6{from{transform:translateY(0)}to{transform:translateY(-7.5em)}}
+@keyframes kr7{from{transform:translateY(0)}to{transform:translateY(-8.75em)}}
+@keyframes kr8{from{transform:translateY(0)}to{transform:translateY(-10em)}}
+@keyframes kr9{from{transform:translateY(0)}to{transform:translateY(-11.25em)}}
+.kroll{animation-duration:420ms;animation-timing-function:cubic-bezier(0.2,0,0,1);animation-fill-mode:both}
+.r0{animation-name:kr0}.r1{animation-name:kr1}.r2{animation-name:kr2}.r3{animation-name:kr3}.r4{animation-name:kr4}.r5{animation-name:kr5}.r6{animation-name:kr6}.r7{animation-name:kr7}.r8{animation-name:kr8}.r9{animation-name:kr9}
+@keyframes kspring{0%{transform:scale(1)}40%{transform:scale(1.06)}72%{transform:scale(0.99)}100%{transform:scale(1)}}
+.kspring{animation:kspring 380ms cubic-bezier(0.2,0,0,1) both}
+@keyframes kfade{from{opacity:0}to{opacity:1}}
+.kfade{animation:kfade 180ms cubic-bezier(0.2,0,0,1) both}
+@media (prefers-reduced-motion: reduce){.kroll,.kspring{animation-duration:1ms}.kfade{animation-duration:150ms}}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 100vh; box-sizing: border-box; padding: 64px; background: #F5F4FF; color: #1A1640; font-family: 'Anek Latin','Anek Bangla',sans-serif; display: flex; flex-direction: column; gap: 40px">
+  <header style="display: flex; flex-direction: column; gap: 14px">
+    <h1 style="margin: 0; font-size: 40px; line-height: 1.2; font-weight: 800; font-stretch: 112.5%">Motion, sound and haptics</h1>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px">
+      <sc-for list="{{tokens}}" as="tk" hint-placeholder-count="5">
+        <span style="padding: 8px 14px; border-radius: 999px; background: #FFFFFF; border: 1px solid #DDD9F5; font-size: 15px"><strong style="font-weight: 700">{{tk.k}}</strong>  {{tk.v}}</span>
+      </sc-for>
+    </div>
+    <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #4B4680; max-width: 1000px">The stitch ring draw is the app's one orchestrated moment. Everything else answers the user's own action. Press Play on this board to replay each demo.</p>
+  </header>
+
+  <section style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+    <div style="border-radius: 28px; background: #120F2E; color: #F4F2FF; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 16px">
+      <h2 style="margin: 0; align-self: flex-start; font-size: 20px; font-weight: 700">Stitch ring draw, 600 ms</h2>
+      <sc-if value="{{flipA}}" hint-placeholder-val="{{ true }}">
+        <div style="position: relative; width: 200px; height: 200px">
+          <svg width="200" height="200" viewBox="0 0 200 200" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+            <defs>
+              <linearGradient id="mvA1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2EE6D0"></stop><stop offset="0.52" stop-color="#A78BFA"></stop><stop offset="1" stop-color="#FF5C9A"></stop></linearGradient>
+              <mask id="mvM1"><circle cx="100" cy="100" r="{{rg.R}}" fill="none" stroke="#FFFFFF" stroke-width="24" stroke-dasharray="{{rg.C}} {{rg.C}}" stroke-dashoffset="{{rg.C}}" transform="rotate(-90 100 100)"><animate attributeName="stroke-dashoffset" from="{{rg.C}}" to="{{rg.off}}" dur="0.6s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.2 0 0 1"></animate></circle></mask>
+            </defs>
+            <circle cx="100" cy="100" r="{{rg.R}}" fill="none" stroke="#2C2760" stroke-width="1"></circle>
+            <path d="{{rg.up}}" fill="none" stroke="#A78BFA" stroke-opacity="0.45" stroke-width="{{rg.sw}}" stroke-linecap="round"></path>
+            <g mask="url(#mvM1)">
+              <path d="{{rg.paid}}" fill="none" stroke="#4BE38A" stroke-width="{{rg.sw}}" stroke-linecap="round"></path>
+              <path d="{{rg.due}}" fill="none" stroke="url(#mvA1)" stroke-width="{{rg.gw}}" stroke-linecap="round" opacity="0.4"><animate attributeName="opacity" values="0.25;0.55;0.25" dur="2s" begin="0.6s" repeatCount="indefinite"></animate></path>
+              <path d="{{rg.due}}" fill="none" stroke="#2EE6D0" stroke-width="{{rg.sw}}" stroke-linecap="round"><animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="0.6s" repeatCount="indefinite"></animate></path>
+            </g>
+          </svg>
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Anek Bangla',sans-serif"><span style="font-size: 40px; line-height: 1.25; font-weight: 800; font-stretch: 125%">১৩/৬০</span><span style="font-size: 14px; color: #B7B2E0">কিস্তি শেষ</span></div>
+        </div>
+      </sc-if>
+      <sc-if value="{{flipB}}" hint-placeholder-val="{{ false }}">
+        <div style="position: relative; width: 200px; height: 200px">
+          <svg width="200" height="200" viewBox="0 0 200 200" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+            <defs>
+              <linearGradient id="mvA2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2EE6D0"></stop><stop offset="0.52" stop-color="#A78BFA"></stop><stop offset="1" stop-color="#FF5C9A"></stop></linearGradient>
+              <mask id="mvM2"><circle cx="100" cy="100" r="{{rg.R}}" fill="none" stroke="#FFFFFF" stroke-width="24" stroke-dasharray="{{rg.C}} {{rg.C}}" stroke-dashoffset="{{rg.C}}" transform="rotate(-90 100 100)"><animate attributeName="stroke-dashoffset" from="{{rg.C}}" to="{{rg.off}}" dur="0.6s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.2 0 0 1"></animate></circle></mask>
+            </defs>
+            <circle cx="100" cy="100" r="{{rg.R}}" fill="none" stroke="#2C2760" stroke-width="1"></circle>
+            <path d="{{rg.up}}" fill="none" stroke="#A78BFA" stroke-opacity="0.45" stroke-width="{{rg.sw}}" stroke-linecap="round"></path>
+            <g mask="url(#mvM2)">
+              <path d="{{rg.paid}}" fill="none" stroke="#4BE38A" stroke-width="{{rg.sw}}" stroke-linecap="round"></path>
+              <path d="{{rg.due}}" fill="none" stroke="url(#mvA2)" stroke-width="{{rg.gw}}" stroke-linecap="round" opacity="0.4"><animate attributeName="opacity" values="0.25;0.55;0.25" dur="2s" begin="0.6s" repeatCount="indefinite"></animate></path>
+              <path d="{{rg.due}}" fill="none" stroke="#2EE6D0" stroke-width="{{rg.sw}}" stroke-linecap="round"><animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="0.6s" repeatCount="indefinite"></animate></path>
+            </g>
+          </svg>
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Anek Bangla',sans-serif"><span style="font-size: 40px; line-height: 1.25; font-weight: 800; font-stretch: 125%">১৩/৬০</span><span style="font-size: 14px; color: #B7B2E0">কিস্তি শেষ</span></div>
+        </div>
+      </sc-if>
+      <span style="font-size: 14px; line-height: 1.5; color: #B7B2E0; text-align: center">Stitches fill in order to the current one, then the current stitch pulses: 2 s loop, opacity 0.6 ↔ 1. No sound, no haptic.</span>
+      <button type="button" onClick="{{replayA}}" style="min-height: 48px; padding: 0 20px; border-radius: 999px; border: 1.5px solid #2C2760; background: transparent; color: #F4F2FF; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer">Replay</button>
+    </div>
+
+    <div style="border-radius: 28px; background: #120F2E; color: #F4F2FF; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 16px">
+      <h2 style="margin: 0; align-self: flex-start; font-size: 20px; font-weight: 700">EMI number roll, 420 ms</h2>
+      <div style="flex: 1 1 auto; display: flex; align-items: center; min-height: 200px">
+        <sc-if value="{{flipR1}}" hint-placeholder-val="{{ true }}">
+          <div aria-label="৳৩২,৬৮৩" style="display: flex; align-items: flex-end; font-family: 'Anek Bangla',sans-serif; font-size: 52px; line-height: 1.25; font-weight: 800; font-stretch: 125%; color: #2EE6D0">
+            <span style="font-size: 0.7em; line-height: 1.6">৳</span>
+            <sc-for list="{{digits}}" as="d" hint-placeholder-count="6">
+              <span style="display: inline-block; height: 1.25em; overflow: hidden">
+                <sc-if value="{{d.isNum}}" hint-placeholder-val="{{ true }}"><span class="kroll r{{d.v}}" style="display: flex; flex-direction: column; animation-delay: {{d.delay}}ms"><sc-for list="{{col}}" as="g" hint-placeholder-count="10"><span style="height: 1.25em">{{g}}</span></sc-for></span></sc-if>
+                <sc-if value="{{d.isSep}}" hint-placeholder-val="{{ false }}"><span>{{d.ch}}</span></sc-if>
+              </span>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{flipR2}}" hint-placeholder-val="{{ false }}">
+          <div aria-label="৳৩২,৬৮৩" style="display: flex; align-items: flex-end; font-family: 'Anek Bangla',sans-serif; font-size: 52px; line-height: 1.25; font-weight: 800; font-stretch: 125%; color: #2EE6D0">
+            <span style="font-size: 0.7em; line-height: 1.6">৳</span>
+            <sc-for list="{{digits}}" as="d" hint-placeholder-count="6">
+              <span style="display: inline-block; height: 1.25em; overflow: hidden">
+                <sc-if value="{{d.isNum}}" hint-placeholder-val="{{ true }}"><span class="kroll r{{d.v}}" style="display: flex; flex-direction: column; animation-delay: {{d.delay}}ms"><sc-for list="{{col}}" as="g" hint-placeholder-count="10"><span style="height: 1.25em">{{g}}</span></sc-for></span></sc-if>
+                <sc-if value="{{d.isSep}}" hint-placeholder-val="{{ false }}"><span>{{d.ch}}</span></sc-if>
+              </span>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+      <span style="font-size: 14px; line-height: 1.5; color: #B7B2E0; text-align: center">Runs only when the value settles: on blur, or 250 ms after the last keystroke. Digits roll vertically, 30 ms stagger, standard easing.</span>
+      <button type="button" onClick="{{replayR}}" style="min-height: 48px; padding: 0 20px; border-radius: 999px; border: 1.5px solid #2C2760; background: transparent; color: #F4F2FF; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer">Replay</button>
+    </div>
+
+    <div style="border-radius: 28px; background: #120F2E; color: #F4F2FF; padding: 24px; display: flex; flex-direction: column; gap: 16px">
+      <h2 style="margin: 0; font-size: 20px; font-weight: 700">Month change</h2>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; font-family: 'Anek Bangla',sans-serif">
+        <sc-for list="{{mcells}}" as="m" hint-placeholder-count="4">
+          <button type="button" onClick="{{m.pick}}" aria-pressed="{{m.on}}" class="{{m.cls}}" style="height: 72px; border-radius: 16px; border: {{m.bd}}; background: {{m.bg}}; color: #F4F2FF; font-family: inherit; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; cursor: pointer; box-sizing: border-box">
+            <span style="font-size: 14px; font-weight: {{m.fw}}">{{m.label}}</span>
+            <span style="width: {{m.w}}px; height: {{m.h}}px; border-radius: 999px; background: {{m.mbg}}; border: {{m.mbd}}; box-sizing: border-box"></span>
+          </button>
+        </sc-for>
+      </div>
+      <sc-for list="{{panel}}" as="p" hint-placeholder-count="1">
+        <div class="kfade" style="border-radius: 20px; background: #1B1744; border: 1px solid #2C2760; padding: 14px; display: flex; flex-direction: column; gap: 2px; font-family: 'Anek Bangla',sans-serif">
+          <span style="font-size: 18px; font-weight: 600">{{p.title}}</span>
+          <span style="font-size: 40px; line-height: 1.25; font-weight: 800; font-stretch: 125%; color: #2EE6D0"><span style="font-size: 0.7em">৳</span>{{p.inst}}</span>
+          <span style="font-size: 14px; color: #B7B2E0">সুদ <strong style="color: #FFC234">{{p.int}}</strong>   মূল টাকা <strong style="color: #A78BFA">{{p.pp}}</strong></span>
+        </div>
+      </sc-for>
+      <span style="font-size: 14px; line-height: 1.5; color: #B7B2E0">Tap a month: the cell springs 1.0 → 1.06 → 1.0 (damping 18, stiffness 180), the breakdown cross-fades over 180 ms, 'stitch' sound, selection haptic.</span>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 14px">
+    <h2 style="margin: 0; font-size: 28px; line-height: 1.2; font-weight: 700; font-stretch: 112.5%">Every moment (§15.2)</h2>
+    <div role="table" style="border-radius: 20px; background: #FFFFFF; box-shadow: 0 4px 16px rgba(46,32,140,0.10); overflow: hidden">
+      <div role="row" style="display: grid; grid-template-columns: 190px 200px minmax(0, 1fr) 90px 90px 230px; gap: 16px; padding: 14px 20px; background: #ECEAFB; font-size: 14px; font-weight: 700">
+        <span role="columnheader">Moment</span><span role="columnheader">Trigger</span><span role="columnheader">Motion</span><span role="columnheader">Sound</span><span role="columnheader">Haptic</span><span role="columnheader">Reduce motion</span>
+      </div>
+      <sc-for list="{{moments}}" as="mo" hint-placeholder-count="13">
+        <div role="row" style="display: grid; grid-template-columns: 190px 200px minmax(0, 1fr) 90px 90px 230px; gap: 16px; padding: 12px 20px; border-top: 1px solid #ECEAFB; font-size: 14px; line-height: 1.5">
+          <span role="cell" style="font-weight: 600">{{mo.n}}</span><span role="cell" style="color: #4B4680">{{mo.t}}</span><span role="cell">{{mo.m}}</span><span role="cell" style="color: #087A6F; font-weight: 600">{{mo.s}}</span><span role="cell" style="color: #6D3FE0; font-weight: 600">{{mo.h}}</span><span role="cell" style="color: #4B4680">{{mo.r}}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 24px; align-items: start">
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-size: 28px; line-height: 1.2; font-weight: 700; font-stretch: 112.5%">Sounds (§15.3)</h2>
+      <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px">
+        <sc-for list="{{sounds}}" as="sd" hint-placeholder-count="5">
+          <div style="border-radius: 20px; background: #FFFFFF; border: 1px solid #DDD9F5; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+            <svg width="100%" height="36" viewBox="0 0 120 36" preserveAspectRatio="none" aria-hidden="true"><path d="{{sd.wave}}" fill="none" stroke="#087A6F" stroke-width="2" stroke-linecap="round"></path></svg>
+            <span style="font-size: 17px; font-weight: 700">{{sd.n}}</span>
+            <span style="font-size: 14px; line-height: 1.45; color: #4B4680">{{sd.c}}</span>
+            <span style="font-size: 13px; font-weight: 600; color: #6D3FE0">{{sd.l}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="border-radius: 20px; background: #FFFFFF; border: 1px solid #DDD9F5; padding: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.5">
+      <strong style="font-size: 17px">Rules</strong>
+      <span>Generated in code: mono, 44.1 kHz, under 30 KB, at most 35% volume.</span>
+      <span>Never on keystrokes. iOS respects the silent switch and never stops the user's music.</span>
+      <span>Sound off in Settings means fully silent. Vibration off disables every haptic.</span>
+      <span>Reduce motion swaps rolls, the ring draw, sparks, shakes and pulses for instant changes or 150 ms fades.</span>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+var BND='০১২৩৪৫৬৭৮৯';
+function ring(size,n,done,dueK){var cx=size/2,R=size/2-size*0.07;var per=2*Math.PI*R/n;var sw=Math.min(size*0.032,Math.max(size*0.016,per*0.42));var arc=Math.max(per*0.6-sw,0.4);var P={paid:'',due:'',up:''};for(var u=0;u<n;u++){var k=u+1,st=k<=done?'paid':(k===dueK?'due':'up');var mid=-Math.PI/2+(u+0.5)*per/R,h=arc/2/R;P[st]+='M'+(cx+R*Math.cos(mid-h)).toFixed(2)+' '+(cx+R*Math.sin(mid-h)).toFixed(2)+'A'+R.toFixed(2)+' '+R.toFixed(2)+' 0 0 1 '+(cx+R*Math.cos(mid+h)).toFixed(2)+' '+(cx+R*Math.sin(mid+h)).toFixed(2)+' ';}var C=2*Math.PI*R;return {R:R.toFixed(2),C:C.toFixed(2),off:(C*(1-dueK/n)).toFixed(2),paid:P.paid,due:P.due,up:P.up,sw:sw.toFixed(2),gw:(sw*2.8).toFixed(2)};}
+var MCELLS=[{label:'আগ',inst:'৩২,৬৮৩',int:'৳১১,৫১৪.৬০',pp:'৳২১,১৬৮.৪০',title:'আগস্ট ২০২৬',st:'paid'},{label:'সেপ্টে',inst:'৩২,৬৮৩',int:'৳১১,৩২৯.৯১',pp:'৳২১,৩৫৩.০৯',title:'সেপ্টেম্বর ২০২৬',st:'paid'},{label:'অক্টো',inst:'৩২,৬৮৩',int:'৳১১,১৪৩.৬০',pp:'৳২১,৫৩৯.৪০',title:'অক্টোবর ২০২৬',st:'due'},{label:'নভে',inst:'৩২,৬৮৩',int:'৳১০,৯৫৫.৬৭',pp:'৳২১,৭২৭.৩৩',title:'নভেম্বর ২০২৬',st:'up'}];
+class Component extends DCLogic {
+  constructor(p){super(p);this.state={a:0,r:0,sel:2,tick:0};}
+  renderVals() {
+    var self=this,st=this.state;
+    var rg=ring(200,60,12,13);
+    var digits='৩২,৬৮৩'.split('').map(function(ch,i){var v=BND.indexOf(ch);return {ch:ch,isNum:v>=0,isSep:v<0,v:v<0?0:v,delay:i*30};});
+    var mcells=MCELLS.map(function(m,i){var on=st.sel===i;var mk=m.st==='paid'?{w:22,h:6,mbg:'#4BE38A',mbd:'none'}:(m.st==='due'?{w:16,h:16,mbg:'transparent',mbd:'2.5px solid #2EE6D0'}:{w:22,h:6,mbg:'transparent',mbd:'1.5px solid rgba(167,139,250,0.45)'});return Object.assign({label:m.label,on:on?'true':'false',cls:on?(st.tick%2?'kspring':'kspring'):'',bd:on?'2px solid #F4F2FF':'1px solid '+(m.st==='due'?'rgba(46,230,208,0.45)':'#2C2760'),bg:on?'#1B1744':(m.st==='due'?'rgba(46,230,208,0.10)':'#120F2E'),fw:on?700:500,pick:function(){self.setState({sel:i,tick:st.tick+1});}},mk);});
+    var p=MCELLS[st.sel];
+    var moments=[
+      ['Stitch ring draw','Opening S7','Stitches fill in order to the current one, 600 ms total, standard easing. Then the current stitch pulses: 2 s loop, opacity 0.6 ↔ 1.','—','—','Ring appears filled; no pulse'],
+      ['EMI number roll','A value settles (blur or 250 ms idle)','Digits roll vertically, 420 ms (emphasis), 30 ms stagger','—','—','Instant value change'],
+      ['Preset chip','Tap','Press scale 0.96 (120 ms micro), then values roll','tap','light','No scale; values change instantly'],
+      ['Accordion','Tap','Height and chevron rotation, 220 ms standard','toggle','light','150 ms fade, no height animation'],
+      ['Month change','Tapping a cell','Cell springs 1.0 → 1.06 → 1.0 (damping 18, stiffness 180, mass 1); breakdown cross-fades 180 ms','stitch','selection','150 ms fade only'],
+      ['Year change','Swipe or arrow','Grid slides horizontally, 220 ms standard','stitch','selection','150 ms fade'],
+      ['Sticky EMI bar','Hero leaves the screen','Slides down and fades in, 220 ms','—','—','150 ms fade'],
+      ['Save loan','Tapping Save','Check mark draws 300 ms, 8 stitch sparks burst 500 ms, then navigate to S7','success','success','Check shown at once, no sparks'],
+      ['Validation error','Invalid input','Field shakes twice (6 pt, 200 ms), error fades in','warn','warning','No shake; error fades in 150 ms'],
+      ['Deductions exceed loan','Total crosses the loan amount','Warning banner slides in, 220 ms','warn','warning','150 ms fade'],
+      ['Delete','Confirmed','Card collapses 220 ms, snackbar slides up','—','medium','Card removed; snackbar fades'],
+      ['Tab change','Tap','Icon switches to duotone fill with one small bounce','tap','light','No bounce'],
+      ['Theme switch','Changing the setting','Cross-fade, 200 ms','—','—','Cross-fade 150 ms']
+    ].map(function(x){return {n:x[0],t:x[1],m:x[2],s:x[3],h:x[4],r:x[5]};});
+    function wave(len,f,amp){var d='M0 18';for(var x=1;x<=120;x++){var env=x<len?Math.sin(Math.PI*x/len):0;d+=' L'+x+' '+(18-amp*env*Math.sin(x*f)).toFixed(1);}return d;}
+    var sounds=[['tap','A soft wooden click','30 ms',wave(20,1.6,12)],['toggle','A soft two-tone blip','80 ms',wave(60,0.9,10)],['stitch','A tiny high tick, like a needle through cloth','40 ms',wave(26,2.6,9)],['success','A two-note rising chime','280 ms',wave(118,0.5,14)],['warn','A soft low double blip','160 ms',wave(100,0.35,11)]].map(function(s){return {n:s[0],c:s[1],l:s[2],wave:s[3]};});
+    return {
+      tokens:[{k:'micro',v:'120 ms'},{k:'standard',v:'220 ms'},{k:'emphasis',v:'420 ms'},{k:'easing',v:'cubic-bezier(0.2, 0, 0, 1)'},{k:'spring',v:'damping 18, stiffness 180, mass 1'}],
+      rg:rg,flipA:st.a%2===0,flipB:st.a%2===1,replayA:function(){self.setState({a:st.a+1});},
+      digits:digits,col:BND.split(''),flipR1:st.r%2===0,flipR2:st.r%2===1,replayR:function(){self.setState({r:st.r+1});},
+      mcells:mcells,panel:[{title:p.title,inst:p.inst,int:p.int,pp:p.pp,key:st.tick}],
+      moments:moments,sounds:sounds
+    };
+  }
+}
+</script>
+</body>
+</html>

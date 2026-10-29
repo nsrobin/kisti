@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Full schedule</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..125,100..800&amp;family=Anek+Latin:wdth,wght@75..125,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; position: relative; overflow: hidden; background: {{t.base}}; color: {{t.tp}}; font-family: {{f}}; display: flex; flex-direction: column">
+  <header style="flex: 0 0 auto; padding: 44px 12px 8px; display: flex; align-items: center; gap: 4px; border-bottom: 1px solid {{t.line}}">
+    <a href="{{back}}" aria-label="{{s.back}}" style="width: 48px; height: 48px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: {{t.tp}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+    <div style="display: flex; flex-direction: column; min-width: 0">
+      <h1 style="margin: 0; font-size: {{ty.tiS}}px; line-height: {{ty.ti}}; font-weight: 600">{{s.schedTitle}}</h1>
+      <span style="font-size: {{ty.caS}}px; line-height: 1.4; font-weight: 500; color: {{t.ts}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{sub}}</span>
+    </div>
+  </header>
+  <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 12px 20px 120px; display: flex; flex-direction: column; gap: 8px">
+    <sc-for list="{{items}}" as="r" hint-placeholder-count="10">
+      <sc-if value="{{r.hdr}}" hint-placeholder-val="{{ false }}">
+        <h2 style="margin: 10px 0 2px; font-size: 20px; line-height: 1.3; font-weight: 700; font-stretch: 112.5%; font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: 10px">{{r.hdr}}<span style="flex: 1 1 auto; height: 1px; background: {{t.line}}"></span></h2>
+      </sc-if>
+      <sc-if value="{{r.row}}" hint-placeholder-val="{{ true }}">
+        <div style="border-radius: 14px; background: {{t.raised}}; border: {{r.bd}}; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+            <span style="display: flex; align-items: center; gap: 8px; font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 600">
+              <sc-if value="{{r.mk}}" hint-placeholder-val="{{ false }}"><span style="width: {{r.mk.w}}px; height: {{r.mk.h}}px; border-radius: 999px; background: {{r.mk.bg}}; border: {{r.mk.bd}}; box-shadow: {{r.mk.glow}}; box-sizing: border-box"></span></sc-if>
+              {{r.m}}
+              <sc-if value="{{r.tag}}" hint-placeholder-val="{{ false }}"><span style="padding: 1px 8px; border-radius: 999px; background: {{r.tagBg}}; color: {{r.tagC}}; font-size: 12px; font-weight: 600">{{r.tag}}</span></sc-if>
+            </span>
+            <span style="font-size: 20px; line-height: 1.3; font-weight: 700; font-variant-numeric: tabular-nums; color: {{t.emi}}; white-space: nowrap">{{r.pay}}</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; font-variant-numeric: tabular-nums">
+            <span style="display: flex; flex-direction: column"><span style="font-size: 12px; line-height: 1.5; color: {{t.tm}}">{{s.schedInterest}}</span><span style="font-size: 14px; font-weight: 600; color: {{t.int}}">{{r.i}}</span></span>
+            <span style="display: flex; flex-direction: column"><span style="font-size: 12px; line-height: 1.5; color: {{t.tm}}">{{s.schedPrincipal}}</span><span style="font-size: 14px; font-weight: 600; color: {{t.pri}}">{{r.pp}}</span></span>
+            <span style="display: flex; flex-direction: column; text-align: right"><span style="font-size: 12px; line-height: 1.5; color: {{t.tm}}">{{s.schedClosing}}</span><span style="font-size: 14px; font-weight: 600; color: {{t.pri}}">{{r.c}}</span></span>
+          </div>
+        </div>
+      </sc-if>
+    </sc-for>
+  </div>
+  <footer style="position: absolute; left: 0; right: 0; bottom: 0; background: {{t.glass}}; border-top: 1px solid {{t.line}}; padding: 12px 20px 26px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+    <span style="display: flex; flex-direction: column"><span style="font-size: 12px; line-height: 1.45; font-weight: 500; color: {{t.ts}}">{{s.sumTotalRepayment}}</span><span style="font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; color: {{t.emi}}; white-space: nowrap">{{tot}}</span></span>
+    <span style="display: flex; flex-direction: column; text-align: right"><span style="font-size: 12px; line-height: 1.45; font-weight: 500; color: {{t.ts}}">{{s.sumTotalInterest}}</span><span style="font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; color: {{t.int}}; white-space: nowrap">{{ti}}</span></span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"dark"},"lang":{"editor":"enum","options":["bn","en"],"default":"bn"},"mode":{"editor":"enum","options":["calc","loan"],"default":"calc"},"$preview":{"width":390,"height":844}}'>
+var TOK={dark:{base:'#120F2E',raised:'#1B1744',sunken:'#0C0A21',line:'#2C2760',tp:'#F4F2FF',ts:'#B7B2E0',tm:'#8C86BC',emi:'#2EE6D0',pri:'#A78BFA',int:'#FFC234',cash:'#4BE38A',a1:'#2EE6D0',a2:'#A78BFA',glass:'rgba(27,23,68,0.86)'},light:{base:'#F5F4FF',raised:'#FFFFFF',sunken:'#ECEAFB',line:'#DDD9F5',tp:'#1A1640',ts:'#4B4680',tm:'#625E8F',emi:'#087A6F',pri:'#6D3FE0',int:'#8F5F00',cash:'#0F7A45',a1:'#0FB5A3',a2:'#7C4DFF',glass:'rgba(255,255,255,0.88)'}};
+function rgba(h,a){var n=parseInt(h.slice(1),16);return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')';}
+var FBN="'Anek Bangla','Anek Latin',system-ui,sans-serif",FEN="'Anek Latin','Anek Bangla',system-ui,sans-serif";
+function TY(bn){return bn?{ti:1.45,tiS:23,ca:1.55,caS:14}:{ti:1.3,tiS:22,ca:1.4,caS:13};}
+var BND='০১২৩৪৫৬৭৮৯';
+function DG(s,bn){s=String(s);return bn?s.replace(/[0-9]/g,function(c){return BND[+c];}):s;}
+function GR(s){if(s.length<=3)return s;var a=s.slice(-3),b=s.slice(0,-3);return b.replace(/\B(?=(\d{2})+(?!\d))/g,',')+','+a;}
+function MV(p,bn){var neg=p<0;p=Math.abs(Math.round(p));var n=GR(String(Math.floor(p/100)))+'.'+String(p%100).padStart(2,'0');return (neg?'−':'')+'৳'+DG(n,bn);}
+var MOS={en:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],bn:['জানু','ফেব্রু','মার্চ','এপ্রি','মে','জুন','জুলাই','আগ','সেপ্টে','অক্টো','নভে','ডিসে']};
+function YM(y,m){return y*12+(m-1);}
+var TODAY=YM(2026,10);
+function CALC(P,rate,n){var r=rate/100/12;var ex=r>0?P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):P/n;var be=Math.ceil(ex-1e-6);var bal=Math.round(P*100),emi=be*100,rows=[];for(var k=1;k<=n&&bal>0;k++){var it=Math.round(bal*r);var pay=emi;if(k===n||bal+it<=emi)pay=bal+it;var pp=pay-it,cl=bal-pp;rows.push({k:k,o:bal,i:it,pp:pp,pay:pay,c:cl});bal=cl;}var tot=0,ti=0;rows.forEach(function(x){tot+=x.pay;ti+=x.i;});return {rows:rows,cnt:rows.length,tot:tot,ti:ti};}
+var STR={back:['Back','ফিরে যান'],schedTitle:['Installment schedule','কিস্তির তালিকা'],schedMonth:['Month','মাস'],schedInterest:['Interest','সুদ'],schedPrincipal:['Principal repaid','মূল টাকা শোধ'],schedClosing:['Closing balance','মাস শেষে বাকি'],sumTotalRepayment:['Total repayment estimate','মোট পরিশোধ (আনুমানিক)'],sumTotalInterest:['Total interest estimate','মোট সুদ (আনুমানিক)'],installmentsPill:['{n} installments','{n}টি কিস্তি'],statusDue:['This month','এই মাসে দিতে হবে'],sumLastInstallment:['Last installment','শেষ কিস্তি']};
+function S(lg){var i=lg==='en'?0:1,o={};for(var k in STR)o[k]=STR[k][i];return o;}
+class Component extends DCLogic {
+  renderVals() {
+    var pr=this.props,mode=pr.mode==='loan'?'loan':'calc',lg=pr.lang==='en'?'en':'bn',bn=lg==='bn';
+    var tm=pr.theme==='light'?'light':'dark',t=Object.assign({},TOK[tm]),ty=TY(bn),s=S(lg);
+    var c=CALC(1521595.95,10.47,60),F=YM(2025,10);
+    function mark(i){if(i<TODAY)return {w:18,h:5,bg:t.cash,bd:'none',glow:'none'};if(i===TODAY)return {w:12,h:12,bg:'transparent',bd:'2px solid '+t.emi,glow:'0 0 8px '+rgba(t.a1,0.6)};return {w:18,h:5,bg:'transparent',bd:'1.5px solid '+rgba(t.pri,0.45),glow:'none'};}
+    var items=[],lastY=null;
+    c.rows.forEach(function(x){
+      var i=F+x.k-1,y=Math.floor(i/12),fin=x.k===c.cnt,due=mode==='loan'&&i===TODAY;
+      if(mode==='loan'&&y!==lastY){items.push({hdr:DG(y,bn),row:false});lastY=y;}
+      items.push({hdr:'',row:true,m:mode==='loan'?MOS[lg][i%12]+' '+DG(y,bn):s.schedMonth+' '+DG(x.k,bn),mk:mode==='loan'?mark(i):null,
+        tag:due?s.statusDue:(fin?s.sumLastInstallment:''),tagBg:due?rgba(t.emi,0.12):rgba(t.int,0.14),tagC:due?t.emi:t.int,
+        bd:due?'2px solid '+t.emi:'1px solid '+(fin?rgba(t.int,0.45):t.line),pay:MV(x.pay,bn),i:MV(x.i,bn),pp:MV(x.pp,bn),c:MV(x.c,bn)});
+    });
+    return {t:t,ty:ty,s:s,f:bn?FBN:FEN,back:mode==='loan'?'S7LoanDetail.dc.html':'S3Calculator.dc.html',
+      sub:mode==='loan'?(bn?'কাঁথা ব্যাংক, বাড়ির লোন':'Kantha Bank, Home loan'):s.installmentsPill.replace('{n}',DG(60,bn))+(bn?', ৳১৫,২১,৫৯৫.৯৫, ১০.৪৭%':', ৳15,21,595.95, 10.47%'),
+      items:items,tot:MV(c.tot,bn),ti:MV(c.ti,bn)};
+  }
+}
+</script>
+</body>
+</html>

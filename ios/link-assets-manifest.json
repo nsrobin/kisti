@@ -1,0 +1,85 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/AnekBangla-Bold.ttf",
+      "sha1": "2e0df296de125f2e60db7ea69124b68b148a1ff8"
+    },
+    {
+      "path": "src/assets/fonts/AnekBangla-ExpandedExtraBold.ttf",
+      "sha1": "4b004fae357666354b6aee852e947362ff2fdf65"
+    },
+    {
+      "path": "src/assets/fonts/AnekBangla-Medium.ttf",
+      "sha1": "ccdc643f192ff41c09437d1c21e5250f353a5c24"
+    },
+    {
+      "path": "src/assets/fonts/AnekBangla-Regular.ttf",
+      "sha1": "8f5e53b4f3722cb3e16d471bf8ff95e4a9bf5820"
+    },
+    {
+      "path": "src/assets/fonts/AnekBangla-SemiBold.ttf",
+      "sha1": "c17dd1a0084a31cef106c74972a692d29bc05d74"
+    },
+    {
+      "path": "src/assets/fonts/AnekBangla-SemiExpandedBold.ttf",
+      "sha1": "bfd2925a5ec573274bbdec13eeb62a3c91273f59"
+    },
+    {
+      "path": "src/assets/fonts/AnekBangla-SemiExpandedExtraBold.ttf",
+      "sha1": "80a3dee8f09dff5bb812667652cda8375f25924b"
+    },
+    {
+      "path": "src/assets/fonts/AnekLatin-Bold.ttf",
+      "sha1": "914bd5af64f5baef1ff5b07c15f614d65d06638d"
+    },
+    {
+      "path": "src/assets/fonts/AnekLatin-ExpandedExtraBold.ttf",
+      "sha1": "4673b468b7bfe905b486e5edb8017a0b2781d612"
+    },
+    {
+      "path": "src/assets/fonts/AnekLatin-Medium.ttf",
+      "sha1": "d65913e1c5193fbd82c3d31cbcc062f7095d4879"
+    },
+    {
+      "path": "src/assets/fonts/AnekLatin-Regular.ttf",
+      "sha1": "12cac1f893d3f6f9212f1b8b98429bfaf1b7e67f"
+    },
+    {
+      "path": "src/assets/fonts/AnekLatin-SemiBold.ttf",
+      "sha1": "a001d449cf5c389628b62fb78b46e479e509ab45"
+    },
+    {
+      "path": "src/assets/fonts/AnekLatin-SemiExpandedBold.ttf",
+      "sha1": "59484e0b6401f9b806b316696b115d55aa59f38c"
+    },
+    {
+      "path": "src/assets/fonts/AnekLatin-SemiExpandedExtraBold.ttf",
+      "sha1": "f1763cac8263ed2fde3cc21cb16b6e4378c7237e"
+    },
+    {
+      "path": "src/assets/fonts/OFL.txt",
+      "sha1": "9abf9ba9e6e93c1a85297779370d94fdae308a5f"
+    },
+    {
+      "path": "src/assets/sounds/stitch.wav",
+      "sha1": "8c55eeb8e6f1150a1b80dd6d666be2f5e10ead36"
+    },
+    {
+      "path": "src/assets/sounds/success.wav",
+      "sha1": "3d33fb4e77fd421772cb121e142e8378e68f8b3a"
+    },
+    {
+      "path": "src/assets/sounds/tap.wav",
+      "sha1": "c82d58612867797b8bbd4c28e0a6708a6666c53c"
+    },
+    {
+      "path": "src/assets/sounds/toggle.wav",
+      "sha1": "bada8f7bda98b493a817d0e4a5a58e2476e48c86"
+    },
+    {
+      "path": "src/assets/sounds/warn.wav",
+      "sha1": "22cf51ba89c8b1b4699a5e79bd0bad4fdea1cdcb"
+    }
+  ]
+}

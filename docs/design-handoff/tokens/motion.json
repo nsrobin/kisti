@@ -1,0 +1,170 @@
+{
+  "tokens": {
+    "micro": 120,
+    "standard": 220,
+    "emphasis": 420,
+    "easing": [
+      0.2,
+      0,
+      0,
+      1
+    ],
+    "spring": {
+      "damping": 18,
+      "stiffness": 180,
+      "mass": 1
+    }
+  },
+  "moments": [
+    {
+      "id": "ringDraw",
+      "name": "Stitch ring draw",
+      "trigger": "Opening S7",
+      "motion": "Stitches fill in order to the current one, 600 ms total, standard easing. Then the current stitch pulses: 2 s loop, opacity 0.6↔1.",
+      "sound": null,
+      "haptic": null,
+      "reduceMotion": "Ring appears filled; no pulse"
+    },
+    {
+      "id": "numberRoll",
+      "name": "EMI number roll",
+      "trigger": "A value settles (blur or 250 ms idle)",
+      "motion": "Digits roll vertically, 420 ms, 30 ms stagger per digit",
+      "sound": null,
+      "haptic": null,
+      "reduceMotion": "Instant value change"
+    },
+    {
+      "id": "presetChip",
+      "name": "Preset chip",
+      "trigger": "Tap",
+      "motion": "Press scale 0.96 (120 ms), then values roll",
+      "sound": "tap",
+      "haptic": "light",
+      "reduceMotion": "No scale; values change instantly"
+    },
+    {
+      "id": "accordion",
+      "name": "Accordion",
+      "trigger": "Tap",
+      "motion": "Height + chevron rotation 180°, 220 ms standard",
+      "sound": "toggle",
+      "haptic": "light",
+      "reduceMotion": "150 ms fade, no height animation"
+    },
+    {
+      "id": "monthChange",
+      "name": "Month change",
+      "trigger": "Tapping a cell",
+      "motion": "Cell springs 1.0→1.06→1.0 (spring token); breakdown cross-fades 180 ms",
+      "sound": "stitch",
+      "haptic": "selection",
+      "reduceMotion": "150 ms fade only"
+    },
+    {
+      "id": "yearChange",
+      "name": "Year change",
+      "trigger": "Swipe or arrow",
+      "motion": "Grid slides horizontally, 220 ms",
+      "sound": "stitch",
+      "haptic": "selection",
+      "reduceMotion": "150 ms fade"
+    },
+    {
+      "id": "stickyBar",
+      "name": "Sticky EMI bar",
+      "trigger": "Hero leaves the screen",
+      "motion": "Slides down + fades in, 220 ms",
+      "sound": null,
+      "haptic": null,
+      "reduceMotion": "150 ms fade"
+    },
+    {
+      "id": "saveLoan",
+      "name": "Save loan",
+      "trigger": "Tapping Save",
+      "motion": "Check draws 300 ms, 8 stitch sparks burst 500 ms, then navigate to S7",
+      "sound": "success",
+      "haptic": "success",
+      "reduceMotion": "Check shown at once, no sparks"
+    },
+    {
+      "id": "validationError",
+      "name": "Validation error",
+      "trigger": "Invalid input",
+      "motion": "Field shakes twice (6 pt, 200 ms), error fades in",
+      "sound": "warn",
+      "haptic": "warning",
+      "reduceMotion": "No shake; error fades in 150 ms"
+    },
+    {
+      "id": "deductionsExceed",
+      "name": "Deductions exceed loan",
+      "trigger": "Total crosses the loan amount",
+      "motion": "Warning banner slides in, 220 ms",
+      "sound": "warn",
+      "haptic": "warning",
+      "reduceMotion": "150 ms fade"
+    },
+    {
+      "id": "delete",
+      "name": "Delete",
+      "trigger": "Confirmed",
+      "motion": "Card collapses 220 ms, snackbar slides up; Undo for 5 s",
+      "sound": null,
+      "haptic": "medium",
+      "reduceMotion": "Card removed; snackbar fades"
+    },
+    {
+      "id": "tabChange",
+      "name": "Tab change",
+      "trigger": "Tap",
+      "motion": "Icon switches to duotone fill with one small bounce",
+      "sound": "tap",
+      "haptic": "light",
+      "reduceMotion": "No bounce"
+    },
+    {
+      "id": "themeSwitch",
+      "name": "Theme switch",
+      "trigger": "Changing the setting",
+      "motion": "Cross-fade 200 ms",
+      "sound": null,
+      "haptic": null,
+      "reduceMotion": "Cross-fade 150 ms"
+    }
+  ],
+  "sounds": [
+    {
+      "name": "tap",
+      "character": "soft wooden click",
+      "ms": 30
+    },
+    {
+      "name": "toggle",
+      "character": "soft two-tone blip",
+      "ms": 80
+    },
+    {
+      "name": "stitch",
+      "character": "tiny high tick, needle through cloth",
+      "ms": 40
+    },
+    {
+      "name": "success",
+      "character": "two-note rising chime",
+      "ms": 280
+    },
+    {
+      "name": "warn",
+      "character": "soft low double blip",
+      "ms": 160
+    }
+  ],
+  "soundRules": [
+    "Generated in code: mono, 44.1 kHz, < 30 KB, ≤ 35% volume",
+    "Never on keystrokes",
+    "iOS: respect silent switch, never stop the user's music",
+    "Sound off = fully silent; Vibration off = no haptics"
+  ]
+}

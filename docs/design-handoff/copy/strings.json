@@ -1,0 +1,754 @@
+{
+  "_meta": {
+    "source": "SPEC.md §9.3 and §5.11 verbatim, plus strings the design added (status: \"added\"). Add the added ones to §9.3 before build.",
+    "digits": "Bengali digits in bn mode unless settings.bengaliDigits is off"
+  },
+  "strings": {
+    "app.name": {
+      "en": "Kisti",
+      "bn": "কিস্তি",
+      "status": "spec"
+    },
+    "app.title": {
+      "en": "Loan & EMI Calculator",
+      "bn": "লোন ও কিস্তি ক্যালকুলেটর",
+      "status": "spec"
+    },
+    "app.subtitle": {
+      "en": "Reducing-balance method, in taka",
+      "bn": "রিডিউসিং ব্যালেন্স পদ্ধতি, টাকায় হিসাব",
+      "status": "spec"
+    },
+    "tab.calculator": {
+      "en": "Calculator",
+      "bn": "ক্যালকুলেটর",
+      "status": "spec"
+    },
+    "tab.loans": {
+      "en": "My Loans",
+      "bn": "আমার লোন",
+      "status": "spec"
+    },
+    "tab.settings": {
+      "en": "Settings",
+      "bn": "সেটিংস",
+      "status": "spec"
+    },
+    "onboarding.title": {
+      "en": "Choose your language",
+      "bn": "ভাষা বেছে নিন",
+      "status": "spec"
+    },
+    "calc.bankEmi": {
+      "en": "Bank EMI",
+      "bn": "ব্যাংকের মাসিক কিস্তি",
+      "status": "spec"
+    },
+    "calc.exactEmi": {
+      "en": "Exact calculated EMI",
+      "bn": "হিসাবের কিস্তি (পয়সাসহ)",
+      "status": "spec"
+    },
+    "calc.ceilingNote": {
+      "en": "Bank rounds the installment up to the next taka",
+      "bn": "পয়সা থাকলে ব্যাংক কিস্তি পরের পূর্ণ টাকায় ধরে",
+      "status": "spec"
+    },
+    "calc.installmentsPill": {
+      "en": "{n} installments",
+      "bn": "{n}টি কিস্তি",
+      "status": "spec"
+    },
+    "calc.monthlyRatePill": {
+      "en": "{rate}% per month",
+      "bn": "মাসে {rate}%",
+      "status": "spec"
+    },
+    "calc.presets": {
+      "en": "Quick examples",
+      "bn": "দ্রুত উদাহরণ",
+      "status": "spec"
+    },
+    "preset.current": {
+      "en": "My current loan",
+      "bn": "আমার বর্তমান লোন",
+      "status": "spec"
+    },
+    "preset.topup": {
+      "en": "Top-up example",
+      "bn": "টপ-আপ উদাহরণ",
+      "status": "spec"
+    },
+    "preset.original": {
+      "en": "Original loan",
+      "bn": "শুরুর লোন",
+      "status": "spec"
+    },
+    "loan.details": {
+      "en": "Loan details",
+      "bn": "লোনের তথ্য",
+      "status": "spec"
+    },
+    "loan.amount": {
+      "en": "Loan amount",
+      "bn": "লোনের পরিমাণ",
+      "status": "spec"
+    },
+    "loan.rate": {
+      "en": "Interest rate (yearly)",
+      "bn": "সুদের হার (বছরে)",
+      "status": "spec"
+    },
+    "loan.duration": {
+      "en": "Duration",
+      "bn": "মেয়াদ",
+      "status": "spec"
+    },
+    "unit.years": {
+      "en": "Years",
+      "bn": "বছর",
+      "status": "spec"
+    },
+    "unit.months": {
+      "en": "Months",
+      "bn": "মাস",
+      "status": "spec"
+    },
+    "loan.monthlyRate": {
+      "en": "Monthly interest rate",
+      "bn": "মাসিক সুদের হার",
+      "status": "spec"
+    },
+    "loan.installmentCount": {
+      "en": "Number of installments",
+      "bn": "কিস্তির সংখ্যা",
+      "status": "spec"
+    },
+    "ded.title": {
+      "en": "Deductions at disbursement",
+      "bn": "লোন দেওয়ার সময় যা কেটে রাখবে",
+      "status": "spec"
+    },
+    "ded.approved": {
+      "en": "Approved loan amount",
+      "bn": "অনুমোদিত লোন",
+      "status": "spec"
+    },
+    "ded.settlement": {
+      "en": "Existing loan settlement",
+      "bn": "আগের লোন শোধ",
+      "status": "spec"
+    },
+    "ded.insurance": {
+      "en": "One-time insurance premium",
+      "bn": "বীমার প্রিমিয়াম (এককালীন)",
+      "status": "spec"
+    },
+    "ded.fees": {
+      "en": "Bank fees",
+      "bn": "ব্যাংক ফি",
+      "status": "spec"
+    },
+    "ded.other": {
+      "en": "Other deductions",
+      "bn": "অন্যান্য খরচ",
+      "status": "spec"
+    },
+    "ded.total": {
+      "en": "Total deductions",
+      "bn": "মোট কেটে রাখা টাকা",
+      "status": "spec"
+    },
+    "ded.netCash": {
+      "en": "Estimated net cash received",
+      "bn": "হাতে পাবেন (আনুমানিক)",
+      "status": "spec"
+    },
+    "sum.title": {
+      "en": "Repayment summary",
+      "bn": "পরিশোধের হিসাব",
+      "status": "spec"
+    },
+    "sum.totalRepayment": {
+      "en": "Total repayment estimate",
+      "bn": "মোট পরিশোধ (আনুমানিক)",
+      "status": "spec"
+    },
+    "sum.totalInterest": {
+      "en": "Total interest estimate",
+      "bn": "মোট সুদ (আনুমানিক)",
+      "status": "spec"
+    },
+    "sum.principal": {
+      "en": "Principal",
+      "bn": "মূল টাকা",
+      "status": "spec"
+    },
+    "sum.lastInstallment": {
+      "en": "Last installment",
+      "bn": "শেষ কিস্তি",
+      "status": "spec"
+    },
+    "sum.firstInterest": {
+      "en": "First month's interest",
+      "bn": "প্রথম মাসের সুদ",
+      "status": "spec"
+    },
+    "sum.firstPrincipal": {
+      "en": "First month's principal repayment",
+      "bn": "প্রথম মাসে মূল টাকা শোধ",
+      "status": "spec"
+    },
+    "sum.balanceAfterFirst": {
+      "en": "Balance after first installment",
+      "bn": "প্রথম কিস্তির পর বাকি",
+      "status": "spec"
+    },
+    "sum.interestShare": {
+      "en": "{pct}% of what you repay is interest",
+      "bn": "মোট পরিশোধের {pct}% সুদ",
+      "status": "spec"
+    },
+    "sum.emiTimesN": {
+      "en": "EMI × {n} would be {amount}. The last installment is {diff} lower.",
+      "bn": "সব কিস্তি পুরো ধরলে মোট {amount} হতো। শেষ কিস্তি {diff} কম।",
+      "status": "spec"
+    },
+    "sum.estimateNote": {
+      "en": "These are estimates. Your bank may adjust the last installment or use its own rules.",
+      "bn": "এগুলো আনুমানিক হিসাব। ব্যাংক শেষ কিস্তি বা নিজের নিয়মে কিছুটা বদলাতে পারে।",
+      "status": "spec"
+    },
+    "formula.title": {
+      "en": "How it's calculated",
+      "bn": "কীভাবে হিসাব হয়",
+      "status": "spec"
+    },
+    "formula.P": {
+      "en": "P = loan amount",
+      "bn": "P = লোনের পরিমাণ",
+      "status": "spec"
+    },
+    "formula.r": {
+      "en": "r = monthly interest rate (yearly rate ÷ 12 ÷ 100)",
+      "bn": "r = মাসিক সুদের হার (বছরের হার ÷ ১২ ÷ ১০০)",
+      "status": "spec"
+    },
+    "formula.n": {
+      "en": "n = number of installments",
+      "bn": "n = কিস্তির সংখ্যা",
+      "status": "spec"
+    },
+    "formula.whyTotal": {
+      "en": "The bank rounds every installment up, so you pay a little extra each month. The last installment is made smaller to balance it out.",
+      "bn": "ব্যাংক প্রতিটি কিস্তি উপরের টাকায় ধরে, তাই প্রতি মাসে সামান্য বেশি দেওয়া হয়। শেষ কিস্তি কমিয়ে সেটা মিলিয়ে দেওয়া হয়।",
+      "status": "spec"
+    },
+    "sched.title": {
+      "en": "Installment schedule",
+      "bn": "কিস্তির তালিকা",
+      "status": "spec"
+    },
+    "sched.month": {
+      "en": "Month",
+      "bn": "মাস",
+      "status": "spec"
+    },
+    "sched.opening": {
+      "en": "Opening balance",
+      "bn": "মাসের শুরুতে বাকি",
+      "status": "spec"
+    },
+    "sched.interest": {
+      "en": "Interest",
+      "bn": "সুদ",
+      "status": "spec"
+    },
+    "sched.principal": {
+      "en": "Principal repaid",
+      "bn": "মূল টাকা শোধ",
+      "status": "spec"
+    },
+    "sched.installment": {
+      "en": "Installment",
+      "bn": "কিস্তি",
+      "status": "spec"
+    },
+    "sched.closing": {
+      "en": "Closing balance",
+      "bn": "মাস শেষে বাকি",
+      "status": "spec"
+    },
+    "sched.showAll": {
+      "en": "Show all months",
+      "bn": "সব মাস দেখুন",
+      "status": "spec"
+    },
+    "sched.earlyPayoff": {
+      "en": "Rounding up finishes this loan in {n} installments",
+      "bn": "উপরে রাউন্ড করায় লোন {n}টি কিস্তিতেই শেষ হবে",
+      "status": "spec"
+    },
+    "action.saveAsLoan": {
+      "en": "Save as my loan",
+      "bn": "আমার লোন হিসেবে রাখুন",
+      "status": "spec"
+    },
+    "loans.add": {
+      "en": "Add loan",
+      "bn": "লোন যোগ করুন",
+      "status": "spec"
+    },
+    "loans.emptyTitle": {
+      "en": "No loans yet",
+      "bn": "এখনো কোনো লোন যোগ করা হয়নি",
+      "status": "spec"
+    },
+    "loans.emptyBody": {
+      "en": "Add a loan to see every month's installment, interest and remaining balance.",
+      "bn": "লোন যোগ করুন, প্রতি মাসের কিস্তি, সুদ আর বাকি টাকা দেখুন।",
+      "status": "spec"
+    },
+    "loans.thisMonthTotal.one": {
+      "en": "This month's installments {amount} across 1 loan",
+      "bn": "এই মাসে মোট কিস্তি {amount} (১টি লোন)",
+      "status": "spec"
+    },
+    "loans.thisMonthTotal.other": {
+      "en": "This month's installments {amount} across {count} loans",
+      "bn": "এই মাসে মোট কিস্তি {amount} ({count}টি লোন)",
+      "status": "spec"
+    },
+    "loans.totalRemaining": {
+      "en": "Total remaining principal",
+      "bn": "মোট বাকি মূল টাকা",
+      "status": "spec"
+    },
+    "form.bankName": {
+      "en": "Bank name",
+      "bn": "ব্যাংকের নাম",
+      "status": "spec"
+    },
+    "form.nickname": {
+      "en": "Loan name (optional)",
+      "bn": "লোনের নাম (না দিলেও চলবে)",
+      "status": "spec"
+    },
+    "form.firstMonth": {
+      "en": "First installment month",
+      "bn": "প্রথম কিস্তির মাস",
+      "status": "spec"
+    },
+    "form.addDeductions": {
+      "en": "Add deductions (optional)",
+      "bn": "কেটে রাখা টাকা যোগ করুন (না দিলেও চলবে)",
+      "status": "spec"
+    },
+    "form.colour": {
+      "en": "Card colour",
+      "bn": "কার্ডের রং",
+      "status": "spec"
+    },
+    "form.save": {
+      "en": "Save loan",
+      "bn": "লোন সেভ করুন",
+      "status": "spec"
+    },
+    "form.saved": {
+      "en": "Loan saved",
+      "bn": "লোন সেভ হয়েছে",
+      "status": "spec"
+    },
+    "form.editTitle": {
+      "en": "Edit loan",
+      "bn": "লোন এডিট করুন",
+      "status": "spec"
+    },
+    "detail.done": {
+      "en": "installments done",
+      "bn": "কিস্তি শেষ",
+      "status": "spec"
+    },
+    "detail.installmentOf": {
+      "en": "Installment {k} of {n}",
+      "bn": "{n}টির মধ্যে {k} নম্বর কিস্তি",
+      "status": "spec"
+    },
+    "detail.thisInstallment": {
+      "en": "This month's installment",
+      "bn": "এই মাসের কিস্তি",
+      "status": "spec"
+    },
+    "detail.interestPart": {
+      "en": "Interest",
+      "bn": "সুদ",
+      "status": "spec"
+    },
+    "detail.principalPart": {
+      "en": "Principal",
+      "bn": "মূল টাকা",
+      "status": "spec"
+    },
+    "detail.remainingPrincipal": {
+      "en": "Remaining principal after this month",
+      "bn": "এই মাসের পর বাকি মূল টাকা",
+      "status": "spec"
+    },
+    "detail.stillToPay": {
+      "en": "Still to pay",
+      "bn": "সামনে আরও দিতে হবে",
+      "status": "spec"
+    },
+    "detail.paidSoFar": {
+      "en": "Paid so far",
+      "bn": "এ পর্যন্ত দেওয়া হয়েছে",
+      "status": "spec"
+    },
+    "detail.interestPaidSoFar": {
+      "en": "Interest paid so far",
+      "bn": "এ পর্যন্ত সুদ দেওয়া হয়েছে",
+      "status": "spec"
+    },
+    "detail.installmentsLeft": {
+      "en": "Installments left",
+      "bn": "বাকি কিস্তি",
+      "status": "spec"
+    },
+    "detail.lastMonth": {
+      "en": "Last installment month",
+      "bn": "শেষ কিস্তির মাস",
+      "status": "spec"
+    },
+    "detail.overview": {
+      "en": "Loan overview",
+      "bn": "লোনের সারসংক্ষেপ",
+      "status": "spec"
+    },
+    "cal.thisMonth": {
+      "en": "This month",
+      "bn": "এই মাস",
+      "status": "spec"
+    },
+    "status.paid": {
+      "en": "Paid",
+      "bn": "শোধ হয়েছে",
+      "status": "spec"
+    },
+    "status.due": {
+      "en": "This month",
+      "bn": "এই মাসে দিতে হবে",
+      "status": "spec"
+    },
+    "status.upcoming": {
+      "en": "Upcoming",
+      "bn": "সামনে আসছে",
+      "status": "spec"
+    },
+    "status.notStarted": {
+      "en": "Starts in {n} months",
+      "bn": "{n} মাস পরে শুরু",
+      "status": "spec"
+    },
+    "status.completed": {
+      "en": "All installments done",
+      "bn": "সব কিস্তি শেষ",
+      "status": "spec"
+    },
+    "status.assumption": {
+      "en": "Past months are shown as paid, assuming every installment was paid on time.",
+      "bn": "সময়মতো কিস্তি দেওয়া ধরে আগের মাসগুলো শোধ দেখানো হচ্ছে।",
+      "status": "spec"
+    },
+    "menu.edit": {
+      "en": "Edit",
+      "bn": "এডিট করুন",
+      "status": "spec"
+    },
+    "menu.delete": {
+      "en": "Delete",
+      "bn": "মুছে ফেলুন",
+      "status": "spec"
+    },
+    "delete.confirm": {
+      "en": "Delete this loan?",
+      "bn": "এই লোন মুছে ফেলবেন?",
+      "status": "spec"
+    },
+    "delete.done": {
+      "en": "Loan deleted",
+      "bn": "লোন মুছে ফেলা হয়েছে",
+      "status": "spec"
+    },
+    "action.undo": {
+      "en": "Undo",
+      "bn": "ফিরিয়ে আনুন",
+      "status": "spec"
+    },
+    "action.done": {
+      "en": "Done",
+      "bn": "ঠিক আছে",
+      "status": "spec"
+    },
+    "action.cancel": {
+      "en": "Cancel",
+      "bn": "বাতিল",
+      "status": "spec"
+    },
+    "settings.language": {
+      "en": "Language",
+      "bn": "ভাষা",
+      "status": "spec"
+    },
+    "settings.theme": {
+      "en": "Theme",
+      "bn": "থিম",
+      "status": "spec"
+    },
+    "settings.themeSystem": {
+      "en": "Same as phone",
+      "bn": "ফোনের মতো",
+      "status": "spec"
+    },
+    "settings.themeLight": {
+      "en": "Light",
+      "bn": "লাইট",
+      "status": "spec"
+    },
+    "settings.themeDark": {
+      "en": "Dark",
+      "bn": "ডার্ক",
+      "status": "spec"
+    },
+    "settings.bengaliDigits": {
+      "en": "Numbers in Bengali",
+      "bn": "সংখ্যা বাংলায় দেখান",
+      "status": "spec"
+    },
+    "settings.sound": {
+      "en": "Sound",
+      "bn": "সাউন্ড",
+      "status": "spec"
+    },
+    "settings.vibration": {
+      "en": "Vibration",
+      "bn": "ভাইব্রেশন",
+      "status": "spec"
+    },
+    "settings.clearAll": {
+      "en": "Delete all saved loans",
+      "bn": "সব সেভ করা লোন মুছুন",
+      "status": "spec"
+    },
+    "settings.about": {
+      "en": "About",
+      "bn": "অ্যাপ সম্পর্কে",
+      "status": "spec"
+    },
+    "settings.disclaimer": {
+      "en": "This app gives estimates. Confirm final figures with your bank.",
+      "bn": "এই অ্যাপ আনুমানিক হিসাব দেয়। চূড়ান্ত হিসাব ব্যাংক থেকে মিলিয়ে নিন।",
+      "status": "spec"
+    },
+    "err.amountEmpty": {
+      "en": "Enter the loan amount",
+      "bn": "লোনের পরিমাণ লিখুন",
+      "status": "spec"
+    },
+    "err.amountZero": {
+      "en": "Loan amount must be more than 0",
+      "bn": "লোনের পরিমাণ ০-এর বেশি হতে হবে",
+      "status": "spec"
+    },
+    "err.amountMax": {
+      "en": "Amount is too large",
+      "bn": "পরিমাণ অনেক বেশি",
+      "status": "spec"
+    },
+    "err.rateEmpty": {
+      "en": "Enter the interest rate",
+      "bn": "সুদের হার লিখুন",
+      "status": "spec"
+    },
+    "err.rateRange": {
+      "en": "Rate must be between 0% and 50%",
+      "bn": "সুদের হার ০% থেকে ৫০%-এর মধ্যে হতে হবে",
+      "status": "spec"
+    },
+    "err.durationRange": {
+      "en": "Duration must be 1 month to 30 years",
+      "bn": "মেয়াদ ১ মাস থেকে ৩০ বছরের মধ্যে হতে হবে",
+      "status": "spec"
+    },
+    "err.notANumber": {
+      "en": "Enter a valid number",
+      "bn": "সঠিক সংখ্যা লিখুন",
+      "status": "spec"
+    },
+    "err.deductionsExceed": {
+      "en": "Deductions are more than the loan. You would get nothing and owe {amount}.",
+      "bn": "কেটে রাখা টাকা লোনের চেয়ে বেশি। হাতে কিছুই পাবেন না, উল্টো {amount} দিতে হবে।",
+      "status": "spec"
+    },
+    "err.bankNameEmpty": {
+      "en": "Enter the bank name",
+      "bn": "ব্যাংকের নাম লিখুন",
+      "status": "spec"
+    },
+    "loan.progressOf": {
+      "en": "{k} of {n}",
+      "bn": "{n}টির মধ্যে {k}",
+      "status": "added",
+      "usedIn": "§9.2 pattern, used on loan cards and StitchProgress"
+    },
+    "card.remaining": {
+      "en": "Remaining principal",
+      "bn": "বাকি মূল টাকা",
+      "status": "added",
+      "usedIn": "LoanCard and S7 hero"
+    },
+    "card.next": {
+      "en": "Next installment",
+      "bn": "পরের কিস্তি",
+      "status": "added",
+      "usedIn": "LoanCard"
+    },
+    "ded.cashShort": {
+      "en": "Cash in hand",
+      "bn": "হাতে পাবেন",
+      "status": "added",
+      "usedIn": "StackedBar legend"
+    },
+    "formula.yourNumbers": {
+      "en": "With your numbers",
+      "bn": "আপনার সংখ্যা দিয়ে",
+      "status": "added",
+      "usedIn": "Formula accordion subheading"
+    },
+    "formula.ceiling": {
+      "en": "Rounded up to the next taka",
+      "bn": "পরের পূর্ণ টাকায় উপরে রাউন্ড",
+      "status": "added",
+      "usedIn": "Formula accordion ceiling box"
+    },
+    "form.chooseMonth": {
+      "en": "Choose a month",
+      "bn": "মাস বেছে নিন",
+      "status": "added",
+      "usedIn": "MonthField placeholder"
+    },
+    "form.recentBanks": {
+      "en": "Banks you used before",
+      "bn": "আগে লেখা ব্যাংক",
+      "status": "added",
+      "usedIn": "Bank-name suggestions heading"
+    },
+    "form.nicknamePlaceholder": {
+      "en": "For example, Home loan",
+      "bn": "যেমন: বাড়ির লোন",
+      "status": "added",
+      "usedIn": "Nickname placeholder"
+    },
+    "form.amountHelp": {
+      "en": "Commas are added for you",
+      "bn": "কমা নিজে থেকে বসবে",
+      "status": "added",
+      "usedIn": "AmountInput helper text"
+    },
+    "err.firstMonthEmpty": {
+      "en": "Choose the first installment month",
+      "bn": "প্রথম কিস্তির মাস বেছে নিন",
+      "status": "added",
+      "usedIn": "S5 validation (spec lists the field as required)"
+    },
+    "onboarding.changeLater": {
+      "en": "You can change this later in Settings.",
+      "bn": "পরে সেটিংস থেকে বদলাতে পারবেন।",
+      "status": "added",
+      "usedIn": "S2 helper line"
+    },
+    "settings.version": {
+      "en": "Version {version}",
+      "bn": "সংস্করণ {version}",
+      "status": "added",
+      "usedIn": "About card"
+    },
+    "clear.confirm1.title": {
+      "en": "Delete all saved loans?",
+      "bn": "সব সেভ করা লোন মুছে ফেলবেন?",
+      "status": "added",
+      "usedIn": "S8 first confirmation"
+    },
+    "clear.confirm1.body": {
+      "en": "All {count} loans will be removed from this phone.",
+      "bn": "এই ফোন থেকে {count}টি লোনই মুছে যাবে।",
+      "status": "added",
+      "usedIn": "S8 first confirmation"
+    },
+    "clear.confirm1.yes": {
+      "en": "Delete",
+      "bn": "মুছে ফেলুন",
+      "status": "added",
+      "usedIn": "S8 first confirmation"
+    },
+    "clear.confirm2.title": {
+      "en": "Are you sure?",
+      "bn": "আপনি নিশ্চিত?",
+      "status": "added",
+      "usedIn": "S8 second confirmation"
+    },
+    "clear.confirm2.body": {
+      "en": "This can't be undone.",
+      "bn": "এটা আর ফেরানো যাবে না।",
+      "status": "added",
+      "usedIn": "S8 second confirmation"
+    },
+    "clear.confirm2.yes": {
+      "en": "Delete all",
+      "bn": "সব মুছে ফেলুন",
+      "status": "added",
+      "usedIn": "S8 second confirmation"
+    },
+    "clear.step": {
+      "en": "Step {k} of 2",
+      "bn": "ধাপ {k}/২",
+      "status": "added",
+      "usedIn": "S8 confirmations"
+    },
+    "a11y.back": {
+      "en": "Back",
+      "bn": "ফিরে যান",
+      "status": "added",
+      "usedIn": "Icon button label"
+    },
+    "a11y.close": {
+      "en": "Close",
+      "bn": "বন্ধ করুন",
+      "status": "added",
+      "usedIn": "Icon button label"
+    },
+    "a11y.more": {
+      "en": "More options",
+      "bn": "আরও অপশন",
+      "status": "added",
+      "usedIn": "S7 ⋯ button label"
+    },
+    "a11y.prevYear": {
+      "en": "Previous year",
+      "bn": "আগের বছর",
+      "status": "added",
+      "usedIn": "MonthGrid arrow"
+    },
+    "a11y.nextYear": {
+      "en": "Next year",
+      "bn": "পরের বছর",
+      "status": "added",
+      "usedIn": "MonthGrid arrow"
+    },
+    "a11y.outsideLoan": {
+      "en": "Outside the loan",
+      "bn": "লোনের বাইরে",
+      "status": "added",
+      "usedIn": "MonthCell outside state label (DS board legend)"
+    }
+  }
+}

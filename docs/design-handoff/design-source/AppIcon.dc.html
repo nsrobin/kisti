@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kisti app icon</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..125,100..800&amp;family=Anek+Latin:wdth,wght@75..125,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6D3FE0}a:hover{color:#1A1640}
+</style>
+</helmet>
+<div style="width: 1280px; min-height: 100vh; box-sizing: border-box; padding: 56px 64px; background: #F5F4FF; color: #1A1640; font-family: 'Anek Latin','Anek Bangla',sans-serif; display: flex; flex-direction: column; gap: 40px">
+  <section style="display: flex; flex-direction: column; gap: 20px">
+    <h2 style="margin: 0; font-size: 32px; line-height: 1.2; font-weight: 700; font-stretch: 112.5%">iOS icon</h2>
+    <div style="display: flex; align-items: flex-end; gap: 48px">
+      <sc-for list="{{ios}}" as="ic" hint-placeholder-count="4">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 12px">
+          <svg width="{{ic.s}}" height="{{ic.s}}" viewBox="0 0 100 100" role="img" aria-label="Kisti icon {{ic.label}}">
+            <defs><linearGradient id="{{ic.g}}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2EE6D0"></stop><stop offset="0.52" stop-color="#A78BFA"></stop><stop offset="1" stop-color="#FF5C9A"></stop></linearGradient></defs>
+            <rect width="100" height="100" rx="22.4" fill="#120F2E"></rect>
+            <circle cx="50" cy="50" r="34" fill="none" stroke="url(#{{ic.g}})" stroke-width="13" stroke-linecap="round" stroke-dasharray="7.8 5.55" opacity="0.16"></circle>
+            <circle cx="50" cy="50" r="34" fill="none" stroke="url(#{{ic.g}})" stroke-width="6.5" stroke-linecap="round" stroke-dasharray="7.8 5.55"></circle>
+            <text x="50" y="64" text-anchor="middle" font-family="Anek Bangla, sans-serif" font-size="46" font-weight="800" fill="#F4F2FF">৳</text>
+          </svg>
+          <span style="font-size: 15px; color: #4B4680">{{ic.label}}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  <section style="display: flex; flex-direction: column; gap: 20px">
+    <h2 style="margin: 0; font-size: 32px; line-height: 1.2; font-weight: 700; font-stretch: 112.5%">Android adaptive icon (108 dp canvas, 66 dp safe zone)</h2>
+    <div style="display: flex; align-items: flex-start; gap: 36px">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px">
+        <div style="width: 200px; height: 200px; border-radius: 12px; background-color: #FFFFFF; background-image: linear-gradient(45deg, #ECEAFB 25%, transparent 25%, transparent 75%, #ECEAFB 75%), linear-gradient(45deg, #ECEAFB 25%, transparent 25%, transparent 75%, #ECEAFB 75%); background-size: 20px 20px; background-position: 0 0, 10px 10px">
+          <svg width="200" height="200" viewBox="0 0 108 108" role="img" aria-label="Foreground layer">
+            <defs><linearGradient id="afg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2EE6D0"></stop><stop offset="0.52" stop-color="#A78BFA"></stop><stop offset="1" stop-color="#FF5C9A"></stop></linearGradient></defs>
+            <circle cx="54" cy="54" r="33" fill="none" stroke="#7C4DFF" stroke-width="0.6" stroke-dasharray="2 2"></circle>
+            <circle cx="54" cy="54" r="25" fill="none" stroke="url(#afg)" stroke-width="5" stroke-linecap="round" stroke-dasharray="5.8 4.02"></circle>
+            <text x="54" y="65" text-anchor="middle" font-family="Anek Bangla, sans-serif" font-size="34" font-weight="800" fill="#F4F2FF" stroke="#120F2E" stroke-width="0.4">৳</text>
+          </svg>
+        </div>
+        <span style="font-size: 15px; color: #4B4680">Foreground (dashed: safe zone)</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px">
+        <div style="width: 200px; height: 200px; border-radius: 12px; background: #120F2E"></div>
+        <span style="font-size: 15px; color: #4B4680">Background #120F2E</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px">
+        <div style="width: 200px; height: 200px; border-radius: 12px; background: #3A3850">
+          <svg width="200" height="200" viewBox="0 0 108 108" role="img" aria-label="Monochrome layer">
+            <circle cx="54" cy="54" r="25" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-dasharray="5.8 4.02"></circle>
+            <text x="54" y="65" text-anchor="middle" font-family="Anek Bangla, sans-serif" font-size="34" font-weight="800" fill="#FFFFFF">৳</text>
+          </svg>
+        </div>
+        <span style="font-size: 15px; color: #4B4680">Monochrome (themed icons)</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px; padding-left: 12px">
+        <span style="font-size: 15px; color: #4B4680">Launcher masks at 96 and 48 px</span>
+        <div style="display: flex; gap: 20px; align-items: flex-end">
+          <sc-for list="{{masks}}" as="m" hint-placeholder-count="4">
+            <div style="width: {{m.s}}px; height: {{m.s}}px; border-radius: {{m.r}}; overflow: hidden; background: {{m.bg}}">
+              <svg width="{{m.s}}" height="{{m.s}}" viewBox="18 18 72 72" role="img" aria-label="Masked icon">
+                <defs><linearGradient id="{{m.g}}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2EE6D0"></stop><stop offset="0.52" stop-color="#A78BFA"></stop><stop offset="1" stop-color="#FF5C9A"></stop></linearGradient></defs>
+                <circle cx="54" cy="54" r="25" fill="none" stroke="{{m.stroke}}" stroke-width="5" stroke-linecap="round" stroke-dasharray="5.8 4.02"></circle>
+                <text x="54" y="65" text-anchor="middle" font-family="Anek Bangla, sans-serif" font-size="34" font-weight="800" fill="{{m.fg}}">৳</text>
+              </svg>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+  <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4B4680; max-width: 980px">16 running stitches around a bold ৳. Export: iOS 1024 px PNG without alpha; Android foreground and monochrome as vector drawables with the ৳ converted to outlines.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var ios=[[320,'1024 px (shown at 320)'],[180,'180 px'],[96,'96 px'],[48,'48 px']].map(function(x,i){return {s:x[0],label:x[1],g:'ig'+i};});
+    var masks=[[96,'50%','#120F2E','url(#mk0)','#F4F2FF'],[96,'28%','#120F2E','url(#mk1)','#F4F2FF'],[48,'50%','#120F2E','url(#mk2)','#F4F2FF'],[48,'50%','#2E2C44','#E8E6F5','#E8E6F5']].map(function(x,i){return {s:x[0],r:x[1],bg:x[2],stroke:x[3],fg:x[4],g:'mk'+i};});
+    return { ios: ios, masks: masks };
+  }
+}
+</script>
+</body>
+</html>

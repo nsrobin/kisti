@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Settings</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..125,100..800&amp;family=Anek+Latin:wdth,wght@75..125,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; min-height: 100vh; box-sizing: border-box; position: relative; overflow: hidden; background: {{t.base}}; color: {{t.tp}}; font-family: {{f}}; display: flex; flex-direction: column">
+  <main style="flex: 1 0 auto; padding: 52px 20px 110px; display: flex; flex-direction: column; gap: 14px">
+    <h1 style="margin: 0 0 4px; font-size: 28px; line-height: {{ty.ti}}; font-weight: 700; font-stretch: 112.5%">{{s.tabSettings}}</h1>
+
+    <section style="border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 14px 16px; display: flex; flex-direction: column; gap: 14px">
+      <sc-for list="{{segs}}" as="sg" hint-placeholder-count="2">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span id="{{sg.id}}" style="display: flex; align-items: center; gap: 10px; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; font-weight: 600"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{t.pri}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{sg.icon}}"></path></svg>{{sg.label}}</span>
+          <div role="radiogroup" aria-labelledby="{{sg.id}}" style="display: flex; padding: 3px; border-radius: 999px; background: {{t.sunken}}; border: 1px solid {{t.line}}">
+            <sc-for list="{{sg.opts}}" as="o" hint-placeholder-count="3">
+              <button type="button" role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="flex: 1 1 0; min-height: 44px; padding: 0 8px; border-radius: 999px; border: 0; background: {{o.bg}}; color: {{o.c}}; box-shadow: {{o.sh}}; font-family: {{o.font}}; font-size: {{ty.caS}}px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px">
+                <sc-if value="{{o.icon}}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{o.icon}}"></path></svg></sc-if>{{o.label}}
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+      <sc-if value="{{showDigits}}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; align-items: center; gap: 10px; min-height: 52px; border-top: 1px solid {{t.line}}; padding-top: 6px">
+          <span style="width: 22px; text-align: center; font-size: 17px; font-weight: 700; color: {{t.pri}}" aria-hidden="true">১২</span>
+          <span id="dgLbl" style="flex: 1 1 auto; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; font-weight: 600">{{s.bengaliDigits}}</span>
+          <button type="button" role="switch" aria-labelledby="dgLbl" aria-checked="{{sw.dg.on}}" onClick="{{sw.dg.toggle}}" style="width: 56px; height: 48px; border: 0; background: transparent; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer"><span style="width: 52px; height: 32px; border-radius: 999px; background: {{sw.dg.track}}; display: flex; align-items: center; padding: 3px; box-sizing: border-box; justify-content: {{sw.dg.jc}}"><span style="width: 26px; height: 26px; border-radius: 999px; background: {{sw.dg.knob}}"></span></span></button>
+        </div>
+      </sc-if>
+    </section>
+
+    <section style="border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 4px 16px; display: flex; flex-direction: column">
+      <sc-for list="{{switches}}" as="x" hint-placeholder-count="2">
+        <div style="display: flex; align-items: center; gap: 10px; min-height: 56px; border-top: {{x.bt}}">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{t.pri}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{x.icon}}"></path></svg>
+          <span id="{{x.id}}" style="flex: 1 1 auto; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; font-weight: 600">{{x.label}}</span>
+          <button type="button" role="switch" aria-labelledby="{{x.id}}" aria-checked="{{x.on}}" onClick="{{x.toggle}}" style="width: 56px; height: 48px; border: 0; background: transparent; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer"><span style="width: 52px; height: 32px; border-radius: 999px; background: {{x.track}}; display: flex; align-items: center; padding: 3px; box-sizing: border-box; justify-content: {{x.jc}}"><span style="width: 26px; height: 26px; border-radius: 999px; background: {{x.knob}}"></span></span></button>
+        </div>
+      </sc-for>
+    </section>
+
+    <a href="S8Confirm.dc.html" style="min-height: 56px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 0 16px; display: flex; align-items: center; gap: 10px; color: {{t.err}}; text-decoration: none; font-size: {{ty.boS}}px; font-weight: 600">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.trash}}"></path></svg>
+      <span style="flex: 1 1 auto">{{s.clearAll}}</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{t.ts}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+    </a>
+
+    <section aria-label="{{s.about}}" style="border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+        <span style="display: flex; align-items: center; gap: 10px; font-size: {{ty.boS}}px; font-weight: 600"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{t.pri}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.info}}"></path></svg>{{s.about}}</span>
+        <span style="font-size: {{ty.caS}}px; color: {{t.ts}}">{{s.version}}</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 10px">
+        <span style="font-family: 'Anek Bangla',sans-serif; font-size: 30px; line-height: 1.3; font-weight: 800; font-stretch: 125%">কিস্তি</span>
+        <span style="font-family: 'Anek Latin',sans-serif; font-size: 20px; line-height: 1.1; font-weight: 800; font-stretch: 125%; color: {{t.ts}}">Kisti</span>
+      </div>
+      <p style="margin: 0; font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.tm}}">{{s.disclaimer}}</p>
+    </section>
+  </main>
+
+  <nav aria-label="Tabs" style="position: absolute; left: 0; right: 0; bottom: 0; background: {{t.glass}}; border-top: 1px solid {{t.line}}; display: flex; padding: 6px 8px 20px">
+    <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="3">
+      <a href="{{tb.href}}" aria-current="{{tb.cur}}" style="flex: 1 1 0; min-height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none; color: {{tb.c}}; position: relative">
+        <span style="position: absolute; top: -6px; width: 36px; height: 3px; border-radius: 999px; background: {{tb.ind}}"></span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{tb.ic}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{tb.d}}" fill="{{tb.fill}}" fill-opacity="0.3"></path><path d="{{tb.d}}"></path></svg>
+        <span style="font-size: 13px; line-height: 1.4; font-weight: {{tb.w}}">{{tb.label}}</span>
+      </a>
+    </sc-for>
+  </nav>
+
+  <sc-if value="{{dlg}}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; background: {{t.scrim}}; display: flex; align-items: center; justify-content: center; padding: 24px">
+      <div role="alertdialog" aria-labelledby="clrTitle" style="width: 100%; border-radius: 28px; background: {{t.raised}}; border: 1px solid {{t.line}}; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; box-shadow: 0 16px 40px rgba(8,6,24,0.4)">
+        <span style="width: 56px; height: 56px; border-radius: 999px; background: {{t.err10}}; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="{{t.err}}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{dlg.icon}}"></path></svg></span>
+        <h2 id="clrTitle" style="margin: 0; font-size: {{ty.tiS}}px; line-height: {{ty.ti}}; font-weight: 600; text-align: center">{{dlg.title}}</h2>
+        <p style="margin: 0; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; color: {{t.ts}}; text-align: center">{{dlg.body}}</p>
+        <sc-if value="{{dlg.step}}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; color: {{t.tm}}">{{dlg.step}}</span></sc-if>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; width: 100%; padding-top: 8px">
+          <a href="S8Settings.dc.html" style="min-height: 52px; border-radius: 999px; border: 1.5px solid {{t.line}}; color: {{t.tp}}; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: {{ty.boS}}px; font-weight: 600">{{s.cancel}}</a>
+          <a href="{{dlg.next}}" style="min-height: 52px; border-radius: 999px; background: {{t.err}}; color: {{t.onEmi}}; text-decoration: none; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 8px; font-size: {{ty.boS}}px; font-weight: 600">{{dlg.yes}}</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"dark"},"lang":{"editor":"enum","options":["bn","en"],"default":"bn"},"variant":{"editor":"enum","options":["default","confirm","confirm2"],"default":"default"},"$preview":{"width":390,"height":900}}'>
+var ICO={calculator:'M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z M8 6.5h8v3.5H8z M8.5 14h.01 M12 14h.01 M15.5 14h.01 M8.5 17.5h.01 M12 17.5h.01 M15.5 17.5h.01',bank:'M3 9h18L12 3.5z M5 9v8 M9.7 9v8 M14.3 9v8 M19 9v8 M3.5 17h17 M2 20.5h20',gear:'M12 8.8a3.2 3.2 0 1 0 0 6.4a3.2 3.2 0 1 0 0-6.4z M12 5.2a6.8 6.8 0 1 0 0 13.6a6.8 6.8 0 1 0 0-13.6z M12 2.5v2.7 M12 18.8v2.7 M2.5 12h2.7 M18.8 12h2.7 M5.3 5.3l1.9 1.9 M16.8 16.8l1.9 1.9 M5.3 18.7l1.9-1.9 M16.8 7.2l1.9-1.9',translate:'M3 5.5h9 M7.5 3.5v2 M10.5 5.5c-1 4-3.6 6.9-7 8.5 M5.5 8.5c1 2.2 2.8 4 5 5 M12.5 20.5l4-9 4 9 M13.8 17.5h5.4',sun:'M12 7.5a4.5 4.5 0 1 0 0 9a4.5 4.5 0 1 0 0-9z M12 2.5v2 M12 19.5v2 M2.5 12h2 M19.5 12h2 M5.3 5.3l1.4 1.4 M17.3 17.3l1.4 1.4 M5.3 18.7l1.4-1.4 M17.3 6.7l1.4-1.4',moon:'M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z',phone:'M8.5 3.5h7a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z M11 17.5h2',speakerHigh:'M4 9h3.5L12 5v14l-4.5-4H4z M15.5 9.5a3.5 3.5 0 0 1 0 5 M18.5 7a7 7 0 0 1 0 10',speakerSlash:'M4 9h3.5L12 5v14l-4.5-4H4z M16 9.5l5 5 M21 9.5l-5 5',vibrate:'M8.5 3.5h7a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z M4.5 8v8 M19.5 8v8 M1.8 10v4 M22.2 10v4',trash:'M4 6.5h16 M9.5 3.5h5 M6 6.5l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13 M10 10.5v6 M14 10.5v6',warning:'M12 3.5 2.5 20h19z M12 10v4 M12 17h.01',info:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M12 11v5 M12 7.8h.01'};
+var TOK={dark:{base:'#120F2E',raised:'#1B1744',sunken:'#0C0A21',line:'#2C2760',tp:'#F4F2FF',ts:'#B7B2E0',tm:'#8C86BC',emi:'#2EE6D0',pri:'#A78BFA',err:'#FF6B6B',a1:'#2EE6D0',a2:'#A78BFA',a3:'#FF5C9A',glass:'rgba(27,23,68,0.86)',onEmi:'#120F2E',sh:'none',scrim:'rgba(8,6,24,0.72)',err10:'rgba(255,107,107,0.10)',knobOff:'#B7B2E0'},light:{base:'#F5F4FF',raised:'#FFFFFF',sunken:'#ECEAFB',line:'#DDD9F5',tp:'#1A1640',ts:'#4B4680',tm:'#625E8F',emi:'#087A6F',pri:'#6D3FE0',err:'#C62828',a1:'#0FB5A3',a2:'#7C4DFF',a3:'#E83E8C',glass:'rgba(255,255,255,0.88)',onEmi:'#FFFFFF',sh:'0 4px 16px rgba(46,32,140,0.10)',scrim:'rgba(26,22,64,0.45)',err10:'rgba(198,40,40,0.10)',knobOff:'#FFFFFF'}};
+var FBN="'Anek Bangla','Anek Latin',system-ui,sans-serif",FEN="'Anek Latin','Anek Bangla',system-ui,sans-serif";
+function TY(bn){return bn?{ti:1.45,tiS:23,bo:1.6,boS:16,ca:1.55,caS:14}:{ti:1.3,tiS:22,bo:1.45,boS:15,ca:1.4,caS:13};}
+var STR={tabCalc:['Calculator','ক্যালকুলেটর'],tabLoans:['My Loans','আমার লোন'],tabSettings:['Settings','সেটিংস'],language:['Language','ভাষা'],theme:['Theme','থিম'],themeSystem:['Same as phone','ফোনের মতো'],themeLight:['Light','লাইট'],themeDark:['Dark','ডার্ক'],bengaliDigits:['Numbers in Bengali','সংখ্যা বাংলায় দেখান'],sound:['Sound','সাউন্ড'],vibration:['Vibration','ভাইব্রেশন'],clearAll:['Delete all saved loans','সব সেভ করা লোন মুছুন'],about:['About','অ্যাপ সম্পর্কে'],version:['Version 1.0.0','সংস্করণ ১.০.০'],disclaimer:['This app gives estimates. Confirm final figures with your bank.','এই অ্যাপ আনুমানিক হিসাব দেয়। চূড়ান্ত হিসাব ব্যাংক থেকে মিলিয়ে নিন।'],cancel:['Cancel','বাতিল'],clear1Title:['Delete all saved loans?','সব সেভ করা লোন মুছে ফেলবেন?'],clear1Body:['All 3 loans will be removed from this phone.','এই ফোন থেকে ৩টি লোনই মুছে যাবে।'],clear1Yes:['Delete','মুছে ফেলুন'],clear2Title:['Are you sure?','আপনি নিশ্চিত?'],clear2Body:["This can't be undone.",'এটা আর ফেরানো যাবে না।'],clear2Yes:['Delete all','সব মুছে ফেলুন'],step1:['Step 1 of 2','ধাপ ১/২'],step2:['Step 2 of 2','ধাপ ২/২']};
+function S(lg){var i=lg==='en'?0:1,o={};for(var k in STR)o[k]=STR[k][i];return o;}
+class Component extends DCLogic {
+  constructor(p){super(p);this.state={};}
+  renderVals() {
+    var self=this,pr=this.props,st=this.state||{};
+    var variant=pr.variant||'default';
+    var lg=st.lang||(pr.lang==='en'?'en':'bn'),bn=lg==='bn';
+    var themeSel=st.theme||'system';
+    var phone=pr.theme==='light'?'light':'dark';
+    var mode=themeSel==='system'?phone:themeSel;
+    var t=Object.assign({mode:mode},TOK[mode]);t.aur='linear-gradient(120deg,'+t.a1+' 0%,'+t.a2+' 52%,'+t.a3+' 100%)';
+    var ty=TY(bn),s=S(lg);
+    var dg=st.dg!==undefined?st.dg:true,snd=st.snd!==undefined?st.snd:true,vib=st.vib!==undefined?st.vib:true;
+    function opt(on,label,pick,icon,font){return {on:on?'true':'false',label:label,pick:pick,icon:icon||'',font:font||'inherit',bg:on?t.raised:'transparent',c:on?t.tp:t.ts,sh:on?(mode==='dark'?'0 0 0 1px '+t.line:'0 2px 8px rgba(46,32,140,0.12)'):'none'};}
+    var segs=[
+      {id:'lgL',label:s.language,icon:ICO.translate,opts:[opt(lg==='bn','বাংলা',function(){self.setState({lang:'bn'});},'',FBN),opt(lg==='en','English',function(){self.setState({lang:'en'});},'',FEN)]},
+      {id:'thL',label:s.theme,icon:mode==='dark'?ICO.moon:ICO.sun,opts:[opt(themeSel==='system',s.themeSystem,function(){self.setState({theme:'system'});},ICO.phone),opt(themeSel==='light',s.themeLight,function(){self.setState({theme:'light'});},ICO.sun),opt(themeSel==='dark',s.themeDark,function(){self.setState({theme:'dark'});},ICO.moon)]}
+    ];
+    function sw(on,toggle){return {on:on?'true':'false',toggle:toggle,track:on?t.emi:t.line,knob:on?t.onEmi:t.knobOff,jc:on?'flex-end':'flex-start'};}
+    var switches=[
+      Object.assign({id:'sndL',label:s.sound,icon:snd?ICO.speakerHigh:ICO.speakerSlash,bt:'none'},sw(snd,function(){self.setState({snd:!snd});})),
+      Object.assign({id:'vibL',label:s.vibration,icon:ICO.vibrate,bt:'1px solid '+t.line},sw(vib,function(){self.setState({vib:!vib});}))
+    ];
+    var dlg=null;
+    if(variant==='confirm')dlg={title:s.clear1Title,body:s.clear1Body,yes:s.clear1Yes,next:'S8Confirm2.dc.html',icon:ICO.trash,step:s.step1};
+    if(variant==='confirm2')dlg={title:s.clear2Title,body:s.clear2Body,yes:s.clear2Yes,next:'S4Empty.dc.html',icon:ICO.warning,step:s.step2};
+    var tabs=[['S3Calculator.dc.html',s.tabCalc,ICO.calculator,false],['S4Loans.dc.html',s.tabLoans,ICO.bank,false],['S8Settings.dc.html',s.tabSettings,ICO.gear,true]].map(function(x){return {href:x[0],label:x[1],d:x[2],cur:x[3]?'page':'false',c:x[3]?t.tp:t.ts,ic:x[3]?t.emi:t.ts,fill:x[3]?t.emi:'none',w:x[3]?600:500,ind:x[3]?t.aur:'transparent'};});
+    return {t:t,ty:ty,s:s,ic:ICO,f:bn?FBN:FEN,segs:segs,showDigits:bn,sw:{dg:sw(dg,function(){self.setState({dg:!dg});})},switches:switches,dlg:dlg,tabs:tabs};
+  }
+}
+</script>
+</body>
+</html>

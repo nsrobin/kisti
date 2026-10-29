@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Loan detail</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..125,100..800&amp;family=Anek+Latin:wdth,wght@75..125,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; min-height: {{minH}}; height: {{H}}; box-sizing: border-box; position: relative; overflow: hidden; background: {{t.base}}; color: {{t.tp}}; font-family: {{f}}; display: flex; flex-direction: column">
+  <main style="flex: 1 0 auto; padding: 44px 20px 32px; display: flex; flex-direction: column; gap: 16px">
+
+    <header style="display: flex; align-items: center; gap: 4px; margin: 0 -8px">
+      <a href="S4Loans.dc.html" aria-label="{{s.back}}" style="width: 48px; height: 48px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: {{t.tp}}; flex: 0 0 auto"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+      <div style="flex: 1 1 auto; min-width: 0; display: flex; align-items: center; gap: 10px">
+        <span aria-hidden="true" style="width: 36px; height: 36px; border-radius: 999px; background: {{acc.bg}}; color: {{acc.c}}; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex: 0 0 auto">{{L.ini}}</span>
+        <div style="display: flex; flex-direction: column; min-width: 0">
+          <h1 style="margin: 0; font-size: {{ty.seS}}px; line-height: 1.35; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{L.bank}}</h1>
+          <span style="font-size: {{ty.caS}}px; line-height: 1.4; font-weight: 500; color: {{t.ts}}">{{L.nick}}</span>
+        </div>
+      </div>
+      <a href="S7Menu.dc.html" aria-label="{{s.more}}" style="width: 48px; height: 48px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: {{t.tp}}; background: {{menuBg}}; flex: 0 0 auto"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h.01 M12 12h.01 M19 12h.01"></path></svg></a>
+    </header>
+
+    <section aria-label="{{ringAria}}" style="display: flex; flex-direction: column; align-items: center; gap: 14px; padding-top: 4px">
+      <div style="position: relative; width: 200px; height: 200px">
+        <svg width="200" height="200" viewBox="0 0 200 200" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+          <defs><linearGradient id="s7aur" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{{t.a1}}"></stop><stop offset="0.52" stop-color="{{t.a2}}"></stop><stop offset="1" stop-color="{{t.a3}}"></stop></linearGradient></defs>
+          <circle cx="100" cy="100" r="{{rg.R}}" fill="none" stroke="{{t.line}}" stroke-width="1"></circle>
+          <path d="{{rg.up}}" fill="none" stroke="{{t.pri}}" stroke-opacity="0.45" stroke-width="{{rg.sw}}" stroke-linecap="round"></path>
+          <path d="{{rg.paid}}" fill="none" stroke="{{t.cash}}" stroke-width="{{rg.sw}}" stroke-linecap="round"></path>
+          <path d="{{rg.due}}" fill="none" stroke="url(#s7aur)" stroke-width="{{rg.gw}}" stroke-linecap="round" opacity="0.4"><animate attributeName="opacity" values="0.25;0.55;0.25" dur="2s" repeatCount="indefinite"></animate></path>
+          <path d="{{rg.due}}" fill="none" stroke="{{t.emi}}" stroke-width="{{rg.sw}}" stroke-linecap="round"><animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"></animate></path>
+        </svg>
+        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center">
+          <span style="font-size: {{centerFs}}px; line-height: {{ty.h}}; font-weight: 800; font-stretch: 125%; font-variant-numeric: tabular-nums">{{center}}</span>
+          <span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{s.detailDone}}</span>
+        </div>
+      </div>
+      <sc-if value="{{loanChip}}" hint-placeholder-val="{{ false }}">
+        <span style="display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 12px; border-radius: 999px; background: {{loanChip.bg}}; color: {{loanChip.c}}; font-size: {{ty.caS}}px; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{loanChip.d}}"></path></svg>{{loanChip.label}}</span>
+      </sc-if>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: 100%">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 8px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}">
+          <span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}; text-align: center">{{s.bankEmi}}</span>
+          <span style="font-size: 26px; line-height: {{ty.xl}}; font-weight: 800; font-stretch: 112.5%; font-variant-numeric: tabular-nums; color: {{t.emi}}; white-space: nowrap"><span style="font-size: 0.7em">৳</span>{{emiN}}</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 8px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}">
+          <span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}; text-align: center">{{s.cardRemaining}}</span>
+          <span style="font-size: 20px; line-height: 1.5; font-weight: 700; font-variant-numeric: tabular-nums; color: {{t.pri}}; white-space: nowrap">{{remain.f}}</span>
+        </div>
+      </div>
+    </section>
+
+    <section style="border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+        <div style="display: flex; align-items: center; gap: 2px">
+          <button type="button" aria-label="{{s.prevYear}}" onClick="{{prevYear}}" disabled="{{noPrev}}" style="width: 48px; height: 48px; border-radius: 999px; border: 0; background: transparent; color: {{t.tp}}; opacity: {{prevOp}}; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></button>
+          <span style="min-width: 64px; text-align: center; font-size: 20px; line-height: 1.3; font-weight: 700; font-stretch: 112.5%; font-variant-numeric: tabular-nums">{{yearTxt}}</span>
+          <button type="button" aria-label="{{s.nextYear}}" onClick="{{nextYear}}" disabled="{{noNext}}" style="width: 48px; height: 48px; border-radius: 999px; border: 0; background: transparent; color: {{t.tp}}; opacity: {{nextOp}}; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg></button>
+        </div>
+        <button type="button" onClick="{{goToday}}" disabled="{{noToday}}" style="min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1.5px solid {{t.line}}; background: transparent; color: {{t.tp}}; opacity: {{todayOp}}; font-family: inherit; font-size: {{ty.caS}}px; font-weight: 600; cursor: pointer">{{s.calThisMonth}}</button>
+      </div>
+      <div role="grid" aria-label="{{yearTxt}}" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+        <sc-for list="{{cells}}" as="cl" hint-placeholder-count="12">
+          <button type="button" onClick="{{cl.pick}}" disabled="{{cl.out}}" aria-label="{{cl.aria}}" aria-pressed="{{cl.sel}}" style="height: 72px; border-radius: 16px; border: {{cl.bd}}; background: {{cl.bg}}; box-shadow: {{cl.sh}}; transform: translateY({{cl.ty}}px); opacity: {{cl.op}}; color: {{t.tp}}; font-family: inherit; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 0; cursor: pointer; box-sizing: border-box">
+            <span style="font-size: {{ty.caS}}px; line-height: 1.3; font-weight: {{cl.fw}}">{{cl.label}}</span>
+            <span style="height: 18px; display: flex; align-items: center; gap: 4px">
+              <span style="width: {{cl.mw}}px; height: {{cl.mh}}px; border-radius: 999px; background: {{cl.mbg}}; border: {{cl.mbd}}; box-shadow: {{cl.mglow}}; box-sizing: border-box"></span>
+              <sc-if value="{{cl.final}}" hint-placeholder-val="{{ false }}"><span style="width: 8px; height: 8px; border-radius: 999px; background: {{t.int}}"></span></sc-if>
+            </span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px; padding-top: 4px">
+        <sc-for list="{{legend}}" as="lg" hint-placeholder-count="4">
+          <span style="display: flex; align-items: center; gap: 8px; font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">
+            <span style="width: 24px; display: flex; justify-content: center; flex: 0 0 auto"><span style="width: {{lg.w}}px; height: {{lg.h}}px; border-radius: 999px; background: {{lg.bg}}; border: {{lg.bd}}; box-shadow: {{lg.glow}}; box-sizing: border-box"></span></span>
+            {{lg.label}}
+          </span>
+        </sc-for>
+      </div>
+      <div style="display: flex; gap: 8px; align-items: flex-start; padding: 10px 12px; border-radius: 14px; background: {{t.base}}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{t.tm}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 2px"><path d="{{ic.info}}"></path></svg>
+        <span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.tm}}">{{s.statusAssumption}}</span>
+      </div>
+    </section>
+
+    <section aria-live="polite" style="border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 16px; display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px">
+        <div style="display: flex; flex-direction: column; gap: 0">
+          <h2 style="margin: 0; font-size: {{ty.tiS}}px; line-height: {{ty.ti}}; font-weight: 600">{{selTitle}}</h2>
+          <span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{selSub}}</span>
+        </div>
+        <span style="display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 10px; border-radius: 999px; background: {{chip.bg}}; color: {{chip.c}}; font-size: 13px; font-weight: 600; white-space: nowrap; flex: 0 0 auto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{chip.d}}"></path></svg>{{chip.label}}</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0">
+        <span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{s.detailThisInstallment}}</span>
+        <span style="font-size: {{heroFs}}px; line-height: {{ty.h}}; font-weight: 800; font-stretch: 125%; font-variant-numeric: tabular-nums; color: {{t.emi}}; white-space: nowrap"><span style="font-size: 0.7em">৳</span>{{sn.inst.n}}</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; justify-content: space-between; gap: 12px">
+          <span style="display: flex; flex-direction: column"><span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{s.detailInterestPart}}</span><span style="font-size: 17px; line-height: {{ty.md}}; font-weight: 600; font-variant-numeric: tabular-nums; color: {{t.int}}">{{sn.int.f}}</span></span>
+          <span style="display: flex; flex-direction: column; text-align: right"><span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{s.detailPrincipalPart}}</span><span style="font-size: 17px; line-height: {{ty.md}}; font-weight: 600; font-variant-numeric: tabular-nums; color: {{t.pri}}">{{sn.pp.f}}</span></span>
+        </div>
+        <div role="img" aria-label="{{splitAria}}" style="display: flex; height: 10px; border-radius: 999px; overflow: hidden; gap: 2px; background: {{t.sunken}}">
+          <div style="width: {{intPct}}%; background: {{t.int}}; border-radius: 999px"></div>
+          <div style="width: {{ppPct}}%; background: {{t.pri}}; border-radius: 999px"></div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0; padding-top: 12px; border-top: 1px solid {{t.line}}">
+        <span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{s.detailRemainingPrincipal}}</span>
+        <span style="font-size: 32px; line-height: {{ty.xl}}; font-weight: 700; font-stretch: 112.5%; font-variant-numeric: tabular-nums; color: {{t.pri}}; white-space: nowrap"><span style="font-size: 0.7em">৳</span>{{sn.close.n}}</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+        <sc-for list="{{stats}}" as="x" hint-placeholder-count="4">
+          <div style="display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 14px; background: {{t.base}}">
+            <span style="font-size: 13px; line-height: 1.45; font-weight: 500; color: {{t.ts}}">{{x.label}}</span>
+            <span style="font-size: 17px; line-height: {{ty.md}}; font-weight: 600; font-variant-numeric: tabular-nums; color: {{x.c}}; white-space: nowrap">{{x.v}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-size: {{ty.seS}}px; line-height: {{ty.se}}; font-weight: 600">{{s.detailOverview}}</h2>
+      <div style="display: flex; flex-direction: column">
+        <sc-for list="{{ov1}}" as="o" hint-placeholder-count="3">
+          <div style="display: flex; justify-content: space-between; align-items: center; min-height: 38px; gap: 12px; border-top: {{o.bt}}">
+            <span style="display: flex; align-items: center; gap: 8px; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; color: {{t.ts}}; font-weight: {{o.w}}"><span style="width: 8px; height: 8px; border-radius: 999px; background: {{o.c}}; flex: 0 0 auto"></span>{{o.label}}</span>
+            <span style="font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; color: {{o.c}}; white-space: nowrap">{{o.v}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0; padding: 12px 14px; border-radius: 14px; background: {{t.cash10}}">
+        <span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{s.dedNetCash}}</span>
+        <span style="font-size: 26px; line-height: {{ty.xl}}; font-weight: 700; font-stretch: 112.5%; font-variant-numeric: tabular-nums; color: {{t.cash}}; white-space: nowrap">{{net.f}}</span>
+      </div>
+      <div style="display: flex; flex-direction: column">
+        <sc-for list="{{ov2}}" as="o" hint-placeholder-count="7">
+          <div style="display: flex; justify-content: space-between; align-items: center; min-height: 38px; gap: 12px">
+            <span style="display: flex; align-items: center; gap: 8px; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; color: {{t.ts}}"><span style="width: 8px; height: 8px; border-radius: 999px; background: {{o.c}}; flex: 0 0 auto"></span>{{o.label}}</span>
+            <span style="font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; color: {{o.vc}}; white-space: nowrap">{{o.v}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div role="img" aria-label="{{shareTxt}}" style="display: flex; height: 10px; border-radius: 999px; overflow: hidden; gap: 2px; background: {{t.sunken}}">
+          <div style="width: {{sharePct}}%; background: {{t.int}}; border-radius: 999px"></div>
+          <div style="width: {{restPct}}%; background: {{t.pri}}; border-radius: 999px"></div>
+        </div>
+        <span style="font-size: {{ty.boS}}px; line-height: {{ty.bo}}; font-weight: 600">{{shareTxt}}</span>
+      </div>
+      <sc-if value="{{emiNTxt}}" hint-placeholder-val="{{ false }}"><span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.tm}}">{{emiNTxt}}</span></sc-if>
+      <sc-if value="{{earlyTxt}}" hint-placeholder-val="{{ false }}">
+        <div style="display: flex; gap: 8px; align-items: flex-start; padding: 10px 12px; border-radius: 14px; background: {{t.emi10}}">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{t.emi}}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto"><path d="{{ic.checkCircle}}"></path></svg>
+          <span style="font-size: {{ty.boS}}px; line-height: {{ty.bo}}; font-weight: 600">{{earlyTxt}}</span>
+        </div>
+      </sc-if>
+      <div style="display: flex; gap: 8px; align-items: flex-start">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{t.tm}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 2px"><path d="{{ic.info}}"></path></svg>
+        <span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.tm}}">{{s.sumEstimateNote}}</span>
+      </div>
+    </section>
+
+    <section style="border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; display: flex; flex-direction: column">
+      <button type="button" onClick="{{toggleF}}" aria-expanded="{{foA}}" style="min-height: 64px; padding: 0 16px; border: 0; background: transparent; color: {{t.tp}}; font-family: inherit; display: flex; align-items: center; gap: 10px; cursor: pointer; text-align: left">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{t.pri}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.mathOps}}"></path></svg>
+        <span style="flex: 1 1 auto; font-size: {{ty.seS}}px; line-height: {{ty.se}}; font-weight: 600">{{s.formulaTitle}}</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{t.ts}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate({{fRot}}deg)"><path d="M5 9l7 7 7-7"></path></svg>
+      </button>
+      <sc-if value="{{fo}}" hint-placeholder-val="{{ false }}">
+        <div style="padding: 0 16px 18px; display: flex; flex-direction: column; gap: 12px">
+          <div style="padding: 16px 12px; border-radius: 14px; background: {{t.sunken}}; text-align: center; font-family: 'Anek Latin',sans-serif; font-size: 17px; line-height: 1.5; font-weight: 600">EMI = P × r × (1 + r)ⁿ ÷ ((1 + r)ⁿ − 1)</div>
+          <div style="display: flex; flex-direction: column; gap: 2px; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; color: {{t.ts}}"><span>{{s.formulaP}}</span><span>{{s.formulaR}}</span><span>{{s.formulaN}}</span></div>
+          <h3 style="margin: 4px 0 0; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; font-weight: 600">{{s.formulaYour}}</h3>
+          <div style="display: flex; flex-direction: column; gap: 6px; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; font-variant-numeric: tabular-nums">
+            <sc-for list="{{fx}}" as="x" hint-placeholder-count="5">
+              <div style="display: flex; gap: 8px; align-items: baseline"><span style="flex: 0 0 auto; min-width: 64px; color: {{t.ts}}">{{x.k}}</span><span style="color: {{x.c}}; font-weight: 600; overflow-wrap: anywhere">{{x.v}}</span></div>
+            </sc-for>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px; padding: 14px; border-radius: 14px; border: 1px solid {{t.line}}">
+            <span style="font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 500; color: {{t.ts}}">{{s.formulaCeil}}</span>
+            <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; font-variant-numeric: tabular-nums">
+              <span style="font-size: 17px; font-weight: 600; color: {{t.ts}}">{{exact.f}}</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{t.emi}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="align-self: center"><path d="M5 12h14 M13 6l6 6-6 6"></path></svg>
+              <span style="font-size: 22px; font-weight: 700; color: {{t.emi}}">৳{{emiN}}</span>
+            </div>
+          </div>
+          <p style="margin: 0; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; color: {{t.ts}}">{{s.formulaWhyTotal}}</p>
+        </div>
+      </sc-if>
+    </section>
+
+    <section style="border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; display: flex; flex-direction: column">
+      <button type="button" onClick="{{toggleS}}" aria-expanded="{{soA}}" style="min-height: 64px; padding: 0 16px; border: 0; background: transparent; color: {{t.tp}}; font-family: inherit; display: flex; align-items: center; gap: 10px; cursor: pointer; text-align: left">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{t.emi}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.listNumbers}}"></path></svg>
+        <span style="flex: 1 1 auto; font-size: {{ty.seS}}px; line-height: {{ty.se}}; font-weight: 600">{{s.schedTitle}}</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{t.ts}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate({{sRot}}deg)"><path d="M5 9l7 7 7-7"></path></svg>
+      </button>
+      <sc-if value="{{so}}" hint-placeholder-val="{{ false }}">
+        <div style="padding: 0 12px 14px; display: flex; flex-direction: column; gap: 8px">
+          <sc-for list="{{rows}}" as="r" hint-placeholder-count="14">
+            <sc-if value="{{r.gap}}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="text-align: center; font-size: 22px; line-height: 1; letter-spacing: 6px; color: {{t.tm}}; padding: 2px 0 8px">…</div></sc-if>
+            <sc-if value="{{r.row}}" hint-placeholder-val="{{ true }}">
+              <button type="button" onClick="{{r.pick}}" aria-label="{{r.m}}" style="border-radius: 14px; background: {{t.base}}; border: {{r.bd}}; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; color: {{t.tp}}; font-family: inherit; text-align: left; cursor: pointer; width: 100%; box-sizing: border-box">
+                <span style="display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%">
+                  <span style="display: flex; align-items: center; gap: 8px; font-size: {{ty.caS}}px; line-height: {{ty.ca}}; font-weight: 600"><span style="width: {{r.mw}}px; height: {{r.mh}}px; border-radius: 999px; background: {{r.mbg}}; border: {{r.mbd}}; box-sizing: border-box"></span>{{r.m}}<sc-if value="{{r.final}}" hint-placeholder-val="{{ false }}"><span style="width: 8px; height: 8px; border-radius: 999px; background: {{t.int}}"></span></sc-if></span>
+                  <span style="font-size: 20px; line-height: {{ty.lg}}; font-weight: 700; font-variant-numeric: tabular-nums; color: {{t.emi}}; white-space: nowrap">{{r.pay}}</span>
+                </span>
+                <span style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; font-variant-numeric: tabular-nums; width: 100%">
+                  <span style="display: flex; flex-direction: column"><span style="font-size: 12px; line-height: 1.5; color: {{t.tm}}">{{s.schedInterest}}</span><span style="font-size: 14px; font-weight: 600; color: {{t.int}}">{{r.i}}</span></span>
+                  <span style="display: flex; flex-direction: column"><span style="font-size: 12px; line-height: 1.5; color: {{t.tm}}">{{s.schedPrincipal}}</span><span style="font-size: 14px; font-weight: 600; color: {{t.pri}}">{{r.pp}}</span></span>
+                  <span style="display: flex; flex-direction: column; text-align: right"><span style="font-size: 12px; line-height: 1.5; color: {{t.tm}}">{{s.schedClosing}}</span><span style="font-size: 14px; font-weight: 600; color: {{t.pri}}">{{r.c}}</span></span>
+                </span>
+              </button>
+            </sc-if>
+          </sc-for>
+          <a href="S9ScheduleLoan.dc.html" style="min-height: 48px; margin-top: 4px; border-radius: 999px; border: 1.5px solid {{t.line}}; color: {{t.tp}}; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: {{ty.boS}}px; font-weight: 600">{{s.schedShowAll}}</a>
+        </div>
+      </sc-if>
+    </section>
+  </main>
+
+  <sc-if value="{{menu}}" hint-placeholder-val="{{ false }}">
+    <a href="S7LoanDetail.dc.html" aria-label="{{s.cancel}}" style="position: absolute; inset: 0; background: {{t.scrim}}"></a>
+    <div role="menu" style="position: absolute; top: 96px; right: 16px; width: 220px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: 0 12px 32px rgba(8,6,24,0.35); padding: 6px; display: flex; flex-direction: column">
+      <a role="menuitem" href="S5Edit.dc.html" style="min-height: 52px; padding: 0 14px; border-radius: 14px; display: flex; align-items: center; gap: 12px; color: {{t.tp}}; text-decoration: none; font-size: {{ty.boS}}px; font-weight: 500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.pencil}}"></path></svg>{{s.menuEdit}}</a>
+      <a role="menuitem" href="S7Delete.dc.html" style="min-height: 52px; padding: 0 14px; border-radius: 14px; display: flex; align-items: center; gap: 12px; color: {{t.err}}; text-decoration: none; font-size: {{ty.boS}}px; font-weight: 500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.trash}}"></path></svg>{{s.menuDelete}}</a>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{del}}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; background: {{t.scrim}}; display: flex; align-items: center; justify-content: center; padding: 24px">
+      <div role="alertdialog" aria-labelledby="delTitle" style="width: 100%; border-radius: 28px; background: {{t.raised}}; border: 1px solid {{t.line}}; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; box-shadow: 0 16px 40px rgba(8,6,24,0.4)">
+        <span style="width: 56px; height: 56px; border-radius: 999px; background: {{t.err10}}; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="{{t.err}}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.trash}}"></path></svg></span>
+        <h2 id="delTitle" style="margin: 0; font-size: {{ty.tiS}}px; line-height: {{ty.ti}}; font-weight: 600; text-align: center">{{s.deleteConfirm}}</h2>
+        <p style="margin: 0; font-size: {{ty.boS}}px; line-height: {{ty.bo}}; color: {{t.ts}}; text-align: center">{{L.bank}}, {{L.nick}}</p>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; width: 100%; padding-top: 8px">
+          <a href="S7LoanDetail.dc.html" style="min-height: 52px; border-radius: 999px; border: 1.5px solid {{t.line}}; color: {{t.tp}}; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: {{ty.boS}}px; font-weight: 600">{{s.cancel}}</a>
+          <a href="S4Undo.dc.html" style="min-height: 52px; border-radius: 999px; background: {{t.err}}; color: {{t.onEmi}}; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: {{ty.boS}}px; font-weight: 600">{{s.menuDelete}}</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{success}}" hint-placeholder-val="{{ false }}">
+    <a href="S7LoanDetail.dc.html" aria-label="{{s.formSaved}}" style="position: absolute; inset: 0; background: {{t.scrim}}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; text-decoration: none; color: {{t.tp}}">
+      <span style="position: relative; width: 200px; height: 200px; display: block">
+        <svg width="200" height="200" viewBox="0 0 200 200" aria-hidden="true">
+          <defs><linearGradient id="s7ok" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{{t.a1}}"></stop><stop offset="0.52" stop-color="{{t.a2}}"></stop><stop offset="1" stop-color="{{t.a3}}"></stop></linearGradient></defs>
+          <circle cx="100" cy="100" r="46" fill="{{t.raised}}" stroke="url(#s7ok)" stroke-width="4"></circle>
+          <path d="M80 101l14 14 27-29" fill="none" stroke="{{t.cash}}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="{{sparks}}" fill="none" stroke="url(#s7ok)" stroke-width="5" stroke-linecap="round"></path>
+        </svg>
+      </span>
+      <span style="font-size: {{ty.tiS}}px; line-height: {{ty.ti}}; font-weight: 700">{{s.formSaved}}</span>
+    </a>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"dark"},"lang":{"editor":"enum","options":["bn","en"],"default":"bn"},"variant":{"editor":"enum","options":["a","b","c","d","e","f","menu","delete","success"],"default":"a"},"sched":{"editor":"boolean","default":false},"$preview":{"width":390,"height":2300}}'>
+var ICO={info:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M12 11v5 M12 7.8h.01',checkCircle:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M8 12.5l2.7 2.7L16 10',mathOps:'M4 7h6 M7 4v6 M14 7h6 M14 15.5h6 M14 19h6 M4.5 15l4.5 4.5 M9 15l-4.5 4.5',listNumbers:'M10 6h10 M10 12h10 M10 18h10 M4 5l1.5-1v5 M3.8 14.6a1.4 1.4 0 0 1 2.6.7c0 .7-.6 1.1-2.6 3.2h2.8',pencil:'M4 20h4L19 9a2.1 2.1 0 0 0-4-4L4 16z M13.5 6.5l4 4',trash:'M4 6.5h16 M9.5 3.5h5 M6 6.5l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13 M10 10.5v6 M14 10.5v6',clock:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M12 7.5V12l3 2',target:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M12 8.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 1 0 0-7z',hourglass:'M6.5 3h11 M6.5 21h11 M7.5 3v2.5c0 2 4.5 4.5 4.5 6.5s-4.5 4.5-4.5 6.5V21 M16.5 3v2.5c0 2-4.5 4.5-4.5 6.5s4.5 4.5 4.5 6.5V21 M9.5 7.5h5'};
+var TOK={dark:{base:'#120F2E',raised:'#1B1744',sunken:'#0C0A21',line:'#2C2760',tp:'#F4F2FF',ts:'#B7B2E0',tm:'#8C86BC',emi:'#2EE6D0',pri:'#A78BFA',int:'#FFC234',ded:'#FF5C9A',cash:'#4BE38A',err:'#FF6B6B',a1:'#2EE6D0',a2:'#A78BFA',a3:'#FF5C9A',glass:'rgba(27,23,68,0.86)',onEmi:'#120F2E',sh:'none',shHero:'0 0 24px rgba(46,230,208,0.20)',scrim:'rgba(8,6,24,0.72)',lift:'0 8px 18px rgba(0,0,0,0.45)'},light:{base:'#F5F4FF',raised:'#FFFFFF',sunken:'#ECEAFB',line:'#DDD9F5',tp:'#1A1640',ts:'#4B4680',tm:'#625E8F',emi:'#087A6F',pri:'#6D3FE0',int:'#8F5F00',ded:'#C8235F',cash:'#0F7A45',err:'#C62828',a1:'#0FB5A3',a2:'#7C4DFF',a3:'#E83E8C',glass:'rgba(255,255,255,0.88)',onEmi:'#FFFFFF',sh:'0 4px 16px rgba(46,32,140,0.10)',shHero:'0 8px 24px rgba(46,32,140,0.14)',scrim:'rgba(26,22,64,0.45)',lift:'0 8px 18px rgba(46,32,140,0.22)'}};
+var ACC={dark:['#6C8CFF','#FF8A5B','#E07BF0','#D9E55A','#5CC8FF'],light:['#3D5BDB','#B4501F','#9A37B0','#5E6C0A','#1673A6']};
+function rgba(h,a){var n=parseInt(h.slice(1),16);return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')';}
+function TH(d){d=d==='light'?'light':'dark';var t=Object.assign({mode:d},TOK[d]);['emi','pri','int','ded','cash','err','tp','tm'].forEach(function(k){t[k+'10']=rgba(t[k],0.10);t[k+'45']=rgba(t[k],0.45);});return t;}
+var FBN="'Anek Bangla','Anek Latin',system-ui,sans-serif",FEN="'Anek Latin','Anek Bangla',system-ui,sans-serif";
+function TY(bn){return bn?{h:1.25,xl:1.3,lg:1.35,md:1.45,ti:1.45,tiS:23,se:1.5,seS:18,bo:1.6,boS:16,ca:1.55,caS:14}:{h:1.1,xl:1.15,lg:1.2,md:1.3,ti:1.3,tiS:22,se:1.35,seS:17,bo:1.45,boS:15,ca:1.4,caS:13};}
+var BND='০১২৩৪৫৬৭৮৯';
+function DG(s,bn){s=String(s);return bn?s.replace(/[0-9]/g,function(c){return BND[+c];}):s;}
+function GR(s){if(s.length<=3)return s;var a=s.slice(-3),b=s.slice(0,-3);return b.replace(/\B(?=(\d{2})+(?!\d))/g,',')+','+a;}
+function MV(p,bn,whole){if(p==null||isNaN(p))return {sg:'',c:'',n:'—',f:'—'};var neg=p<0;p=Math.abs(Math.round(p));var n=whole?GR(String(Math.round(p/100))):GR(String(Math.floor(p/100)))+'.'+String(p%100).padStart(2,'0');n=DG(n,bn);var sg=neg?'−':'';return {sg:sg,c:'৳',n:n,f:sg+'৳'+n};}
+function MVA(p,bn){return MV(p,bn,p%100===0);}
+function TRIM(s){if(s.indexOf('.')>=0){s=s.replace(/0+$/,'').replace(/\.$/,'');}return s;}
+function FM(s,o){return s.replace(/\{(\w+)\}/g,function(_,k){return o[k];});}
+var MON={en:['January','February','March','April','May','June','July','August','September','October','November','December'],bn:['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর']};
+var MOS={en:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],bn:['জানু','ফেব্রু','মার্চ','এপ্রি','মে','জুন','জুলাই','আগ','সেপ্টে','অক্টো','নভে','ডিসে']};
+function YM(y,m){return y*12+(m-1);}
+function MLAB(i,lg,bn,short){return (short?MOS:MON)[lg][i%12]+' '+DG(Math.floor(i/12),bn);}
+var TODAY=YM(2026,10);
+function CALC(P,rate,n){var r=rate/100/12;var ex=r>0?P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):P/n;var be=Math.ceil(ex-1e-6);var bal=Math.round(P*100),emi=be*100,rows=[];for(var k=1;k<=n&&bal>0;k++){var it=Math.round(bal*r);var pay=emi;if(k===n||bal+it<=emi)pay=bal+it;var pp=pay-it,cl=bal-pp;rows.push({k:k,o:bal,i:it,pp:pp,pay:pay,c:cl});bal=cl;}var tot=0,ti=0;rows.forEach(function(x){tot+=x.pay;ti+=x.i;});return {r:r,ex:ex,be:be,rows:rows,cnt:rows.length,n:n,tot:tot,ti:ti,last:rows[rows.length-1].pay,emiN:be*n*100,pw:Math.pow(1+r,n)};}
+function SNAP(c,k){var a=0,b=0,d=0,e=0;c.rows.forEach(function(x){if(x.k<=k){a+=x.pay;b+=x.i;d+=x.pp;}else e+=x.pay;});var x=c.rows[k-1];return {inst:x.pay,int:x.i,pp:x.pp,open:x.o,close:x.c,paid:a,ipaid:b,ppaid:d,still:e,left:c.cnt-k};}
+function ring(size,n,done,dueK){var yr=n>120,units=yr?Math.ceil(n/12):n,cx=size/2,R=size/2-size*0.07;var per=2*Math.PI*R/units;var sw=Math.min(size*0.032,Math.max(size*0.016,per*0.42));var arc=Math.max(per*0.6-sw,0.4);var P={paid:'',due:'',up:''};for(var u=0;u<units;u++){var st;if(!yr){var k=u+1;st=k<=done?'paid':(k===dueK?'due':'up');}else{var a=u*12+1,b=Math.min((u+1)*12,n);st=done>=b?'paid':(((dueK>=a&&dueK<=b)||(done>=a&&done<b))?'due':'up');}var len=(yr&&u===units-1&&n%12!==0)?arc*0.5:arc;var mid=-Math.PI/2+(u+0.5)*per/R,h=len/2/R;P[st]+='M'+(cx+R*Math.cos(mid-h)).toFixed(2)+' '+(cx+R*Math.sin(mid-h)).toFixed(2)+'A'+R.toFixed(2)+' '+R.toFixed(2)+' 0 0 1 '+(cx+R*Math.cos(mid+h)).toFixed(2)+' '+(cx+R*Math.sin(mid+h)).toFixed(2)+' ';}return {R:R.toFixed(2),paid:P.paid,due:P.due,up:P.up,sw:sw.toFixed(2),gw:(sw*2.8).toFixed(2)};}
+var LOANS={A:{bank:['Kantha Bank','কাঁথা ব্যাংক'],nick:['Home loan','বাড়ির লোন'],ini:['KB','কব'],P:1521595.95,rate:10.47,n:60,F:YM(2025,10),ded:[0,0,0,0],acc:0},B:{bank:['Dhanshiri Bank','ধানসিঁড়ি ব্যাংক'],nick:['Top-up','টপ-আপ'],ini:['DB','ধব'],P:1300000,rate:10.57,n:60,F:YM(2027,1),ded:[851000,30000,5000,0],acc:1},C:{bank:['Moyna Bank','ময়না ব্যাংক'],nick:['Bike loan','বাইকের লোন'],ini:['MB','মব'],P:200000,rate:9,n:24,F:YM(2023,6),ded:[0,0,0,0],acc:2},F:{bank:['Shapla Bank','শাপলা ব্যাংক'],nick:['Small savings loan','ছোট সঞ্চয় লোন'],ini:['SB','শব'],P:1000,rate:12,n:360,F:YM(2010,1),ded:[0,0,0,0],acc:4}};
+var STR={back:['Back','ফিরে যান'],more:['More options','আরও অপশন'],prevYear:['Previous year','আগের বছর'],nextYear:['Next year','পরের বছর'],bankEmi:['Bank EMI','ব্যাংকের মাসিক কিস্তি'],exactEmi:['Exact calculated EMI','হিসাবের কিস্তি (পয়সাসহ)'],cardRemaining:['Remaining principal','বাকি মূল টাকা'],detailDone:['installments done','কিস্তি শেষ'],detailInstallmentOf:['Installment {k} of {n}','{n}টির মধ্যে {k} নম্বর কিস্তি'],detailThisInstallment:["This month's installment",'এই মাসের কিস্তি'],detailInterestPart:['Interest','সুদ'],detailPrincipalPart:['Principal','মূল টাকা'],detailRemainingPrincipal:['Remaining principal after this month','এই মাসের পর বাকি মূল টাকা'],detailStillToPay:['Still to pay','সামনে আরও দিতে হবে'],detailPaidSoFar:['Paid so far','এ পর্যন্ত দেওয়া হয়েছে'],detailInterestPaidSoFar:['Interest paid so far','এ পর্যন্ত সুদ দেওয়া হয়েছে'],detailInstallmentsLeft:['Installments left','বাকি কিস্তি'],detailLastMonth:['Last installment month','শেষ কিস্তির মাস'],detailOverview:['Loan overview','লোনের সারসংক্ষেপ'],calThisMonth:['This month','এই মাস'],statusPaid:['Paid','শোধ হয়েছে'],statusDue:['This month','এই মাসে দিতে হবে'],statusUpcoming:['Upcoming','সামনে আসছে'],statusNotStarted:['Starts in {n} months','{n} মাস পরে শুরু'],statusCompleted:['All installments done','সব কিস্তি শেষ'],statusAssumption:['Past months are shown as paid, assuming every installment was paid on time.','সময়মতো কিস্তি দেওয়া ধরে আগের মাসগুলো শোধ দেখানো হচ্ছে।'],sumLastInstallment:['Last installment','শেষ কিস্তি'],dedApproved:['Approved loan amount','অনুমোদিত লোন'],dedSettlement:['Existing loan settlement','আগের লোন শোধ'],dedInsurance:['One-time insurance premium','বীমার প্রিমিয়াম (এককালীন)'],dedFees:['Bank fees','ব্যাংক ফি'],dedOther:['Other deductions','অন্যান্য খরচ'],dedTotal:['Total deductions','মোট কেটে রাখা টাকা'],dedNetCash:['Estimated net cash received','হাতে পাবেন (আনুমানিক)'],sumTotalRepayment:['Total repayment estimate','মোট পরিশোধ (আনুমানিক)'],sumTotalInterest:['Total interest estimate','মোট সুদ (আনুমানিক)'],sumInterestShare:['{pct}% of what you repay is interest','মোট পরিশোধের {pct}% সুদ'],sumEmiTimesN:['EMI × {n} would be {amount}. The last installment is {diff} lower.','সব কিস্তি পুরো ধরলে মোট {amount} হতো। শেষ কিস্তি {diff} কম।'],sumEstimateNote:['These are estimates. Your bank may adjust the last installment or use its own rules.','এগুলো আনুমানিক হিসাব। ব্যাংক শেষ কিস্তি বা নিজের নিয়মে কিছুটা বদলাতে পারে।'],schedEarlyPayoff:['Rounding up finishes this loan in {n} installments','উপরে রাউন্ড করায় লোন {n}টি কিস্তিতেই শেষ হবে'],formulaTitle:["How it's calculated",'কীভাবে হিসাব হয়'],formulaP:['P = loan amount','P = লোনের পরিমাণ'],formulaR:['r = monthly interest rate (yearly rate ÷ 12 ÷ 100)','r = মাসিক সুদের হার (বছরের হার ÷ ১২ ÷ ১০০)'],formulaN:['n = number of installments','n = কিস্তির সংখ্যা'],formulaWhyTotal:['The bank rounds every installment up, so you pay a little extra each month. The last installment is made smaller to balance it out.','ব্যাংক প্রতিটি কিস্তি উপরের টাকায় ধরে, তাই প্রতি মাসে সামান্য বেশি দেওয়া হয়। শেষ কিস্তি কমিয়ে সেটা মিলিয়ে দেওয়া হয়।'],formulaYour:['With your numbers','আপনার সংখ্যা দিয়ে'],formulaCeil:['Rounded up to the next taka','পরের পূর্ণ টাকায় উপরে রাউন্ড'],schedTitle:['Installment schedule','কিস্তির তালিকা'],schedInterest:['Interest','সুদ'],schedPrincipal:['Principal repaid','মূল টাকা শোধ'],schedClosing:['Closing balance','মাস শেষে বাকি'],schedShowAll:['Show all months','সব মাস দেখুন'],menuEdit:['Edit','এডিট করুন'],menuDelete:['Delete','মুছে ফেলুন'],deleteConfirm:['Delete this loan?','এই লোন মুছে ফেলবেন?'],cancel:['Cancel','বাতিল'],formSaved:['Loan saved','লোন সেভ হয়েছে']};
+function S(lg){var i=lg==='en'?0:1,o={};for(var k in STR)o[k]=STR[k][i];return o;}
+class Component extends DCLogic {
+  constructor(p){super(p);this.state={};}
+  renderVals() {
+    var self=this,pr=this.props,st=this.state||{};
+    var variant=pr.variant||'a',lg=pr.lang==='en'?'en':'bn',bn=lg==='bn',li=bn?1:0;
+    var t=TH(pr.theme),ty=TY(bn),s=S(lg);
+    var key=variant==='d'?'B':(variant==='e'?'C':(variant==='f'?'F':'A'));
+    var LD=LOANS[key],c=CALC(LD.P,LD.rate,LD.n),F=LD.F,last=F+c.cnt-1;
+    var lstate=TODAY<F?'notStarted':(TODAY>last?'completed':'running');
+    var defSel=variant==='b'?YM(2026,9):(variant==='c'?last:(lstate==='running'?TODAY:(lstate==='notStarted'?F:last)));
+    var sel=st.sel!==undefined?st.sel:defSel;
+    var year=st.year!==undefined?st.year:Math.floor(sel/12);
+    var minY=Math.floor(F/12),maxY=Math.floor(last/12);
+    function status(i){if(i<F||i>last)return 'out';return i<TODAY?'paid':(i===TODAY?'due':'up');}
+    function mark(stt){if(stt==='paid')return {mw:22,mh:6,mbg:t.cash,mbd:'none',mglow:'none'};if(stt==='due')return {mw:16,mh:16,mbg:'transparent',mbd:'2.5px solid '+t.emi,mglow:'0 0 10px '+rgba(t.a1,0.6)+', 0 0 16px '+rgba(t.a2,0.35)};if(stt==='up')return {mw:22,mh:6,mbg:'transparent',mbd:'1.5px solid '+rgba(t.pri,0.45),mglow:'none'};return {mw:22,mh:6,mbg:t.tm,mbd:'none',mglow:'none'};}
+    var stLabel={paid:s.statusPaid,due:s.statusDue,up:s.statusUpcoming,out:''};
+    var cells=[];for(var m=0;m<12;m++){(function(m){var i=year*12+m,stt=status(i),mk=mark(stt),isSel=i===sel,out=stt==='out';cells.push(Object.assign({label:MOS[lg][m],out:out,sel:isSel?'true':'false',final:i===last,aria:MLAB(i,lg,bn)+(out?'':', '+stLabel[stt]),bd:isSel?'2px solid '+t.tp:'1px solid '+(stt==='due'?t.emi45:t.line),bg:isSel?t.raised:(stt==='due'?t.emi10:t.base),sh:isSel?t.lift:'none',ty:isSel?-2:0,op:out?0.3:1,fw:isSel?700:500,pick:function(){if(!out)self.setState({sel:i,year:Math.floor(i/12)});}},mk));})(m);}
+    var legend=[['paid',s.statusPaid],['due',s.statusDue],['up',s.statusUpcoming]].map(function(x){var mk=mark(x[0]);return {label:x[1],w:mk.mw,h:mk.mh,bg:mk.mbg,bd:mk.mbd,glow:mk.mglow};});
+    legend.push({label:s.sumLastInstallment,w:8,h:8,bg:t.int,bd:'none',glow:'none'});
+    var k=sel-F+1,sn0=SNAP(c,k),sstt=status(sel);
+    var sn={inst:MVA(sn0.inst,bn),int:MV(sn0.int,bn),pp:MV(sn0.pp,bn),close:MV(sn0.close,bn)};
+    var chipMap={paid:{bg:t.cash10,c:t.cash,d:ICO.checkCircle,label:s.statusPaid},due:{bg:t.emi10,c:t.emi,d:ICO.target,label:s.statusDue},up:{bg:t.pri10,c:t.pri,d:ICO.clock,label:s.statusUpcoming}};
+    var doneK=lstate==='running'?TODAY-F+1:(lstate==='completed'?c.cnt:0);
+    var paidCount=lstate==='running'?TODAY-F:(lstate==='completed'?c.cnt:0);
+    var rg=ring(200,c.cnt,paidCount,lstate==='running'?TODAY-F+1:0);
+    var remainP=lstate==='running'?c.rows[TODAY-F].c:(lstate==='notStarted'?Math.round(LD.P*100):0);
+    var loanChip=lstate==='notStarted'?{bg:t.pri10,c:t.pri,d:ICO.hourglass,label:FM(s.statusNotStarted,{n:DG(F-TODAY,bn)})}:(lstate==='completed'?{bg:t.cash10,c:t.cash,d:ICO.checkCircle,label:s.statusCompleted}:null);
+    var dLab=[s.dedSettlement,s.dedInsurance,s.dedFees,s.dedOther];
+    var Pp=Math.round(LD.P*100),tdP=0;
+    var ov1=[{label:s.dedApproved,c:t.pri,v:MV(Pp,bn).f,bt:'none',w:400}];
+    LD.ded.forEach(function(d,i){if(d>0){ov1.push({label:dLab[i],c:t.ded,v:MV(d*100,bn).f,bt:'none',w:400});}tdP+=d*100;});
+    ov1.push({label:s.dedTotal,c:t.ded,v:MV(tdP,bn).f,bt:'1px solid '+t.line,w:600});
+    var share=c.ti/c.tot*100;
+    var ov2=[[s.bankEmi,t.emi,MV(c.be*100,bn,true).f,t.emi],[s.exactEmi,t.ts,MV(Math.round(c.ex*100),bn).f,t.tp],[s.sumTotalRepayment,t.emi,MV(c.tot,bn).f,t.emi],[s.sumTotalInterest,t.int,MV(c.ti,bn).f,t.int],[s.sumLastInstallment,t.emi,MV(c.last,bn).f,t.emi],[s.detailLastMonth,t.ts,MLAB(last,lg,bn),t.tp]].map(function(x){return {label:x[0],c:x[1],v:x[2],vc:x[3]};});
+    var emiNTxt=c.cnt===c.n&&c.emiN!==c.tot?FM(s.sumEmiTimesN,{n:DG(c.n,bn),amount:MV(c.emiN,bn,true).f,diff:MV(c.emiN-c.tot,bn).f}):'';
+    var rs=TRIM(c.r.toFixed(8));
+    var fx=[{k:'P =',v:MV(Pp,bn).f,c:t.pri},{k:'r =',v:DG(TRIM(String(LD.rate))+' ÷ 12 ÷ 100 = '+rs,bn),c:t.tp},{k:'n =',v:DG(c.n,bn),c:t.tp},{k:'(1 + r)ⁿ =',v:DG(c.pw.toFixed(6),bn),c:t.tp},{k:'EMI =',v:'৳'+DG(GR(String(Math.floor(c.ex)))+'.'+c.ex.toFixed(6).split('.')[1],bn),c:t.emi}];
+    var fo=st.fo!==undefined?st.fo:false;
+    var so=st.so!==undefined?st.so:(pr.sched===true||pr.sched==='true');
+    var show=c.cnt<=13?c.rows:c.rows.slice(0,12).concat([null,c.rows[c.cnt-1]]);
+    var rows=show.map(function(x){if(!x)return {gap:true,row:false};var i=F+x.k-1,stt=status(i),mk=mark(stt);return {gap:false,row:true,final:x.k===c.cnt,bd:i===sel?'2px solid '+t.emi:'1px solid '+(x.k===c.cnt?t.int45:t.line),m:MLAB(i,lg,bn,true),pay:MV(x.pay,bn).f,i:MV(x.i,bn).f,pp:MV(x.pp,bn).f,c:MV(x.c,bn).f,mw:mk.mw,mh:mk.mh,mbg:mk.mbg,mbd:mk.mbd,pick:function(){self.setState({sel:i,year:Math.floor(i/12)});}};});
+    var overlay=variant==='menu'||variant==='delete'||variant==='success';
+    var sparks='';for(var q=0;q<8;q++){var a=q*Math.PI/4-Math.PI/2+Math.PI/8,r1=62,r2=82;sparks+='M'+(100+r1*Math.cos(a)).toFixed(1)+' '+(100+r1*Math.sin(a)).toFixed(1)+'L'+(100+r2*Math.cos(a)).toFixed(1)+' '+(100+r2*Math.sin(a)).toFixed(1)+' ';}
+    var accHex=ACC[t.mode][LD.acc];
+    return {
+      t:t,ty:ty,s:s,ic:ICO,f:bn?FBN:FEN,
+      minH:overlay?'0':'100vh',H:overlay?'844px':'auto',
+      L:{bank:LD.bank[li],nick:LD.nick[li],ini:LD.ini[li]},acc:{bg:rgba(accHex,0.16),c:accHex},
+      menuBg:variant==='menu'?t.raised:'transparent',
+      rg:rg,center:DG(doneK,bn)+'/'+DG(c.cnt,bn),centerFs:(String(doneK)+String(c.cnt)).length>4?30:40,ringAria:DG(doneK,bn)+'/'+DG(c.cnt,bn)+' '+s.detailDone,loanChip:loanChip,
+      emiN:DG(GR(String(c.be)),bn),remain:MV(remainP,bn),
+      yearTxt:DG(year,bn),noPrev:year<=minY,noNext:year>=maxY,prevOp:year<=minY?0.3:1,nextOp:year>=maxY?0.3:1,
+      prevYear:function(){if(year>minY)self.setState({year:year-1,sel:sel});},nextYear:function(){if(year<maxY)self.setState({year:year+1,sel:sel});},
+      noToday:lstate!=='running',todayOp:lstate==='running'?1:0.4,goToday:function(){if(lstate==='running')self.setState({sel:TODAY,year:Math.floor(TODAY/12)});},
+      cells:cells,legend:legend,
+      selTitle:MLAB(sel,lg,bn),selSub:FM(s.detailInstallmentOf,{k:DG(k,bn),n:DG(c.cnt,bn)}),chip:chipMap[sstt]||chipMap.up,
+      sn:sn,heroFs:sn.inst.n.length>8?40:48,
+      intPct:(sn0.int/sn0.inst*100).toFixed(2),ppPct:(sn0.pp/sn0.inst*100).toFixed(2),splitAria:s.detailInterestPart+' '+sn.int.f+', '+s.detailPrincipalPart+' '+sn.pp.f,
+      stats:[{label:s.detailStillToPay,c:t.emi,v:MV(sn0.still,bn).f},{label:s.detailPaidSoFar,c:t.cash,v:MV(sn0.paid,bn).f},{label:s.detailInterestPaidSoFar,c:t.int,v:MV(sn0.ipaid,bn).f},{label:s.detailInstallmentsLeft,c:t.tp,v:DG(sn0.left,bn)}],
+      ov1:ov1,net:MV(Pp-tdP,bn),ov2:ov2,shareTxt:FM(s.sumInterestShare,{pct:DG(Math.round(share),bn)}),sharePct:share.toFixed(2),restPct:(100-share).toFixed(2),
+      emiNTxt:emiNTxt,earlyTxt:c.cnt<c.n?FM(s.schedEarlyPayoff,{n:DG(c.cnt,bn)}):'',
+      fo:fo,foA:fo?'true':'false',fRot:fo?180:0,toggleF:function(){self.setState({fo:!fo});},fx:fx,exact:MV(Math.round(c.ex*100),bn),
+      so:so,soA:so?'true':'false',sRot:so?180:0,toggleS:function(){self.setState({so:!so});},rows:rows,
+      menu:variant==='menu',del:variant==='delete',success:variant==='success',sparks:sparks
+    };
+  }
+}
+</script>
+</body>
+</html>

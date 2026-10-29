@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kisti stitch, money, shape and icons</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..125,100..800&amp;family=Anek+Latin:wdth,wght@75..125,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6D3FE0}a:hover{color:#1A1640}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 100vh; box-sizing: border-box; padding: 64px 80px; background: #F5F4FF; color: #1A1640; font-family: 'Anek Latin','Anek Bangla',system-ui,sans-serif; display: flex; flex-direction: column; gap: 56px">
+
+  <section style="display: flex; flex-direction: column; gap: 20px">
+    <h2 style="margin: 0; font-size: 36px; line-height: 1.2; font-weight: 700; font-stretch: 112.5%">Stitch language</h2>
+    <p style="margin: 0; font-size: 17px; line-height: 1.5; color: #4B4680; max-width: 980px">One running-stitch style for all progress. Base geometry dash 8, gap 6, stroke 3, round caps, scaled with the ring. One stitch per installment up to 120, one per year above that (the last partial year is a half stitch).</p>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+      <sc-for list="{{themes}}" as="t" hint-placeholder-count="2">
+        <div style="border-radius: 28px; padding: 28px; background: {{t.base}}; color: {{t.tp}}; border: 1px solid {{t.line}}; display: flex; flex-direction: column; gap: 24px">
+          <div style="display: flex; gap: 28px; align-items: flex-end">
+            <sc-for list="{{t.rings}}" as="rg" hint-placeholder-count="3">
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+                <div style="position: relative; width: {{rg.s}}px; height: {{rg.s}}px">
+                  <svg width="{{rg.s}}" height="{{rg.s}}" viewBox="0 0 {{rg.s}} {{rg.s}}" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+                    <defs><linearGradient id="{{rg.gid}}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{{t.a1}}"></stop><stop offset="0.52" stop-color="{{t.a2}}"></stop><stop offset="1" stop-color="{{t.a3}}"></stop></linearGradient></defs>
+                    <circle cx="{{rg.c}}" cy="{{rg.c}}" r="{{rg.R}}" fill="none" stroke="{{t.line}}" stroke-width="1"></circle>
+                    <path d="{{rg.up}}" fill="none" stroke="{{t.pri}}" stroke-opacity="0.45" stroke-width="{{rg.sw}}" stroke-linecap="round"></path>
+                    <path d="{{rg.paid}}" fill="none" stroke="{{t.cash}}" stroke-width="{{rg.sw}}" stroke-linecap="round"></path>
+                    <path d="{{rg.due}}" fill="none" stroke="url(#{{rg.gid}})" stroke-width="{{rg.gw}}" stroke-linecap="round" opacity="0.4"><animate attributeName="opacity" values="0.25;0.55;0.25" dur="2s" repeatCount="indefinite"></animate></path>
+                    <path d="{{rg.due}}" fill="none" stroke="{{t.emi}}" stroke-width="{{rg.sw}}" stroke-linecap="round"><animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"></animate></path>
+                  </svg>
+                  <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center">
+                    <span style="font-family: 'Anek Bangla',sans-serif; font-size: {{rg.fs}}px; line-height: 1.25; font-weight: 800; font-stretch: 125%; font-variant-numeric: tabular-nums">{{rg.center}}</span>
+                    <span style="font-family: 'Anek Bangla',sans-serif; font-size: 13px; line-height: 1.5; color: {{t.ts}}">{{rg.sub}}</span>
+                  </div>
+                </div>
+                <span style="font-size: 13px; line-height: 1.4; color: {{t.ts}}; text-align: center; max-width: 200px">{{rg.label}}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px">
+            <sc-for list="{{t.lines}}" as="ln" hint-placeholder-count="3">
+              <div style="display: flex; align-items: center; gap: 16px">
+                <svg width="{{ln.w}}" height="{{ln.h}}" viewBox="0 0 {{ln.w}} {{ln.h}}" aria-hidden="true">
+                  <path d="{{ln.up}}" fill="none" stroke="{{t.pri}}" stroke-opacity="0.45" stroke-width="{{ln.sw}}" stroke-linecap="round"></path>
+                  <path d="{{ln.paid}}" fill="none" stroke="{{t.cash}}" stroke-width="{{ln.sw}}" stroke-linecap="round"></path>
+                  <path d="{{ln.due}}" fill="none" stroke="{{t.emi}}" stroke-width="{{ln.sw}}" stroke-linecap="round"></path>
+                </svg>
+                <span style="font-family: 'Anek Bangla',sans-serif; font-size: 14px; line-height: 1.5; color: {{t.ts}}">{{ln.label}}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px">
+            <sc-for list="{{t.marks}}" as="mk" hint-placeholder-count="5">
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 14px 6px; border-radius: 16px; background: {{t.raised}}; border: 1px solid {{t.line}}; opacity: {{mk.op}}">
+                <div style="height: 22px; display: flex; align-items: center; justify-content: center; gap: 4px">
+                  <div style="width: {{mk.w}}px; height: {{mk.h}}px; border-radius: 999px; background: {{mk.bg}}; border: {{mk.bd}}; box-shadow: {{mk.glow}}; box-sizing: border-box"></div>
+                </div>
+                <span style="font-family: 'Anek Bangla',sans-serif; font-size: 13px; line-height: 1.5; color: {{t.ts}}; text-align: center">{{mk.label}}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 20px">
+    <h2 style="margin: 0; font-size: 36px; line-height: 1.2; font-weight: 700; font-stretch: 112.5%">MoneyValue</h2>
+    <p style="margin: 0; font-size: 17px; line-height: 1.5; color: #4B4680">Four sizes, six colours, lakh and crore grouping in both digit sets. The ৳ sign is 70% of the figure.</p>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+      <sc-for list="{{themes}}" as="t" hint-placeholder-count="2">
+        <div style="border-radius: 28px; padding: 20px; background: {{t.raised}}; color: {{t.tp}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; display: flex; flex-direction: column; gap: 4px">
+          <div style="display: grid; grid-template-columns: 184px 160px 124px minmax(0, 1fr); gap: 12px; padding: 0 0 8px; font-size: 13px; color: {{t.ts}}">
+            <span>hero 48</span><span>figure.xl 32</span><span>figure.lg 22</span><span>figure.md 17</span>
+          </div>
+          <sc-for list="{{t.money}}" as="m" hint-placeholder-count="6">
+            <div style="display: grid; grid-template-columns: 184px 160px 124px minmax(0, 1fr); gap: 12px; align-items: baseline; padding: 6px 0; border-top: 1px solid {{t.line}}; color: {{m.c}}; font-family: 'Anek Bangla',sans-serif; font-variant-numeric: tabular-nums; white-space: nowrap">
+              <span style="font-size: 48px; line-height: 1.25; font-weight: 800; font-stretch: 125%"><span style="font-size: 0.7em">৳</span>৯,১৩৭</span>
+              <span style="font-size: 32px; line-height: 1.3; font-weight: 700; font-stretch: 112.5%"><span style="font-size: 0.7em">৳</span>৯,১৩৫.৬৬</span>
+              <span style="font-size: 22px; line-height: 1.35; font-weight: 700"><span style="font-size: 0.7em">৳</span>৯,১৩৫.৬৬</span>
+              <span style="display: flex; flex-direction: column; gap: 0"><span style="font-size: 17px; line-height: 1.45; font-weight: 600"><span style="font-size: 0.7em">৳</span>৯,১৩৫.৬৬</span><span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.ts}}">{{m.token}}</span></span>
+            </div>
+          </sc-for>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: baseline; padding-top: 14px; margin-top: 6px; border-top: 1px solid {{t.line}}; font-variant-numeric: tabular-nums">
+            <span style="display: flex; flex-direction: column"><span style="font-size: 12px; color: {{t.ts}}">English digits</span><span style="font-family: 'Anek Latin','Anek Bangla',sans-serif; font-size: 22px; font-weight: 700; color: {{t.pri}}"><span style="font-size: 0.7em">৳</span>15,21,595.95</span></span>
+            <span style="display: flex; flex-direction: column"><span style="font-size: 12px; color: {{t.ts}}">Bengali digits</span><span style="font-family: 'Anek Bangla',sans-serif; font-size: 22px; font-weight: 700; color: {{t.pri}}"><span style="font-size: 0.7em">৳</span>১৫,২১,৫৯৫.৯৫</span></span>
+            <span style="display: flex; flex-direction: column"><span style="font-size: 12px; color: {{t.ts}}">Negative, U+2212</span><span style="font-family: 'Anek Bangla',sans-serif; font-size: 22px; font-weight: 700; color: {{t.err}}">−<span style="font-size: 0.7em">৳</span>৪,০০০.০০</span></span>
+            <span style="display: flex; flex-direction: column"><span style="font-size: 12px; color: {{t.ts}}">Invalid input</span><span style="font-size: 22px; font-weight: 700; color: {{t.tm}}">—</span></span>
+            <span style="display: flex; flex-direction: column"><span style="font-size: 12px; color: {{t.ts}}">Compact, cards only</span><span style="font-family: 'Anek Bangla',sans-serif; font-size: 22px; font-weight: 700; color: {{t.emi}}">১৫.২২ লাখ</span></span>
+            <span style="display: flex; flex-direction: column"><span style="font-size: 12px; color: {{t.ts}}">Compact, English</span><span style="font-size: 22px; font-weight: 700; color: {{t.emi}}">1.5 crore</span></span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 20px">
+    <h2 style="margin: 0; font-size: 36px; line-height: 1.2; font-weight: 700; font-stretch: 112.5%">Space, radius and depth</h2>
+    <div style="display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 32px">
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 24px; border-radius: 20px; background: #FFFFFF; box-shadow: 0 4px 16px rgba(46,32,140,0.10)">
+        <span style="font-size: 17px; font-weight: 600">4 pt grid, side padding 20</span>
+        <sc-for list="{{space}}" as="sp" hint-placeholder-count="8">
+          <div style="display: flex; align-items: center; gap: 12px">
+            <span style="width: 28px; font-size: 14px; color: #4B4680; font-variant-numeric: tabular-nums">{{sp.v}}</span>
+            <div style="height: 14px; width: {{sp.v}}px; border-radius: 4px; background: #7C4DFF"></div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px">
+          <sc-for list="{{radii}}" as="rd" hint-placeholder-count="6">
+            <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-start">
+              <div style="width: 100%; height: 88px; background: #ECEAFB; border: 2px solid #7C4DFF; border-radius: {{rd.css}}; box-sizing: border-box"></div>
+              <span style="font-size: 15px; font-weight: 600">{{rd.name}}</span>
+              <span style="font-size: 13px; color: #4B4680">{{rd.v}}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px">
+          <div style="display: flex; gap: 16px; padding: 24px; border-radius: 20px; background: #120F2E; color: #F4F2FF">
+            <div style="flex: 1 1 0; padding: 16px; border-radius: 20px; background: #1B1744; border: 1px solid #2C2760; font-size: 14px; line-height: 1.45">Section card: bg.raised and a 1 px line. No grey shadows.</div>
+            <div style="flex: 1 1 0; padding: 16px; border-radius: 28px; border: 1.5px solid transparent; background: linear-gradient(#1B1744,#1B1744) padding-box, linear-gradient(120deg,#2EE6D0 0%,#A78BFA 52%,#FF5C9A 100%) border-box; box-shadow: 0 0 24px rgba(46,230,208,0.20); font-size: 14px; line-height: 1.45">Hero card: aurora border and teal glow</div>
+            <div style="flex: 1 1 0; padding: 16px; border-radius: 999px; background: rgba(27,23,68,0.86); border: 1px solid #2C2760; font-size: 14px; line-height: 1.45; align-self: center; text-align: center">Faux glass 0.86</div>
+          </div>
+          <div style="display: flex; gap: 16px; padding: 24px; border-radius: 20px; background: #F5F4FF; color: #1A1640; border: 1px solid #DDD9F5">
+            <div style="flex: 1 1 0; padding: 16px; border-radius: 20px; background: #FFFFFF; box-shadow: 0 4px 16px rgba(46,32,140,0.10); font-size: 14px; line-height: 1.45">Section card: indigo-tinted shadow 0.10, y 4, blur 16</div>
+            <div style="flex: 1 1 0; padding: 16px; border-radius: 28px; border: 1.5px solid transparent; background: linear-gradient(#FFFFFF,#FFFFFF) padding-box, linear-gradient(120deg,#0FB5A3 0%,#7C4DFF 52%,#E83E8C 100%) border-box; box-shadow: 0 8px 24px rgba(46,32,140,0.14); font-size: 14px; line-height: 1.45">Hero card: shadow 0.14, y 8, blur 24</div>
+            <div style="flex: 1 1 0; padding: 16px; border-radius: 999px; background: rgba(255,255,255,0.88); border: 1px solid #DDD9F5; font-size: 14px; line-height: 1.45; align-self: center; text-align: center">Faux glass 0.88</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 20px">
+    <h2 style="margin: 0; font-size: 36px; line-height: 1.2; font-weight: 700; font-stretch: 112.5%">Icons</h2>
+    <p style="margin: 0; font-size: 17px; line-height: 1.5; color: #4B4680">Phosphor set, drawn here as stand-ins at the regular weight. 24 pt, 20 pt inside rows. Feature icons in the build use the duotone weight with the money colour at 30%.</p>
+    <div style="display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 12px">
+      <sc-for list="{{icons}}" as="ic" hint-placeholder-count="30">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 16px 4px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DDD9F5">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="{{ic.c}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.d}}" fill="{{ic.fill}}" fill-opacity="0.3"></path><path d="{{ic.d}}"></path></svg>
+          <span style="font-size: 12px; line-height: 1.3; color: #4B4680; text-align: center">{{ic.n}}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+var ICO={calculator:'M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z M8 6.5h8v3.5H8z M8.5 14h.01 M12 14h.01 M15.5 14h.01 M8.5 17.5h.01 M12 17.5h.01 M15.5 17.5h.01',bank:'M3 9h18L12 3.5z M5 9v8 M9.7 9v8 M14.3 9v8 M19 9v8 M3.5 17h17 M2 20.5h20',gear:'M12 8.8a3.2 3.2 0 1 0 0 6.4a3.2 3.2 0 1 0 0-6.4z M12 5.2a6.8 6.8 0 1 0 0 13.6a6.8 6.8 0 1 0 0-13.6z M12 2.5v2.7 M12 18.8v2.7 M2.5 12h2.7 M18.8 12h2.7 M5.3 5.3l1.9 1.9 M16.8 16.8l1.9 1.9 M5.3 18.7l1.9-1.9 M16.8 7.2l1.9-1.9',coins:'M9 4.5c3.6 0 6.5 1.3 6.5 3s-2.9 3-6.5 3-6.5-1.3-6.5-3 2.9-3 6.5-3z M2.5 7.5v4c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-4 M15.5 10.6c3.3.3 6 1.5 6 2.9 0 1.7-2.9 3-6.5 3-1.6 0-3.1-.3-4.2-.7 M8.5 14.5v2c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-3',percent:'M18.5 5.5l-13 13 M7.5 5a2.5 2.5 0 1 0 0 5a2.5 2.5 0 1 0 0-5z M16.5 14a2.5 2.5 0 1 0 0 5a2.5 2.5 0 1 0 0-5z',hourglass:'M6.5 3h11 M6.5 21h11 M7.5 3v2.5c0 2 4.5 4.5 4.5 6.5s-4.5 4.5-4.5 6.5V21 M16.5 3v2.5c0 2-4.5 4.5-4.5 6.5s4.5 4.5 4.5 6.5V21 M9.5 7.5h5',calendar:'M5 5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z M16 3v4 M8 3v4 M4 10h16',receipt:'M4.5 20V4.5a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1V20l-2.5-1.5L14.5 20 12 18.5 9.5 20 7 18.5z M8 9h8 M8 13h8',arrowsClockwise:'M16.5 9.5h4v-4 M20.5 9.5 17.6 6.6a8 8 0 0 0-11.3 0 M7.5 14.5h-4v4 M3.5 14.5l2.9 2.9a8 8 0 0 0 11.3 0',shieldCheck:'M4 6.5v4.8c0 5.4 4.6 7.6 8 9.2 3.4-1.6 8-3.8 8-9.2V6.5L12 3.5z M8.5 12l2.5 2.5 4.5-4.5',handCoins:'M16 4.5a3 3 0 1 0 0 6a3 3 0 1 0 0-6z M2.5 14.5h3v6h-3z M5.5 20h7.5l7-5.5a1.5 1.5 0 0 0-2-2.2L14.5 15H10 M5.5 15l2-1.6a2.5 2.5 0 0 1 1.6-.6h3.4a1.5 1.5 0 0 1 0 3H10',chartPie:'M12 3a9 9 0 1 0 9 9h-9z M14.5 2.8a9 9 0 0 1 6.7 6.7h-6.7z',mathOps:'M4 7h6 M7 4v6 M14 7h6 M14 15.5h6 M14 19h6 M4.5 15l4.5 4.5 M9 15l-4.5 4.5',listNumbers:'M10 6h10 M10 12h10 M10 18h10 M4 5l1.5-1v5 M3.8 14.6a1.4 1.4 0 0 1 2.6.7c0 .7-.6 1.1-2.6 3.2h2.8',translate:'M3 5.5h9 M7.5 3.5v2 M10.5 5.5c-1 4-3.6 6.9-7 8.5 M5.5 8.5c1 2.2 2.8 4 5 5 M12.5 20.5l4-9 4 9 M13.8 17.5h5.4',sun:'M12 7.5a4.5 4.5 0 1 0 0 9a4.5 4.5 0 1 0 0-9z M12 2.5v2 M12 19.5v2 M2.5 12h2 M19.5 12h2 M5.3 5.3l1.4 1.4 M17.3 17.3l1.4 1.4 M5.3 18.7l1.4-1.4 M17.3 6.7l1.4-1.4',moon:'M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z',speakerHigh:'M4 9h3.5L12 5v14l-4.5-4H4z M15.5 9.5a3.5 3.5 0 0 1 0 5 M18.5 7a7 7 0 0 1 0 10',speakerSlash:'M4 9h3.5L12 5v14l-4.5-4H4z M16 9.5l5 5 M21 9.5l-5 5',vibrate:'M8.5 3.5h7a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z M4.5 8v8 M19.5 8v8 M1.8 10v4 M22.2 10v4',trash:'M4 6.5h16 M9.5 3.5h5 M6 6.5l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13 M10 10.5v6 M14 10.5v6',pencil:'M4 20h4L19 9a2.1 2.1 0 0 0-4-4L4 16z M13.5 6.5l4 4',plus:'M12 5v14 M5 12h14',caretLeft:'M15 5l-7 7 7 7',caretRight:'M9 5l7 7-7 7',caretDown:'M5 9l7 7 7-7',warning:'M12 3.5 2.5 20h19z M12 10v4 M12 17h.01',checkCircle:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M8 12.5l2.7 2.7L16 10',info:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M12 11v5 M12 7.8h.01',undo:'M8.5 9.5h-5v-5 M3.5 9.5l2.9-2.9a8 8 0 1 1 0 11.3',dots:'M5 12h.01 M12 12h.01 M19 12h.01',x:'M6 6l12 12 M18 6 6 18',clock:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M12 7.5V12l3 2'};
+function TH(d){var T={dark:{base:'#120F2E',raised:'#1B1744',sunken:'#0C0A21',line:'#2C2760',tp:'#F4F2FF',ts:'#B7B2E0',tm:'#8C86BC',emi:'#2EE6D0',pri:'#A78BFA',int:'#FFC234',ded:'#FF5C9A',cash:'#4BE38A',err:'#FF6B6B',a1:'#2EE6D0',a2:'#A78BFA',a3:'#FF5C9A',sh:'none'},light:{base:'#F5F4FF',raised:'#FFFFFF',sunken:'#ECEAFB',line:'#DDD9F5',tp:'#1A1640',ts:'#4B4680',tm:'#625E8F',emi:'#087A6F',pri:'#6D3FE0',int:'#8F5F00',ded:'#C8235F',cash:'#0F7A45',err:'#C62828',a1:'#0FB5A3',a2:'#7C4DFF',a3:'#E83E8C',sh:'0 4px 16px rgba(46,32,140,0.10)'}};return Object.assign({mode:d},T[d]);}
+function rgba(h,a){var n=parseInt(h.slice(1),16);return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')';}
+function ring(size,n,done,dueK){var yr=n>120,units=yr?Math.ceil(n/12):n,cx=size/2,R=size/2-size*0.07;var per=2*Math.PI*R/units;var sw=Math.min(size*0.032,Math.max(size*0.016,per*0.42));var arc=Math.max(per*0.6-sw,0.4);var P={paid:'',due:'',up:''};for(var u=0;u<units;u++){var st;if(!yr){var k=u+1;st=k<=done?'paid':(k===dueK?'due':'up');}else{var a=u*12+1,b=Math.min((u+1)*12,n);st=done>=b?'paid':(((dueK>=a&&dueK<=b)||(done>=a&&done<b))?'due':'up');}var len=(yr&&u===units-1&&n%12!==0)?arc*0.5:arc;var mid=-Math.PI/2+(u+0.5)*per/R,h=len/2/R;P[st]+='M'+(cx+R*Math.cos(mid-h)).toFixed(2)+' '+(cx+R*Math.sin(mid-h)).toFixed(2)+'A'+R.toFixed(2)+' '+R.toFixed(2)+' 0 0 1 '+(cx+R*Math.cos(mid+h)).toFixed(2)+' '+(cx+R*Math.sin(mid+h)).toFixed(2)+' ';}return {s:size,c:cx,R:R.toFixed(2),paid:P.paid,due:P.due,up:P.up,sw:sw.toFixed(2),gw:(sw*2.8).toFixed(2)};}
+function line(W,n,done,dueK,H){var yr=n>60,units=yr?Math.ceil(n/12):n;var per=W/units;var sw=Math.min(6,Math.max(2.6,per*0.5));var arc=Math.max(per*0.62-sw,0.3);var y=(H/2).toFixed(1);var P={paid:'',due:'',up:''};for(var u=0;u<units;u++){var st;if(!yr){var k=u+1;st=k<=done?'paid':(k===dueK?'due':'up');}else{var a=u*12+1,b=Math.min((u+1)*12,n);st=done>=b?'paid':(((dueK>=a&&dueK<=b)||(done>=a&&done<b))?'due':'up');}var c=(u+0.5)*per;P[st]+='M'+(c-arc/2).toFixed(2)+' '+y+'H'+(c+arc/2).toFixed(2)+' ';}return {w:W,h:H,paid:P.paid,due:P.due,up:P.up,sw:sw.toFixed(2)};}
+class Component extends DCLogic {
+  renderVals() {
+    var themes=['dark','light'].map(function(d){
+      var t=TH(d);
+      var r1=ring(200,60,12,13);r1.gid='g1'+d;r1.fs=32;r1.center='১৩/৬০';r1.sub='কিস্তি শেষ';r1.label='StitchRing 200, 60 installments, 12 paid, 1 due';
+      var r2=ring(120,242,69,70);r2.gid='g2'+d;r2.fs=20;r2.center='৭০/২৪২';r2.sub='';r2.label='120, 242 installments: one stitch per year, last year half';
+      var r3=ring(120,24,24,0);r3.gid='g3'+d;r3.fs=20;r3.center='২৪/২৪';r3.sub='';r3.label='120, completed';
+      t.rings=[r1,r2,r3];
+      var l1=line(300,60,12,13,12);l1.label='StitchProgress: ৬০টির মধ্যে ১৩';
+      var l2=line(300,60,0,0,12);l2.label='৬০টির মধ্যে ০, শুরু হয়নি';
+      var l3=line(300,24,24,0,12);l3.label='২৪টির মধ্যে ২৪, সব কিস্তি শেষ';
+      t.lines=[l1,l2,l3];
+      t.marks=[
+        {label:'শোধ হয়েছে',w:22,h:6,bg:t.cash,bd:'none',glow:'none',op:1},
+        {label:'এই মাসে দিতে হবে',w:16,h:16,bg:'transparent',bd:'2.5px solid '+t.emi,glow:'0 0 10px '+rgba(t.a1,0.6)+', 0 0 18px '+rgba(t.a2,0.35),op:1},
+        {label:'সামনে আসছে',w:22,h:6,bg:'transparent',bd:'1.5px solid '+rgba(t.pri,0.45),glow:'none',op:1},
+        {label:'শেষ কিস্তি',w:9,h:9,bg:t.int,bd:'none',glow:'none',op:1},
+        {label:'লোনের বাইরে',w:22,h:6,bg:t.tm,bd:'none',glow:'none',op:0.3}
+      ];
+      t.money=[['money.emi',t.emi],['money.principal',t.pri],['money.interest',t.int],['money.deduction',t.ded],['money.cash',t.cash],['status.error',t.err]].map(function(m){return {token:m[0],c:m[1]};});
+      return t;
+    });
+    var space=[4,8,12,16,20,24,32,40].map(function(v){return {v:v};});
+    var radii=[['Hero card','28','28px'],['Section card','20','20px'],['Month cell','16','16px'],['Input, row card','14','14px'],['Chips, pills','Fully round','999px'],['Sheet top','28 top corners','28px 28px 0 0']].map(function(r){return {name:r[0],v:r[1],css:r[2]};});
+    var groups=[['Calculator','calculator',''],['Bank','bank',''],['Gear','gear',''],['Coins','coins','#087A6F'],['Percent','percent','#087A6F'],['HourglassMedium','hourglass','#6D3FE0'],['CalendarBlank','calendar','#6D3FE0'],['Receipt','receipt','#C8235F'],['ArrowsClockwise','arrowsClockwise','#C8235F'],['ShieldCheck','shieldCheck','#C8235F'],['HandCoins','handCoins','#0F7A45'],['ChartPieSlice','chartPie','#8F5F00'],['MathOperations','mathOps','#6D3FE0'],['ListNumbers','listNumbers','#087A6F'],['Translate','translate',''],['Sun','sun',''],['Moon','moon',''],['SpeakerHigh','speakerHigh',''],['SpeakerSlash','speakerSlash',''],['Vibrate','vibrate',''],['Trash','trash',''],['PencilSimple','pencil',''],['Plus','plus',''],['CaretLeft','caretLeft',''],['CaretRight','caretRight',''],['Warning','warning','#8F5F00'],['CheckCircle','checkCircle','#0F7A45'],['Info','info',''],['ArrowCounterClockwise','undo',''],['DotsThree','dots','']];
+    var icons=groups.map(function(g){return {n:g[0],d:ICO[g[1]],c:g[2]||'#1A1640',fill:g[2]?g[2]:'none'};});
+    return { themes: themes, space: space, radii: radii, icons: icons };
+  }
+}
+</script>
+</body>
+</html>

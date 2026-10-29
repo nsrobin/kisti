@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Kisti components</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..125,100..800&amp;family=Anek+Latin:wdth,wght@75..125,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 100vh; box-sizing: border-box; padding: 64px; background: {{t.base}}; color: {{t.tp}}; font-family: 'Anek Bangla','Anek Latin',sans-serif">
+  <h1 style="margin: 0 0 8px; font-family: 'Anek Latin',sans-serif; font-size: 40px; line-height: 1.2; font-weight: 800; font-stretch: 112.5%">Components, {{modeName}}</h1>
+  <p style="margin: 0 0 32px; font-family: 'Anek Latin',sans-serif; font-size: 17px; line-height: 1.5; color: {{t.ts}}">Names match §12 exactly. Bengali labels; English shown for MoneyValue, AmountInput, LoanCard and StatusChip.</p>
+  <div style="column-count: 3; column-gap: 24px">
+
+    <section style="break-inside: avoid; margin: 0 0 24px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">Buttons</h2>
+      <span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.tm}}">default, pressed, disabled</span>
+      <sc-for list="{{buttons}}" as="b" hint-placeholder-count="4">
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.ts}}">{{b.name}}</span>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap">
+            <sc-for list="{{b.states}}" as="x" hint-placeholder-count="3">
+              <button type="button" disabled="{{x.dis}}" style="min-height: 48px; padding: 0 16px; border-radius: 999px; border: {{x.bd}}; background: {{x.bg}}; color: {{x.c}}; transform: scale({{x.sc}}); font-family: inherit; font-size: 15px; font-weight: 700">{{b.label}}</button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+      <div style="display: flex; gap: 12px; align-items: center; padding-top: 4px">
+        <span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.ts}}">IconButton</span>
+        <button type="button" aria-label="আরও অপশন" style="width: 48px; height: 48px; border-radius: 999px; border: 0; background: transparent; color: {{t.tp}}; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="{{ic.dots}}"></path></svg></button>
+        <button type="button" aria-label="আরও অপশন" style="width: 48px; height: 48px; border-radius: 999px; border: 0; background: {{t.tp10}}; color: {{t.tp}}; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="{{ic.dots}}"></path></svg></button>
+        <span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.ts}}">FAB</span>
+        <button type="button" style="min-height: 56px; padding: 0 18px 0 14px; border-radius: 999px; border: 0; background: {{t.emi}}; color: {{t.onEmi}}; display: flex; align-items: center; gap: 6px; font-family: inherit; font-size: 15px; font-weight: 700; box-shadow: 0 8px 24px {{t.emi45}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="{{ic.plus}}"></path></svg>লোন যোগ করুন</button>
+      </div>
+    </section>
+
+    <section style="break-inside: avoid; margin: 0 0 24px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">AmountInput, RateInput</h2>
+      <span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.tm}}">empty, focused (commas removed), filled (commas on blur), error, disabled</span>
+      <sc-for list="{{inputs}}" as="fd" hint-placeholder-count="7">
+        <div style="display: flex; flex-direction: column; gap: 6px; opacity: {{fd.op}}">
+          <span style="display: flex; justify-content: space-between; font-size: 14px; line-height: 1.55; font-weight: 500; color: {{t.ts}}"><span style="font-family: {{fd.font}}">{{fd.label}}</span><span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.tm}}">{{fd.state}}</span></span>
+          <div style="height: 52px; border-radius: 14px; background: {{t.sunken}}; border: 1px solid {{t.line}}; box-shadow: {{fd.ring}}; display: flex; align-items: center; gap: 8px; padding: 0 14px; box-sizing: border-box; font-family: {{fd.font}}">
+            <span style="font-size: 17px; color: {{t.ts}}; font-weight: 600">{{fd.pre}}</span>
+            <span style="flex: 1 1 auto; font-size: 17px; font-weight: 600; color: {{fd.vc}}; font-variant-numeric: tabular-nums">{{fd.val}}</span>
+            <sc-if value="{{fd.caret}}" hint-placeholder-val="{{ false }}"><span style="width: 2px; height: 22px; background: {{t.emi}}"></span></sc-if>
+            <span style="font-size: 17px; color: {{t.ts}}; font-weight: 600">{{fd.suf}}</span>
+          </div>
+          <sc-if value="{{fd.err}}" hint-placeholder-val="{{ false }}"><span style="display: flex; gap: 6px; align-items: center; font-size: 14px; font-weight: 500; color: {{t.err}}; font-family: {{fd.font}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.warning}}"></path></svg>{{fd.err}}</span></sc-if>
+          <sc-if value="{{fd.help}}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; color: {{t.tm}}">{{fd.help}}</span></sc-if>
+        </div>
+      </sc-for>
+    </section>
+
+    <section style="break-inside: avoid; margin: 0 0 24px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">HeroEmiCard</h2>
+      <span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.tm}}">valid, invalid, compact (sticky mini bar)</span>
+      <div style="border-radius: 28px; border: 1.5px solid transparent; background: {{t.heroBg}}; box-shadow: {{t.shHero}}; padding: 20px; display: flex; flex-direction: column; gap: 4px">
+        <span style="font-size: 14px; color: {{t.ts}}">ব্যাংকের মাসিক কিস্তি</span>
+        <span style="font-size: 48px; line-height: 1.25; font-weight: 800; font-stretch: 125%; color: {{t.emi}}"><span style="font-size: 0.7em">৳</span>৩২,৬৮৩</span>
+        <span style="font-size: 15px; color: {{t.ts}}">হিসাবের কিস্তি (পয়সাসহ) <strong style="color: {{t.tp}}">৳৩২,৬৮২.৪২</strong></span>
+        <div style="display: flex; gap: 8px; padding-top: 8px"><span style="padding: 5px 12px; border-radius: 999px; background: {{t.sunken}}; font-size: 13px; color: {{t.ts}}">৬০টি কিস্তি</span><span style="padding: 5px 12px; border-radius: 999px; background: {{t.sunken}}; font-size: 13px; color: {{t.ts}}">মাসে ০.৮৭২৫%</span></div>
+      </div>
+      <div style="border-radius: 28px; border: 1.5px solid transparent; background: {{t.heroBg}}; padding: 20px; display: flex; flex-direction: column; gap: 4px">
+        <span style="font-size: 14px; color: {{t.ts}}">ব্যাংকের মাসিক কিস্তি</span>
+        <span style="font-size: 48px; line-height: 1.25; font-weight: 800; color: {{t.tm}}">—</span>
+        <span style="display: flex; gap: 6px; align-items: center; font-size: 15px; color: {{t.err}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.warning}}"></path></svg>লোনের পরিমাণ লিখুন</span>
+      </div>
+      <div style="align-self: center; min-height: 48px; padding: 0 20px; border-radius: 999px; background: {{t.glass}}; border: 1px solid {{t.line}}; display: flex; align-items: center; gap: 10px">
+        <span style="font-size: 14px; color: {{t.ts}}">ব্যাংকের মাসিক কিস্তি</span><span style="font-size: 22px; font-weight: 800; font-stretch: 112.5%; color: {{t.emi}}"><span style="font-size: 0.7em">৳</span>৩২,৬৮৩</span>
+      </div>
+    </section>
+
+    <section style="break-inside: avoid; margin: 0 0 24px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">PresetChip</h2>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="3">
+          <span style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start">
+            <span style="min-height: 48px; padding: 0 16px; border-radius: 999px; border: 1.5px solid {{c.bd}}; background: {{c.bg}}; transform: scale({{c.sc}}); display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 500"><sc-if value="{{c.on}}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{t.emi}}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if>{{c.label}}</span>
+            <span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.tm}}">{{c.state}}</span>
+          </span>
+        </sc-for>
+      </div>
+      <h2 style="margin: 8px 0 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">StatusChip</h2>
+      <sc-for list="{{statusRows}}" as="row" hint-placeholder-count="2">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; font-family: {{row.font}}">
+          <sc-for list="{{row.items}}" as="sc" hint-placeholder-count="5">
+            <span style="display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 10px; border-radius: 999px; background: {{sc.bg}}; color: {{sc.c}}; font-size: 13px; font-weight: 600"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{sc.d}}"></path></svg>{{sc.label}}</span>
+          </sc-for>
+        </div>
+      </sc-for>
+    </section>
+
+    <section style="break-inside: avoid; margin: 0 0 24px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">DurationInput, MonthField</h2>
+      <div style="display: flex; gap: 10px; align-items: center; justify-content: space-between">
+        <div style="display: flex; align-items: center; height: 52px; border-radius: 14px; background: {{t.sunken}}; border: 1px solid {{t.line}}; box-sizing: border-box; padding: 0 2px">
+          <span style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg></span>
+          <span style="min-width: 56px; text-align: center; font-size: 17px; font-weight: 600">৫ বছর</span>
+          <span style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="{{ic.plus}}"></path></svg></span>
+        </div>
+        <div style="display: flex; padding: 3px; border-radius: 999px; background: {{t.sunken}}; border: 1px solid {{t.line}}">
+          <span style="min-height: 44px; padding: 0 14px; border-radius: 999px; background: {{t.raised}}; display: flex; align-items: center; font-size: 15px; font-weight: 600">বছর</span>
+          <span style="min-height: 44px; padding: 0 14px; border-radius: 999px; display: flex; align-items: center; font-size: 15px; font-weight: 600; color: {{t.ts}}">মাস</span>
+        </div>
+      </div>
+      <sc-for list="{{monthFields}}" as="mf" hint-placeholder-count="2">
+        <div style="height: 52px; border-radius: 14px; background: {{t.sunken}}; border: 1px solid {{t.line}}; display: flex; align-items: center; gap: 10px; padding: 0 14px; color: {{mf.c}}; font-size: 17px; font-weight: 600">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{t.pri}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.calendar}}"></path></svg>
+          <span style="flex: 1 1 auto">{{mf.v}}</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{t.ts}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+        </div>
+      </sc-for>
+      <h2 style="margin: 8px 0 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">SegmentedControl, SwitchRow, ListRow</h2>
+      <div style="display: flex; padding: 3px; border-radius: 999px; background: {{t.sunken}}; border: 1px solid {{t.line}}">
+        <span style="flex: 1 1 0; min-height: 44px; border-radius: 999px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: {{t.ts}}">ফোনের মতো</span>
+        <span style="flex: 1 1 0; min-height: 44px; border-radius: 999px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: {{t.ts}}">লাইট</span>
+        <span style="flex: 1 1 0; min-height: 44px; border-radius: 999px; background: {{t.raised}}; box-shadow: 0 0 0 1px {{t.line}}; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600">ডার্ক</span>
+      </div>
+      <sc-for list="{{switchRows}}" as="x" hint-placeholder-count="2">
+        <div style="display: flex; align-items: center; gap: 10px; min-height: 56px; border-top: 1px solid {{t.line}}">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{t.pri}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{x.d}}"></path></svg>
+          <span style="flex: 1 1 auto; font-size: 16px; font-weight: 600">{{x.label}}</span>
+          <span style="width: 52px; height: 32px; border-radius: 999px; background: {{x.track}}; display: flex; align-items: center; padding: 3px; box-sizing: border-box; justify-content: {{x.jc}}"><span style="width: 26px; height: 26px; border-radius: 999px; background: {{x.knob}}"></span></span>
+        </div>
+      </sc-for>
+      <div style="display: flex; align-items: center; gap: 10px; min-height: 56px; border-top: 1px solid {{t.line}}; color: {{t.err}}; font-size: 16px; font-weight: 600">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.trash}}"></path></svg><span style="flex: 1 1 auto">সব সেভ করা লোন মুছুন</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{t.ts}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+      </div>
+    </section>
+
+    <section style="break-inside: avoid; margin: 0 0 24px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">SummaryRow, DeductionRow</h2>
+      <div style="display: flex; justify-content: space-between; align-items: center; min-height: 38px"><span style="display: flex; align-items: center; gap: 8px; font-size: 16px; color: {{t.ts}}"><span style="width: 8px; height: 8px; border-radius: 999px; background: {{t.pri}}"></span>মূল টাকা</span><span style="font-size: 17px; font-weight: 600; color: {{t.pri}}">৳১৫,২১,৫৯৫.৯৫</span></div>
+      <div style="display: flex; flex-direction: column"><span style="font-size: 14px; color: {{t.ts}}">মোট পরিশোধ (আনুমানিক)</span><span style="font-size: 32px; line-height: 1.3; font-weight: 700; font-stretch: 112.5%; color: {{t.emi}}"><span style="font-size: 0.7em">৳</span>১৯,৬০,৯৩৪.৭২</span><span style="font-size: 14px; color: {{t.tm}}">সব কিস্তি পুরো ধরলে মোট ৳১৯,৬০,৯৮০ হতো। শেষ কিস্তি ৳৪৫.২৮ কম।</span></div>
+      <div style="display: flex; justify-content: space-between; align-items: center; min-height: 38px; border-top: 1px solid {{t.line}}"><span style="display: flex; align-items: center; gap: 8px; font-size: 16px; color: {{t.ts}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{t.ded}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.shieldCheck}}"></path></svg>বীমার প্রিমিয়াম (এককালীন)</span><span style="font-size: 17px; font-weight: 600; color: {{t.ded}}">৳৩০,০০০.০০</span></div>
+      <h2 style="margin: 8px 0 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">StackedBar, InterestShareBar, SplitBar</h2>
+      <sc-for list="{{bars}}" as="br" hint-placeholder-count="3">
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <div style="display: flex; height: {{br.h}}px; border-radius: 999px; overflow: hidden; background: {{t.sunken}}; gap: 2px"><div style="width: {{br.a}}%; background: {{br.ca}}; border-radius: 999px"></div><div style="width: {{br.b}}%; background: {{br.cb}}; border-radius: 999px"></div></div>
+          <span style="font-size: 14px; font-weight: 600">{{br.label}}</span>
+        </div>
+      </sc-for>
+      <h2 style="margin: 8px 0 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">WarningBanner, InlineError</h2>
+      <div style="display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 14px; background: {{t.int10}}; border: 1px solid {{t.int45}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{t.int}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto"><path d="{{ic.warning}}"></path></svg><span style="font-size: 15px; line-height: 1.6">কেটে রাখা টাকা লোনের চেয়ে বেশি। হাতে কিছুই পাবেন না, উল্টো ৳৪,০০০.০০ দিতে হবে।</span></div>
+      <span style="display: flex; gap: 6px; align-items: center; font-size: 14px; font-weight: 500; color: {{t.err}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.warning}}"></path></svg>সুদের হার ০% থেকে ৫০%-এর মধ্যে হতে হবে</span>
+    </section>
+
+    <section style="break-inside: avoid; margin: 0 0 24px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">MonthGrid, MonthCell</h2>
+      <span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.tm}}">Calendar mode: paid, due, upcoming, final, outside, selected, pressed</span>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+        <sc-for list="{{cells}}" as="cl" hint-placeholder-count="8">
+          <div style="display: flex; flex-direction: column; gap: 4px; align-items: center">
+            <div style="width: 100%; height: 72px; border-radius: 16px; border: {{cl.bd}}; background: {{cl.bg}}; box-shadow: {{cl.sh}}; transform: translateY({{cl.ty}}px) scale({{cl.sc}}); opacity: {{cl.op}}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; box-sizing: border-box">
+              <span style="font-size: 14px; font-weight: {{cl.fw}}">{{cl.label}}</span>
+              <span style="height: 18px; display: flex; align-items: center; gap: 4px"><span style="width: {{cl.mw}}px; height: {{cl.mh}}px; border-radius: 999px; background: {{cl.mbg}}; border: {{cl.mbd}}; box-shadow: {{cl.mglow}}; box-sizing: border-box"></span><sc-if value="{{cl.final}}" hint-placeholder-val="{{ false }}"><span style="width: 8px; height: 8px; border-radius: 999px; background: {{t.int}}"></span></sc-if></span>
+            </div>
+            <span style="font-family: 'Anek Latin',sans-serif; font-size: 11px; color: {{t.tm}}">{{cl.state}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.tm}}">Picker mode: default, selected, disabled</span>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+        <div style="height: 56px; border-radius: 16px; border: 1px solid {{t.line}}; background: {{t.base}}; display: flex; align-items: center; justify-content: center; font-size: 16px">সেপ্টে</div>
+        <div style="height: 56px; border-radius: 16px; border: 1px solid {{t.emi}}; background: {{t.emi}}; color: {{t.onEmi}}; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">অক্টো</div>
+        <div style="height: 56px; border-radius: 16px; border: 1px solid {{t.line}}; background: {{t.base}}; display: flex; align-items: center; justify-content: center; font-size: 16px">নভে</div>
+        <div style="height: 56px; border-radius: 16px; border: 1px solid {{t.line}}; background: {{t.base}}; opacity: 0.3; display: flex; align-items: center; justify-content: center; font-size: 16px">ডিসে</div>
+      </div>
+    </section>
+
+    <section style="break-inside: avoid; margin: 0 0 24px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">LoanCard</h2>
+      <span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.tm}}">running, not started, completed, English</span>
+      <sc-for list="{{cards}}" as="cd" hint-placeholder-count="4">
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 20px; background: {{t.base}}; border: 1px solid {{t.line}}; font-family: {{cd.font}}">
+          <div style="display: flex; align-items: center; gap: 10px">
+            <span style="width: 40px; height: 40px; border-radius: 999px; background: {{cd.accBg}}; color: {{cd.acc}}; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">{{cd.ini}}</span>
+            <span style="flex: 1 1 auto; display: flex; flex-direction: column"><span style="font-size: 16px; font-weight: 600">{{cd.bank}}</span><span style="font-size: 13px; color: {{t.ts}}">{{cd.nick}}</span></span>
+            <span style="display: inline-flex; align-items: center; gap: 5px; min-height: 28px; padding: 0 9px; border-radius: 999px; background: {{cd.chipBg}}; color: {{cd.chipC}}; font-size: 12px; font-weight: 600; white-space: nowrap"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{cd.chipD}}"></path></svg>{{cd.chip}}</span>
+          </div>
+          <span style="font-size: 26px; line-height: 1.3; font-weight: 800; font-stretch: 112.5%; color: {{t.emi}}"><span style="font-size: 0.7em">৳</span>{{cd.emi}}</span>
+          <svg width="100%" height="10" viewBox="0 0 330 10" preserveAspectRatio="none" aria-hidden="true"><path d="{{cd.ln.up}}" fill="none" stroke="{{t.pri}}" stroke-opacity="0.45" stroke-width="{{cd.ln.sw}}" stroke-linecap="round"></path><path d="{{cd.ln.paid}}" fill="none" stroke="{{t.cash}}" stroke-width="{{cd.ln.sw}}" stroke-linecap="round"></path><path d="{{cd.ln.due}}" fill="none" stroke="{{t.emi}}" stroke-width="{{cd.ln.sw}}" stroke-linecap="round"></path></svg>
+          <div style="display: flex; justify-content: space-between; font-size: 13px; color: {{t.ts}}"><span style="color: {{t.pri}}; font-weight: 600">{{cd.rem}}</span><span style="font-weight: 600">{{cd.prog}}</span></div>
+        </div>
+      </sc-for>
+    </section>
+
+    <section style="break-inside: avoid; margin: 0 0 24px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">SummaryStrip</h2>
+      <sc-for list="{{strips}}" as="sp" hint-placeholder-count="2">
+        <div style="border-radius: 20px; background: {{t.base}}; border: 1px solid {{t.line}}; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: {{t.ts}}">{{sp.pre}}<strong style="font-size: 20px; font-weight: 700; color: {{t.emi}}">{{sp.amt}}</strong>{{sp.post}}</p>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid {{t.line}}; padding-top: 8px"><span style="font-size: 14px; color: {{t.ts}}">মোট বাকি মূল টাকা</span><span style="font-size: 18px; font-weight: 700; color: {{t.pri}}">{{sp.rem}}</span></div>
+        </div>
+      </sc-for>
+      <h2 style="margin: 8px 0 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">ScheduleRowCard</h2>
+      <span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.tm}}">calculator mode, loan mode, gap row, highlighted final row</span>
+      <sc-for list="{{srows}}" as="r" hint-placeholder-count="4">
+        <sc-if value="{{r.gap}}" hint-placeholder-val="{{ false }}"><div style="text-align: center; font-size: 22px; letter-spacing: 6px; color: {{t.tm}}">…</div></sc-if>
+        <sc-if value="{{r.row}}" hint-placeholder-val="{{ true }}">
+          <div style="border-radius: 14px; background: {{t.base}}; border: {{r.bd}}; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+            <div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: {{t.ts}}"><sc-if value="{{r.mk}}" hint-placeholder-val="{{ false }}"><span style="width: 18px; height: 5px; border-radius: 999px; background: {{t.cash}}"></span></sc-if>{{r.m}}<sc-if value="{{r.final}}" hint-placeholder-val="{{ false }}"><span style="width: 8px; height: 8px; border-radius: 999px; background: {{t.int}}"></span></sc-if></span><span style="font-size: 20px; font-weight: 700; color: {{t.emi}}">{{r.pay}}</span></div>
+            <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px"><span style="display: flex; flex-direction: column"><span style="font-size: 12px; color: {{t.tm}}">সুদ</span><span style="font-size: 14px; font-weight: 600; color: {{t.int}}">{{r.i}}</span></span><span style="display: flex; flex-direction: column"><span style="font-size: 12px; color: {{t.tm}}">মূল টাকা শোধ</span><span style="font-size: 14px; font-weight: 600; color: {{t.pri}}">{{r.pp}}</span></span><span style="display: flex; flex-direction: column; text-align: right"><span style="font-size: 12px; color: {{t.tm}}">মাস শেষে বাকি</span><span style="font-size: 14px; font-weight: 600; color: {{t.pri}}">{{r.c}}</span></span></div>
+          </div>
+        </sc-if>
+      </sc-for>
+    </section>
+
+    <section style="break-inside: avoid; margin: 0 0 24px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">SectionCard, Accordion</h2>
+      <div style="border-radius: 20px; background: {{t.base}}; border: 1px solid {{t.line}}; min-height: 64px; padding: 0 16px; display: flex; align-items: center; gap: 10px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{t.pri}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.mathOps}}"></path></svg><span style="flex: 1 1 auto; font-size: 18px; font-weight: 600">কীভাবে হিসাব হয়</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{t.ts}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9l7 7 7-7"></path></svg></div>
+      <div style="border-radius: 20px; background: {{t.base}}; border: 1px solid {{t.line}}; padding: 0 16px 16px; display: flex; flex-direction: column; gap: 10px"><div style="min-height: 64px; display: flex; align-items: center; gap: 10px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{t.emi}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.listNumbers}}"></path></svg><span style="flex: 1 1 auto; font-size: 18px; font-weight: 600">কিস্তির তালিকা</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{t.ts}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate(180deg)"><path d="M5 9l7 7 7-7"></path></svg></div><div style="height: 48px; border-radius: 12px; background: {{t.sunken}}"></div><div style="height: 48px; border-radius: 12px; background: {{t.sunken}}"></div></div>
+      <h2 style="margin: 8px 0 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">TabBar</h2>
+      <div style="border-radius: 20px; overflow: hidden; background: {{t.glass}}; border: 1px solid {{t.line}}; display: flex; padding: 6px 8px 10px">
+        <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="3">
+          <span style="flex: 1 1 0; min-height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: {{tb.c}}; position: relative"><span style="position: absolute; top: -6px; width: 36px; height: 3px; border-radius: 999px; background: {{tb.ind}}"></span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{tb.ic}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{tb.d}}" fill="{{tb.fill}}" fill-opacity="0.3"></path><path d="{{tb.d}}"></path></svg><span style="font-size: 13px; font-weight: {{tb.w}}">{{tb.label}}</span></span>
+        </sc-for>
+      </div>
+      <h2 style="margin: 8px 0 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">Snackbar, Toast</h2>
+      <div style="border-radius: 16px; background: {{t.tp}}; color: {{t.base}}; display: flex; align-items: center; gap: 12px; padding: 4px 6px 4px 16px; min-height: 56px"><span style="flex: 1 1 auto; font-size: 16px; font-weight: 500">লোন মুছে ফেলা হয়েছে</span><span style="min-height: 48px; padding: 0 14px; display: flex; align-items: center; color: {{t.inv}}; font-size: 16px; font-weight: 700">ফিরিয়ে আনুন</span></div>
+      <div style="align-self: center; border-radius: 999px; background: {{t.tp}}; color: {{t.base}}; display: flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 15px; font-weight: 600"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{t.inv}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.checkCircle}}"></path></svg>লোন সেভ হয়েছে</div>
+    </section>
+
+    <section style="break-inside: avoid; margin: 0 0 24px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">BottomSheet, ConfirmDialog</h2>
+      <div style="border-radius: 28px 28px 0 0; background: {{t.base}}; border: 1px solid {{t.line}}; border-bottom: 0; padding: 10px 16px 16px; display: flex; flex-direction: column; gap: 10px"><span style="align-self: center; width: 40px; height: 5px; border-radius: 999px; background: {{t.line}}"></span><span style="font-size: 18px; font-weight: 600">প্রথম কিস্তির মাস</span><span style="text-align: center; font-size: 20px; font-weight: 700">‹  ২০২৫  ›</span><div style="height: 48px; border-radius: 999px; background: {{t.emi}}; color: {{t.onEmi}}; display: flex; align-items: center; justify-content: center; font-weight: 700">ঠিক আছে</div></div>
+      <div style="border-radius: 28px; background: {{t.base}}; border: 1px solid {{t.line}}; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 10px"><span style="width: 48px; height: 48px; border-radius: 999px; background: {{t.err10}}; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{t.err}}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.trash}}"></path></svg></span><span style="font-size: 20px; font-weight: 600">এই লোন মুছে ফেলবেন?</span><div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; width: 100%"><span style="min-height: 48px; border-radius: 999px; border: 1.5px solid {{t.line}}; display: flex; align-items: center; justify-content: center; font-weight: 600">বাতিল</span><span style="min-height: 48px; border-radius: 999px; background: {{t.err}}; color: {{t.onEmi}}; display: flex; align-items: center; justify-content: center; font-weight: 600">মুছে ফেলুন</span></div></div>
+      <h2 style="margin: 8px 0 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">SuccessMoment, EmptyState</h2>
+      <div style="display: flex; gap: 16px; align-items: center">
+        <svg width="140" height="140" viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="dcok" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{{t.a1}}"></stop><stop offset="0.52" stop-color="{{t.a2}}"></stop><stop offset="1" stop-color="{{t.a3}}"></stop></linearGradient></defs><circle cx="100" cy="100" r="46" fill="{{t.base}}" stroke="url(#dcok)" stroke-width="4"></circle><path d="M80 101l14 14 27-29" fill="none" stroke="{{t.cash}}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path><path d="{{sparks}}" fill="none" stroke="url(#dcok)" stroke-width="5" stroke-linecap="round"></path></svg>
+        <svg width="140" height="120" viewBox="0 0 220 190" aria-hidden="true"><circle cx="110" cy="95" r="70" fill="none" stroke="{{t.pri}}" stroke-opacity="0.45" stroke-width="5" stroke-linecap="round" stroke-dasharray="9 9.3"></circle><path d="M110 25 A70 70 0 0 1 170 59" fill="none" stroke="url(#dcok)" stroke-width="5" stroke-linecap="round" stroke-dasharray="9 9.3"></path><path d="M150 150 L196 22" stroke="{{t.ts}}" stroke-width="3" stroke-linecap="round"></path><text x="110" y="112" text-anchor="middle" font-family="Anek Bangla, sans-serif" font-size="48" font-weight="800" fill="{{t.tm}}">৳</text></svg>
+      </div>
+      <h2 style="margin: 8px 0 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">LanguageCard</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+        <div style="border-radius: 20px; border: 2px solid {{t.emi}}; background: {{t.emi10}}; padding: 14px; display: flex; flex-direction: column"><span style="font-size: 32px; line-height: 1.25; font-weight: 800; font-stretch: 125%">বাংলা</span><span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.ts}}">selected</span></div>
+        <div style="border-radius: 20px; border: 1px solid {{t.line}}; background: {{t.base}}; padding: 14px; display: flex; flex-direction: column"><span style="font-family: 'Anek Latin',sans-serif; font-size: 32px; line-height: 1.25; font-weight: 800; font-stretch: 125%">English</span><span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.ts}}">default</span></div>
+      </div>
+    </section>
+
+    <section style="break-inside: avoid; margin: 0 0 24px; border-radius: 20px; background: {{t.raised}}; border: 1px solid {{t.line}}; box-shadow: {{t.sh}}; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">StitchRing, StitchProgress</h2>
+      <span style="font-family: 'Anek Latin',sans-serif; font-size: 12px; color: {{t.tm}}">running, not started, completed at 120 pt (200 pt on the D1 board)</span>
+      <div style="display: flex; gap: 8px; justify-content: space-between">
+        <sc-for list="{{rings}}" as="rg" hint-placeholder-count="3">
+          <div style="position: relative; width: 120px; height: 120px">
+            <svg width="120" height="120" viewBox="0 0 120 120" aria-hidden="true" style="position: absolute; left: 0; top: 0"><circle cx="60" cy="60" r="{{rg.R}}" fill="none" stroke="{{t.line}}" stroke-width="1"></circle><path d="{{rg.up}}" fill="none" stroke="{{t.pri}}" stroke-opacity="0.45" stroke-width="{{rg.sw}}" stroke-linecap="round"></path><path d="{{rg.paid}}" fill="none" stroke="{{t.cash}}" stroke-width="{{rg.sw}}" stroke-linecap="round"></path><path d="{{rg.due}}" fill="none" stroke="{{t.emi}}" stroke-width="{{rg.sw}}" stroke-linecap="round"></path></svg>
+            <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; font-stretch: 125%">{{rg.c}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <h2 style="margin: 8px 0 0; font-family: 'Anek Latin',sans-serif; font-size: 18px; font-weight: 700">MoneyValue, English</h2>
+      <div style="display: flex; flex-direction: column; gap: 2px; font-family: 'Anek Latin','Anek Bangla',sans-serif; font-variant-numeric: tabular-nums">
+        <span style="font-size: 48px; line-height: 1.1; font-weight: 800; font-stretch: 125%; color: {{t.emi}}"><span style="font-size: 0.7em">৳</span>32,683</span>
+        <span style="font-size: 32px; line-height: 1.15; font-weight: 700; font-stretch: 112.5%; color: {{t.pri}}"><span style="font-size: 0.7em">৳</span>12,55,664.57</span>
+        <span style="font-size: 22px; line-height: 1.2; font-weight: 700; color: {{t.cash}}"><span style="font-size: 0.7em">৳</span>4,14,000.00</span>
+        <span style="font-size: 17px; line-height: 1.3; font-weight: 600; color: {{t.err}}">−<span style="font-size: 0.7em">৳</span>4,000.00</span>
+      </div>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"dark"},"$preview":{"width":1440,"height":3400}}'>
+var ICO={dots:'M5 12h.01 M12 12h.01 M19 12h.01',plus:'M12 5v14 M5 12h14',warning:'M12 3.5 2.5 20h19z M12 10v4 M12 17h.01',calendar:'M5 5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z M16 3v4 M8 3v4 M4 10h16',trash:'M4 6.5h16 M9.5 3.5h5 M6 6.5l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13 M10 10.5v6 M14 10.5v6',shieldCheck:'M4 6.5v4.8c0 5.4 4.6 7.6 8 9.2 3.4-1.6 8-3.8 8-9.2V6.5L12 3.5z M8.5 12l2.5 2.5 4.5-4.5',mathOps:'M4 7h6 M7 4v6 M14 7h6 M14 15.5h6 M14 19h6 M4.5 15l4.5 4.5 M9 15l-4.5 4.5',listNumbers:'M10 6h10 M10 12h10 M10 18h10 M4 5l1.5-1v5 M3.8 14.6a1.4 1.4 0 0 1 2.6.7c0 .7-.6 1.1-2.6 3.2h2.8',checkCircle:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M8 12.5l2.7 2.7L16 10',target:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M12 8.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 1 0 0-7z',clock:'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M12 7.5V12l3 2',hourglass:'M6.5 3h11 M6.5 21h11 M7.5 3v2.5c0 2 4.5 4.5 4.5 6.5s-4.5 4.5-4.5 6.5V21 M16.5 3v2.5c0 2-4.5 4.5-4.5 6.5s4.5 4.5 4.5 6.5V21 M9.5 7.5h5',speakerHigh:'M4 9h3.5L12 5v14l-4.5-4H4z M15.5 9.5a3.5 3.5 0 0 1 0 5 M18.5 7a7 7 0 0 1 0 10',vibrate:'M8.5 3.5h7a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z M4.5 8v8 M19.5 8v8 M1.8 10v4 M22.2 10v4',calculator:'M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z M8 6.5h8v3.5H8z M8.5 14h.01 M12 14h.01 M15.5 14h.01 M8.5 17.5h.01 M12 17.5h.01 M15.5 17.5h.01',bank:'M3 9h18L12 3.5z M5 9v8 M9.7 9v8 M14.3 9v8 M19 9v8 M3.5 17h17 M2 20.5h20',gear:'M12 8.8a3.2 3.2 0 1 0 0 6.4a3.2 3.2 0 1 0 0-6.4z M12 5.2a6.8 6.8 0 1 0 0 13.6a6.8 6.8 0 1 0 0-13.6z M12 2.5v2.7 M12 18.8v2.7 M2.5 12h2.7 M18.8 12h2.7 M5.3 5.3l1.9 1.9 M16.8 16.8l1.9 1.9 M5.3 18.7l1.9-1.9 M16.8 7.2l1.9-1.9'};
+var TOK={dark:{base:'#120F2E',raised:'#1B1744',sunken:'#0C0A21',line:'#2C2760',tp:'#F4F2FF',ts:'#B7B2E0',tm:'#8C86BC',emi:'#2EE6D0',pri:'#A78BFA',int:'#FFC234',ded:'#FF5C9A',cash:'#4BE38A',err:'#FF6B6B',a1:'#2EE6D0',a2:'#A78BFA',a3:'#FF5C9A',glass:'rgba(27,23,68,0.86)',onEmi:'#120F2E',sh:'none',shHero:'0 0 24px rgba(46,230,208,0.20)',inv:'#087A6F',lift:'0 8px 18px rgba(0,0,0,0.45)'},light:{base:'#F5F4FF',raised:'#FFFFFF',sunken:'#ECEAFB',line:'#DDD9F5',tp:'#1A1640',ts:'#4B4680',tm:'#625E8F',emi:'#087A6F',pri:'#6D3FE0',int:'#8F5F00',ded:'#C8235F',cash:'#0F7A45',err:'#C62828',a1:'#0FB5A3',a2:'#7C4DFF',a3:'#E83E8C',glass:'rgba(255,255,255,0.88)',onEmi:'#FFFFFF',sh:'0 4px 16px rgba(46,32,140,0.10)',shHero:'0 8px 24px rgba(46,32,140,0.14)',inv:'#2EE6D0',lift:'0 8px 18px rgba(46,32,140,0.22)'}};
+var ACC={dark:['#6C8CFF','#FF8A5B','#E07BF0'],light:['#3D5BDB','#B4501F','#9A37B0']};
+function rgba(h,a){var n=parseInt(h.slice(1),16);return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')';}
+function ring(size,n,done,dueK){var units=n,cx=size/2,R=size/2-size*0.07;var per=2*Math.PI*R/units;var sw=Math.min(size*0.032,Math.max(size*0.016,per*0.42));var arc=Math.max(per*0.6-sw,0.4);var P={paid:'',due:'',up:''};for(var u=0;u<units;u++){var k=u+1,st=k<=done?'paid':(k===dueK?'due':'up');var mid=-Math.PI/2+(u+0.5)*per/R,h=arc/2/R;P[st]+='M'+(cx+R*Math.cos(mid-h)).toFixed(2)+' '+(cx+R*Math.sin(mid-h)).toFixed(2)+'A'+R.toFixed(2)+' '+R.toFixed(2)+' 0 0 1 '+(cx+R*Math.cos(mid+h)).toFixed(2)+' '+(cx+R*Math.sin(mid+h)).toFixed(2)+' ';}return {R:R.toFixed(2),paid:P.paid,due:P.due,up:P.up,sw:sw.toFixed(2)};}
+function line(W,n,done,dueK){var per=W/n;var sw=Math.min(6,Math.max(2.6,per*0.5));var arc=Math.max(per*0.62-sw,0.3);var P={paid:'',due:'',up:''};for(var u=0;u<n;u++){var k=u+1,st=k<=done?'paid':(k===dueK?'due':'up');var c=(u+0.5)*per;P[st]+='M'+(c-arc/2).toFixed(2)+' 5H'+(c+arc/2).toFixed(2)+' ';}return {paid:P.paid,due:P.due,up:P.up,sw:sw.toFixed(2)};}
+class Component extends DCLogic {
+  renderVals() {
+    var d=this.props.theme==='light'?'light':'dark',t=Object.assign({},TOK[d]);
+    t.heroBg='linear-gradient('+t.raised+','+t.raised+') padding-box,linear-gradient(120deg,'+t.a1+' 0%,'+t.a2+' 52%,'+t.a3+' 100%) border-box';
+    t.aur='linear-gradient(120deg,'+t.a1+' 0%,'+t.a2+' 52%,'+t.a3+' 100%)';
+    ['emi','int','err','tp','cash','pri'].forEach(function(k){t[k+'10']=rgba(t[k],0.10);t[k+'45']=rgba(t[k],0.45);});
+    function bstates(kind){var out=[];['default','pressed','disabled'].forEach(function(s){var x={dis:s==='disabled',sc:s==='pressed'?0.96:1};
+      if(kind==='p'){x.bg=s==='disabled'?t.line:t.emi;x.c=s==='disabled'?t.tm:t.onEmi;x.bd='0';if(s==='pressed')x.bg=rgba(t.emi,0.82);}
+      if(kind==='s'){x.bg=s==='pressed'?t.emi10:'transparent';x.c=s==='disabled'?t.tm:t.emi;x.bd='1.5px solid '+(s==='disabled'?t.line:t.emi);}
+      if(kind==='g'){x.bg=s==='pressed'?t.tp10:'transparent';x.c=s==='disabled'?t.tm:t.tp;x.bd='0';}
+      if(kind==='d'){x.bg=s==='disabled'?t.line:(s==='pressed'?rgba(t.err,0.82):t.err);x.c=s==='disabled'?t.tm:t.onEmi;x.bd='0';}
+      out.push(x);});return out;}
+    var buttons=[{name:'Primary',label:'লোন সেভ করুন',states:bstates('p')},{name:'Secondary',label:'আমার লোন হিসেবে রাখুন',states:bstates('s')},{name:'Ghost',label:'সব মাস দেখুন',states:bstates('g')},{name:'Destructive',label:'মুছে ফেলুন',states:bstates('d')}];
+    var BN="'Anek Bangla',sans-serif",EN="'Anek Latin','Anek Bangla',sans-serif",errRing='inset 0 0 0 1px '+t.err+', 0 0 0 1px '+t.err,focRing='inset 0 0 0 1px '+t.emi+', 0 0 0 1px '+t.emi;
+    var inputs=[
+      {label:'লোনের পরিমাণ',state:'empty',pre:'৳',suf:'',val:'০',vc:t.tm,ring:'none',op:1,font:BN,help:'কমা নিজে থেকে বসবে'},
+      {label:'লোনের পরিমাণ',state:'focused',pre:'৳',suf:'',val:'1521595.95',vc:t.tp,ring:focRing,op:1,font:BN,caret:true},
+      {label:'লোনের পরিমাণ',state:'filled',pre:'৳',suf:'',val:'১৫,২১,৫৯৫.৯৫',vc:t.tp,ring:'none',op:1,font:BN},
+      {label:'লোনের পরিমাণ',state:'error',pre:'৳',suf:'',val:'০',vc:t.tm,ring:errRing,op:1,font:BN,err:'লোনের পরিমাণ লিখুন'},
+      {label:'লোনের পরিমাণ',state:'disabled',pre:'৳',suf:'',val:'১৫,২১,৫৯৫.৯৫',vc:t.tp,ring:'none',op:0.45,font:BN},
+      {label:'সুদের হার (বছরে)',state:'RateInput',pre:'',suf:'%',val:'১০.৪৭',vc:t.tp,ring:'none',op:1,font:BN},
+      {label:'Loan amount',state:'English, filled',pre:'৳',suf:'',val:'15,21,595.95',vc:t.tp,ring:'none',op:1,font:EN}
+    ];
+    var chips=[['আমার বর্তমান লোন','default',false,1,t.line,t.raised],['টপ-আপ উদাহরণ','active',true,1,t.emi,t.emi10],['শুরুর লোন','pressed',false,0.96,t.line,t.sunken]].map(function(c){return {label:c[0],state:c[1],on:c[2],sc:c[3],bd:c[4],bg:c[5]};});
+    function stItems(lg){var L=lg==='en'?['Paid','This month','Upcoming','Starts in 3 months','All installments done']:['শোধ হয়েছে','এই মাসে দিতে হবে','সামনে আসছে','৩ মাস পরে শুরু','সব কিস্তি শেষ'];var C=[[t.cash,ICO.checkCircle],[t.emi,ICO.target],[t.pri,ICO.clock],[t.pri,ICO.hourglass],[t.cash,ICO.checkCircle]];return L.map(function(l,i){return {label:l,c:C[i][0],bg:rgba(C[i][0],0.10),d:C[i][1]};});}
+    var statusRows=[{font:BN,items:stItems('bn')},{font:EN,items:stItems('en')}];
+    var monthFields=[{v:'মাস বেছে নিন',c:t.tm},{v:'অক্টোবর ২০২৫',c:t.tp}];
+    var switchRows=[{label:'সাউন্ড',d:ICO.speakerHigh,track:t.emi,knob:t.onEmi,jc:'flex-end'},{label:'ভাইব্রেশন',d:ICO.vibrate,track:t.line,knob:d==='dark'?'#B7B2E0':'#FFFFFF',jc:'flex-start'}];
+    var bars=[{a:68.15,b:31.85,ca:t.ded,cb:t.cash,h:12,label:'StackedBar: কেটে রাখা ৬৮%, হাতে পাবেন ৩২%'},{a:22.4,b:77.6,ca:t.int,cb:t.pri,h:12,label:'InterestShareBar: মোট পরিশোধের ২২% সুদ'},{a:34.1,b:65.9,ca:t.int,cb:t.pri,h:10,label:'SplitBar: সুদ ৳১১,১৪৩.৬০, মূল টাকা ৳২১,৫৩৯.৪০'}];
+    function mk(st){if(st==='paid')return {mw:22,mh:6,mbg:t.cash,mbd:'none',mglow:'none'};if(st==='due')return {mw:16,mh:16,mbg:'transparent',mbd:'2.5px solid '+t.emi,mglow:'0 0 10px '+rgba(t.a1,0.6)+', 0 0 16px '+rgba(t.a2,0.35)};if(st==='up')return {mw:22,mh:6,mbg:'transparent',mbd:'1.5px solid '+rgba(t.pri,0.45),mglow:'none'};return {mw:22,mh:6,mbg:t.tm,mbd:'none',mglow:'none'};}
+    var cells=[['আগ','paid','paid'],['অক্টো','due','due'],['নভে','up','upcoming'],['সেপ্টে','up','final',true],['জুলাই','out','outside'],['অক্টো','due','selected',false,true],['ডিসে','up','pressed',false,false,true],['সেপ্টে','paid','selected paid',false,true]].map(function(c){var sel=!!c[4],pr=!!c[5];return Object.assign({label:c[0],state:c[2],final:!!c[3],bd:sel?'2px solid '+t.tp:'1px solid '+(c[1]==='due'?t.emi45:t.line),bg:sel?t.raised:(c[1]==='due'?t.emi10:(pr?t.sunken:t.base)),sh:sel?t.lift:'none',ty:sel?-2:0,sc:pr?0.96:1,op:c[1]==='out'?0.3:1,fw:sel?700:500},mk(c[1]));});
+    var acc=ACC[d];
+    var cards=[
+      {font:BN,ini:'কব',bank:'কাঁথা ব্যাংক',nick:'বাড়ির লোন',acc:acc[0],chip:'এই মাসে দিতে হবে',chipC:t.emi,chipD:ICO.target,emi:'৩২,৬৮৩',ln:line(330,60,12,13),rem:'৳১২,৫৫,৬৬৪.৫৭',prog:'৬০টির মধ্যে ১৩'},
+      {font:BN,ini:'ধব',bank:'ধানসিঁড়ি ব্যাংক',nick:'টপ-আপ',acc:acc[1],chip:'৩ মাস পরে শুরু',chipC:t.pri,chipD:ICO.hourglass,emi:'২৭,৯৮৮',ln:line(330,60,0,0),rem:'৳১৩,০০,০০০.০০',prog:'৬০টির মধ্যে ০'},
+      {font:BN,ini:'মব',bank:'ময়না ব্যাংক',nick:'বাইকের লোন',acc:acc[2],chip:'সব কিস্তি শেষ',chipC:t.cash,chipD:ICO.checkCircle,emi:'৯,১৩৭',ln:line(330,24,24,0),rem:'৳০.০০',prog:'২৪টির মধ্যে ২৪'},
+      {font:EN,ini:'KB',bank:'Kantha Bank',nick:'Home loan',acc:acc[0],chip:'This month',chipC:t.emi,chipD:ICO.target,emi:'32,683',ln:line(330,60,12,13),rem:'৳12,55,664.57',prog:'13 of 60'}
+    ].map(function(c){c.accBg=rgba(c.acc,0.16);c.chipBg=rgba(c.chipC,0.10);return c;});
+    var strips=[{pre:'এই মাসে মোট কিস্তি ',amt:'৳৩২,৬৮৩',post:' (১টি লোন)',rem:'৳২৫,৫৫,৬৬৪.৫৭'},{pre:'এই মাসে মোট কিস্তি ',amt:'৳৬০,৬৭১',post:' (২টি লোন)',rem:'৳২৫,৩৯,১২৭.৪০'}];
+    var srows=[{row:true,m:'মাস ১',pay:'৳৩২,৬৮৩',i:'৳১৩,২৭৫.৯২',pp:'৳১৯,৪০৭.০৮',c:'৳১৫,০২,১৮৮.৮৭',bd:'1px solid '+t.line},{row:true,mk:true,m:'সেপ্টে ২০২৬',pay:'৳৩২,৬৮৩',i:'৳১১,৩২৯.৯১',pp:'৳২১,৩৫৩.০৯',c:'৳১২,৭৭,২০৩.৯৭',bd:'1px solid '+t.line},{gap:true,row:false},{row:true,final:true,m:'মাস ৬০',pay:'৳৩২,৬৩৭.৭২',i:'৳২৮২.৩০',pp:'৳৩২,৩৫৫.৪২',c:'৳০.০০',bd:'1px solid '+t.int45}];
+    var tabs=[['ক্যালকুলেটর',ICO.calculator,true],['আমার লোন',ICO.bank,false],['সেটিংস',ICO.gear,false]].map(function(x){return {label:x[0],d:x[1],c:x[2]?t.tp:t.ts,ic:x[2]?t.emi:t.ts,fill:x[2]?t.emi:'none',w:x[2]?600:500,ind:x[2]?t.aur:'transparent'};});
+    var sparks='';for(var q=0;q<8;q++){var a=q*Math.PI/4-Math.PI/2+Math.PI/8;sparks+='M'+(100+62*Math.cos(a)).toFixed(1)+' '+(100+62*Math.sin(a)).toFixed(1)+'L'+(100+82*Math.cos(a)).toFixed(1)+' '+(100+82*Math.sin(a)).toFixed(1)+' ';}
+    var r1=ring(120,60,12,13);r1.c='১৩/৬০';var r2=ring(120,60,0,0);r2.c='০/৬০';var r3=ring(120,24,24,0);r3.c='২৪/২৪';
+    return {t:t,ic:ICO,modeName:d==='dark'?'dark':'light',buttons:buttons,inputs:inputs,chips:chips,statusRows:statusRows,monthFields:monthFields,switchRows:switchRows,bars:bars,cells:cells,cards:cards,strips:strips,srows:srows,tabs:tabs,sparks:sparks,rings:[r1,r2,r3]};
+  }
+}
+</script>
+</body>
+</html>
